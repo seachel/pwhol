@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Learn Lambda Prolog!</title>
+		<link href="styles/style.css" rel="stylesheet" type="text/css">
+
+		<script type="text/javascript" src="jquery.js"></script>
+
+		<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+		<!--
+		Fonts:
+			Title: Playfair Display
+			Headings: Open Sans Bold
+			Emphasized points, bullets: Slabo 27px
+			Open Sans Condensed Light
+			Lobster Two
+		-->
+
+		<!-- Remove unused fonts; Open+Sans:400,700|Open+Sans+Condensed:300|Playfair+Display|-->
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Slabo+27px|Lobster+Two" rel="stylesheet">
+
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: { inlineMath : [['$','$'], ['\\(','\\)']] },
+				"HTML-CSS" : { preferredFont : "STIX" }
+			});
+		</script>
+
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+		<script type="text/javascript">
+			function getUpdateElements()
+			{
+				var obj = {
+					introduction: document.getElementsByClassName("introduction"),
+					fohc: document.getElementsByClassName("fohc"),
+					fohh: document.getElementsByClassName("fohh"),
+					hohc: document.getElementsByClassName("hohc"),
+					hohh: document.getElementsByClassName("hohh")
+				};
+
+				return obj; /* Why can't I just return the above object? Syntax error : unexpected */
+			}
+
+			var hiddenClassName = "hidden";
+
+			function toggleHiddenMenu(selectedClassName)
+			{
+				if ($(selectedClassName).hasClass(hiddenClassName))
+				{
+					$(selectedClassName).removeClass(hiddenClassName);	
+				}
+
+				if (selectedClassName != ".introduction")
+				{
+					$(".introduction").toggleClass(hiddenClassName);	
+				}
+				
+				$(".setting").toggleClass(hiddenClassName);
+				$(".search-strategy").toggleClass(hiddenClassName);
+				$(".logic-comparison").toggleClass(hiddenClassName);
+				$(".examples").toggleClass(hiddenClassName);
+				// $(".fohc").toggleClass(hiddenClassName);
+				// $(".fohh").toggleClass(hiddenClassName);
+				// $(".hohc").toggleClass(hiddenClassName);
+				// $(".hohh").toggleClass(hiddenClassName);
+
+				//better way to do this?
+			}
+
+			function introduction_click()
+			{
+				$(".introduction").removeClass(hiddenClassName);
+				$(".setting").addClass(hiddenClassName);
+				$(".search-strategy").addClass(hiddenClassName);
+				$(".logic-comparison").addClass(hiddenClassName);
+				$(".examples").addClass(hiddenClassName);
+				// $(".fohc").addClass(hiddenClassName);
+				// $(".fohh").addClass(hiddenClassName);
+				// $(".hohc").addClass(hiddenClassName);
+				// $(".hohh").addClass(hiddenClassName);
+			}
+
+			function setting_click()
+			{
+				$(".introduction").addClass(hiddenClassName);
+				$(".setting").removeClass(hiddenClassName);
+				$(".search-strategy").addClass(hiddenClassName);
+				$(".logic-comparison").addClass(hiddenClassName);
+				$(".examples").addClass(hiddenClassName);
+				// $(".fohc").addClass(hiddenClassName);
+				// $(".fohh").addClass(hiddenClassName);
+				// $(".hohc").addClass(hiddenClassName);
+				// $(".hohh").addClass(hiddenClassName);
+			}
+
+			function strategy_click()
+			{
+				$(".introduction").addClass(hiddenClassName);
+				$(".setting").addClass(hiddenClassName);
+				$(".search-strategy").removeClass(hiddenClassName);
+				$(".logic-comparison").addClass(hiddenClassName);
+				$(".examples").addClass(hiddenClassName);
+				// $(".fohc").addClass(hiddenClassName);
+				// $(".fohh").addClass(hiddenClassName);
+				// $(".hohc").addClass(hiddenClassName);
+				// $(".hohh").addClass(hiddenClassName);
+			}
+
+			function logic_comparison_click()
+			{
+				$(".introduction").addClass(hiddenClassName);
+				$(".setting").addClass(hiddenClassName);
+				$(".search-strategy").addClass(hiddenClassName);
+				$(".logic-comparison").removeClass(hiddenClassName);
+				$(".examples").addClass(hiddenClassName);
+				// $(".fohc").addClass(hiddenClassName);
+				// $(".fohh").addClass(hiddenClassName);
+				// $(".hohc").addClass(hiddenClassName);
+				// $(".hohh").addClass(hiddenClassName);
+			}
+
+			function examples_click()
+			{
+				$(".introduction").addClass(hiddenClassName);
+				$(".setting").addClass(hiddenClassName);
+				$(".search-strategy").addClass(hiddenClassName);
+				$(".logic-comparison").addClass(hiddenClassName);
+				$(".examples").removeClass(hiddenClassName);
+				// $(".fohc").addClass(hiddenClassName);
+				// $(".fohh").addClass(hiddenClassName);
+				// $(".hohc").addClass(hiddenClassName);
+				// $(".hohh").addClass(hiddenClassName);
+			}
+
+			function fohc_click()
+			{
+				$(".introduction").addClass(hiddenClassName);
+				$(".setting").addClass(hiddenClassName);
+				$(".search-strategy").addClass(hiddenClassName);
+				$(".logic-comparison").addClass(hiddenClassName);
+				$(".examples").addClass(hiddenClassName);
+				// $(".fohc").removeClass(hiddenClassName);
+				// $(".fohh").addClass(hiddenClassName);
+				// $(".hohc").addClass(hiddenClassName);
+				// $(".hohh").addClass(hiddenClassName);
+			}
+
+			function fohh_click()
+			{
+				$(".introduction").addClass(hiddenClassName);
+				$(".setting").addClass(hiddenClassName);
+				$(".search-strategy").addClass(hiddenClassName);
+				$(".logic-comparison").addClass(hiddenClassName);
+				$(".examples").addClass(hiddenClassName);
+				// $(".fohc").addClass(hiddenClassName);
+				// $(".fohh").removeClass(hiddenClassName);
+				// $(".hohc").addClass(hiddenClassName);
+				// $(".hohh").addClass(hiddenClassName);
+			}
+
+			function hohc_click()
+			{
+				$(".introduction").addClass(hiddenClassName);
+				$(".setting").addClass(hiddenClassName);
+				$(".search-strategy").addClass(hiddenClassName);
+				$(".logic-comparison").addClass(hiddenClassName);
+				$(".examples").addClass(hiddenClassName);
+				// $(".fohc").addClass(hiddenClassName);
+				// $(".fohh").addClass(hiddenClassName);
+				// $(".hohc").removeClass(hiddenClassName);
+				// $(".hohh").addClass(hiddenClassName);
+			}
+
+			function hohh_click()
+			{
+				$(".introduction").addClass(hiddenClassName);
+				$(".setting").addClass(hiddenClassName);
+				$(".search-strategy").addClass(hiddenClassName);
+				$(".logic-comparison").addClass(hiddenClassName);
+				$(".examples").addClass(hiddenClassName);
+				$(".fohc").addClass(hiddenClassName);
+				$(".fohh").addClass(hiddenClassName);
+				$(".hohc").addClass(hiddenClassName);
+				$(".hohh").removeClass(hiddenClassName);
+			}
+
+			function expandRules_click()
+			{
+				$(".scroll").toggleClass(hiddenClassName);
+				$(".open").toggleClass(hiddenClassName);
+				$(".closed").toggleClass(hiddenClassName);
+			}
+		</script>
+
+	</head>
+	<body>
+		
+		<div class="top-container">
+
+			<div class="menu">
+				<div class="menu-container">
+					<a class="menu-introduction menu-item" href="#" onclick="introduction_click()">Introduction</a>
+					<a class="menu-setting menu-item" href="#" onclick="setting_click()">Setting</a>
+					<a class="menu-strategy menu-item" href="#" onclick="strategy_click()">Search Strategy</a>
+					<a class="menu-logic_comparison menu-item" href="#" onclick="logic_comparison_click()">Logic Comparison</a>
+					<a class="menu-examples menu-item" href="#" onclick="examples_click()">Examples</a>
+					<!-- <a class="menu-fohc menu-item" href="#" onclick="fohc_click()">fohc</a>
+					<a class="menu-fohh menu-item" href="#" onclick="fohh_click()">fohh</a>
+					<a class="menu-hohc menu-item" href="#" onclick="hohc_click()">hohc</a>
+					<a class="menu-hohh menu-item" href="#" onclick="hohh_click()">hohh</a> -->
+				</div>
+			</div>
+
+			<div class="hidden">
+				Todo and presentation notes
+				<ul>
+					<li>best way to structure document and id and class names? don't style based on id; use unique class names; always use class name</li>
+					<li>best development tools?</li>
+					<li>too many class names? what is proper form? </li>
+					<li>dock sequent to top</li>
+					<li>on element selection, will need functions to also hilight the related objects</li>
+					<li>switch to grid layout for rules container?</li>
+					<li>minimize sections?</li>
+					<li>download MathJax?</li>
+					<li>need distinction between grammars and typing rules for first-order and higher-order</li>
+					<li>in future, add conventions</li>
+					<li>start with simple examples for concepts, show cool examples for later material to build interest?</li>
+					<li>notes about intuitionistic, minimal logic</li>
+				</ul>
+			</div>
+
+			<div class="introduction frame header">
+				<div class="top-title">Programming with Higher Order Logic</div>
+				<a class="book-link note-visual" href="https://sites.google.com/site/proghol/">Book by Dale Miller and Gopalan Nadathur</a>
+				<div class="presentation-note">***Content in this font is a presentation note only and will be hidden in the final version***</div>
+			</div>
+
+			<div class="introduction frame last-frame">
+				<div class="section">
+					<div class="title">Introduction</div>
+					<div class="introduction-goal note">
+						<span class="subtitle">Goal:</span> use (higher-order) logic to express specifications of computations
+					</div>
+					<div class="example">lists and predicates representing reversal, ...</div>
+					<div class="example">encoding predicate logic</div>
+					<div class="note-visual">
+						<div class="formulas-display children-horizontal">
+							<div class="formula">$\top$</div>
+							<div class="formula">$B_1 \vee B_2$</div>
+							<div class="formula">$B_1 \wedge B_2$</div>
+							<div class="formula">$B_1 \supset B_2$</div>
+							<div class="formula">$\exists_\tau x \, B$</div>
+							<div class="formula">$\forall_\tau x \, B$</div>
+						</div>
+						<div class="todo">
+							(expand on this... examples of atoms we'd like to specify, relations on the data give formulas; show formulas with syntactic variables, note about quantification; fo vs ho; example of higher-order spec?)
+						</div>
+					</div>
+				</div>
+				<div class="section">
+					<div class="introduction-approach note">
+						<span class="subtitle">Approach:</span> using sequent calculus, computation is goal-directed proof search
+					</div>
+					<div class="note-visual">
+						<div class="rule-body">
+							<div class="rule-premises">
+								<div class="tree-branch">
+									<div class="tree-symbols rule-conclusion">
+										<i class="em em-card_file_box"></i>$\longrightarrow$<i class="em em-clap"></i>
+									</div>
+									<div>
+										$\vdots$
+									</div>
+								</div>
+								<div>$\ldots$</div>
+								<div class="tree-branch">
+									<div class="tree-symbols rule-conclusion">
+										<i class="em em-card_file_box"></i>$\longrightarrow$<i class="em em-clap"></i>
+									</div>
+									<div>
+										$\vdots$
+									</div>
+								</div>
+							</div>
+							<div class="tree-symbols rule-conclusion">
+								<i class="em em-card_file_box"></i>$\longrightarrow$<i class="em em-question"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="setting frame last-frame hidden">
+				<div class="title">Setting</div>
+				<div class="section">
+					<div class="subtitle">
+						Sequent, <span class="feature">$\Sigma ; \mathcal{P} \longrightarrow G$</span>
+					</div>
+					<div class="note">
+						Represents state of a computation
+					</div>
+					<div class="note">
+						Goal $G$ is provable from the program $\mathcal{P}$ given the type declarations in the signature $\Sigma$
+					</div>
+				</div>
+				<div class="section">
+					<div class="subtitle">
+						Context, <span class="feature">$\Sigma$</span>
+					</div>
+					<div class="note">
+						Available constants and their associated type expressions
+						<div class="todo">(math stylinng, change mathjax font)</div>
+					</div>
+					<div class="example">
+							$\mathtt{nil}$ is a constant of type $\mathtt{list \, A}$ for some type $\mathtt{A}$
+					</div>
+					<div class="todo">terms vs formulas, introduce "o"</div>
+					<div class="todo">decide on fonts</div>
+					<div class="note">
+						Initially:
+						<ul>
+							<li>$\top : o$</li>
+							<li>$\wedge : o \rightarrow o \rightarrow o$</li>
+							<li>$\vee : o \rightarrow o \rightarrow o$</li>
+							<li>$\supset : o \rightarrow o \rightarrow o$</li>
+							<li>$\forall : (\tau \rightarrow o) \rightarrow o$ <div class="todo">what is the type in the first-order setting?</div></li>
+							<li>$\exists : (\tau \rightarrow o) \rightarrow o$</li>
+						</ul>
+					</div>
+					<div class="note">
+						Extend using a type declaration:
+					</div>
+					<div class="note-visual">
+						$\mathtt{type} \qquad \textit{(identifier)} \qquad \textit{(type expression)} \mathtt{.}$
+					</div>
+					<div class="example">
+						$\mathtt{type} \qquad \mathtt{cons} \qquad \mathtt{A} \rightarrow \mathtt{list \, A} \rightarrow \mathtt{list \, A.}$
+					</div>
+					<div class="note">
+						$$
+						\begin{align*}
+						\langle \textit{type expression} \rangle ::=& \; \langle \textit{type var} \rangle \\
+						|& \; \langle \textit{type expression} \rangle \rightarrow \langle \textit{type expression} \rangle \\
+						|& \; \langle \textit{tyc} \rangle \: \langle \textit{type expression} \rangle \: \ldots \: \langle \textit{type expression} \rangle
+						\end{align*}
+						$$
+					</div>
+					<div class="note">
+						When necessary, define new types using a kind declaration:
+					</div>
+					<div class="note-visual">
+						$\mathtt{kind} \qquad \textit{(identifier)} \qquad \textit{(identifier kind)} \mathtt{.}$
+					</div>
+					<div class="example">
+						$\mathtt{kind} \qquad \mathtt{list} \qquad \mathtt{type} \rightarrow \mathtt{type.}$
+					</div>
+					<div class="todo">grammar for kind expressions? too much technical detail?</div>
+				</div>
+				<div class="section">
+					<div class="subtitle">
+						Program, <span class="feature">$\mathcal{P}$</span>
+					</div>
+					<div class="note">
+						A set of assumed formulas representing partial definitions of predicates
+						(TODO: example)
+					</div>
+				</div>
+				<div class="section">
+					<div class="subtitle">
+						Goal, <span class="feature">$G$</span>
+					</div>
+					<div class="note">
+						A formula we would like to prove<!-- , assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$ --> (TODO: example)
+					</div>
+					<div class="todo">
+						(see section 2.2)
+					</div>
+				</div>
+			</div>
+
+			<div class="search-strategy frame last-frame hidden">
+				<div class="title">Proof Search Strategy</div>
+				<div class="subtitle">
+					Goal reduction:
+				</div>
+				<div class="goal-reduction note">
+					When the top-level symbol of the goal is a logical constant, use the appropriate right-rule
+				</div>
+				<div class="example">
+					<div class="rule-container">
+						<div class="rule-body">
+							<div class="rule-premises">
+								<div class="tree-branch">
+									<div>$\vdots$</div>
+									<div>$\Sigma ; \Gamma \longrightarrow B_1$</div>
+								</div>
+								<div class="tree-branch">
+									<div>$\vdots$</div>
+									<div>$\Sigma ; \Gamma \longrightarrow B_2$</div>
+								</div>
+							</div>
+							<div class="rule-conclusion">
+								<div>$\Sigma ; \Gamma \longrightarrow B_1 \wedge B_2$</div>
+								<div>$\vdots$</div>
+							</div>
+						</div>
+						<div class="rule-name">
+							$\wedge_R$
+						</div>
+					</div>
+				</div>
+				<div class="goal-reduction note">
+					Search process is independent of the context and program
+				</div>
+				<div class="todo">Rules visible here; describe how used; explain that or-rule ignored?</div>
+				<div class="subtitle">Backchaining:</div>
+				<div class="backchaining note">
+					When the goal is atomic, look to the program to continue proof search
+				</div>
+				<div class="todo">Need example here</div>
+			</div>
+
+			<div class="logic-comparison frame hidden">
+				<div class="title">Horn Clauses vs Hereditary Harrop Formulas</div>
+				<div class="section hc">
+					<div class="subtitle">Horn clause grammar:</div>
+					<div class="hc-grammar note">
+						<div>
+							$$
+							\begin{align*}
+							G ::=& \; \top \;\; | \;\; G \wedge G \;\; | \;\; G \vee G \;\; | \;\; \exists_\tau x \, G \\
+							D ::=& \; A \;\; | \;\; G \supset D \;\; | \;\; D \wedge D \;\; | \;\; \forall_\tau x \, D
+							\end{align*}
+							$$
+						</div>
+					</div>
+				</div>
+				<div class="section hh">
+					<div class="subtitle">Hereditary Harrop grammar:</div>
+					<div class="hh-grammar note">
+						<div class="grammar">
+							$$
+							\begin{align*}
+							G ::=& \; \top \;\; | \;\; G \wedge G \;\; | \;\; G \vee G \;\; | \;\; \exists_\tau x \, G \;\; | \;\; D \supset G \;\; | \;\; \forall_\tau x \, G \\
+							D ::=& \; A \;\; | \;\; G \supset D \;\; | \;\; D \wedge D \;\; | \;\; \forall_\tau x \, D
+							\end{align*}
+							$$
+						</div>
+					</div>
+				</div>
+				<div class="section">
+					<div class="subtitle">Modular programming:</div>
+					<div class="note">
+						<ul class="note-list">
+							<li>Implication in goals allows program modification during proof search via $\supset_R$ rule</li>
+						</ul>
+						<div class="todo">example</div>
+					</div>
+					<div class="subtitle">Hypothetical reasoning:</div>
+					<div class="note">
+						<ul class="note-list">
+							<li>Universal quantification in goals allows context modification during proof search via $\forall_R$ rule</li>
+						</ul>
+						<div class="todo">example</div>
+					</div>
+					<div class="presentation-note">Show appropriate rule when discussed</div>
+				</div>
+			</div>
+
+			<div class="logic-comparison frame last-frame hidden">
+				<div class="title">First-Order vs. Higher-Order Logic</div>
+				<div class="note">
+					Restrictions:
+					<ul class="restriction-list">
+						<li>In a first-order language, restrict type expressions to be of order at most 1 and type variables substituted for only expressions of order 0 and must not be o (will need order def)</li>
+						<li>Restrictions on type declarations for first-order terms:
+							<ol>
+								<li>type expression must be of order at most 1</li>
+								<li>sort o must not be used in the type expression (this restriction is partially lifted later for defining first-order formulas)</li>
+							</ol>
+						</li>
+						<li>* o must not be used or subbed in for a type variable</li>
+						<li>In the first-order setting, a type expression representing the type of a term variable must have order 0 and not be o</li>
+						<li>In the first-order setting, assume types in signature have order at most 1 and types in context have order at most 0 and no types in the set contain o (follows from above and the way elements enter the context; these are type variables)</li>
+						<li>First-order constants may have o as their target type; called first-order predicate symbols</li>
+					</ul>
+				</div>
+				<div class="note">
+					First-Order Logic:
+					<div class="note">Type expression order $\leq$ 1</div>
+					<div class="note">Type variable substituted for expressions of order 0, not $o$ (not a formula)</div>
+					<div class="todo">reorganize this list, possibly to allow more emojis in the presentation for yes/no</div>
+					<div><span class="em em-no_entry_sign"></span><span class="em em-exclamation"></span><span class="em em-white_check_mark"></span><span class="em em-warning"></span></div>
+				</div>
+			</div>
+
+
+			<div class="fohc examples frame hidden">
+				<div class="title">First-Order Horn Clauses (fohc)</div>
+				<div>$\Sigma ; \Gamma \longrightarrow B$</div>
+				<div>blah blah blagh</div>
+			</div>
+
+			<div class="fohh examples frame hidden">
+				<div class="title">First-Order Hereditary Harrop Formulas (fohh)</div>
+			</div>
+
+			<div class="hohc examples frame hidden">
+				<div class="title">Higher-Order Horn Clauses (hohc)</div>				
+				<div class="example">getting the flagged items in a list? focus is on foreach as use of higher-order logic</div>
+			</div>
+
+			<div class="hohh examples frame hidden">
+				<div class="title">Higher-Order Hereditary Harrop Formulas (hohh)</div>
+			</div>
+
+			<div class="dock-bottom">
+				<button class="collapsible" onclick="expandRules_click()">
+					<div class="closed"><span class="em em-arrow_forward"></span></div>
+					<div class="open hidden"><span class="em em-arrow_down_small"></span></div>
+					<span class="subtitle">Inference Rules</span>
+					<span class="em em-hammer_and_wrench"></span>
+				</button>
+				<div class="scroll hidden">
+					<div class="rules">
+						<div class="rule_TR rule-container">
+							<div class="rule-premises">
+							</div>
+							<div class="rule-conclusion">
+								$ \Sigma ; \mathcal{P} \longrightarrow \top $
+							</div>
+						</div>
+						<div class="rule_or1R rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									<div>$ \Sigma ; \mathcal{P} \longrightarrow B_1 $</div>
+								</div>
+								<div class="rule-conclusion">
+									$ \Sigma ; \mathcal{P} \longrightarrow B_1 \vee B_2 $
+								</div>
+							</div>
+							<div class="rule-name">
+								$ \vee_{R_1} $
+							</div>
+						</div>
+						<div class="rule_or2R rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									<div>$ \Sigma ; \mathcal{P} \longrightarrow B_2 $</div>
+								</div>
+								<div class="rule-conclusion">
+									$ \Sigma ; \mathcal{P} \longrightarrow B_1 \vee B_2 $
+								</div>
+							</div>
+							<div>
+								$ \vee_{R_2} $
+							</div>
+						</div>
+						<div class="rule_andR rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									<div>$ \Sigma ; \mathcal{P} \longrightarrow B_1 $</div>
+									<div>$ \Sigma ; \mathcal{P} \longrightarrow B_2 $</div>
+								</div>
+								<div class="rule-conclusion">
+									$ \Sigma ; \mathcal{P} \longrightarrow B_1 \wedge B_2 $
+								</div>
+							</div>
+							<div>
+								$ \wedge_R $
+							</div>
+						</div>
+						<div class="rule_impR rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									<div>$ \Sigma ; \mathcal{P} , B_1 \longrightarrow B_2 $</div>
+								</div>
+								<div class="rule-conclusion">
+									$ \Sigma ; \mathcal{P} \longrightarrow B_1 \supset B_2 $
+								</div>
+							</div>
+							<div>
+								$ \supset_R $
+							</div>
+						</div>
+						<div class="rule_forallR rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									<div>$ c : \tau , \Sigma ; \mathcal{P} \longrightarrow B [c / x] $</div>
+								</div>
+								<div class="rule-conclusion">
+									$ \Sigma ; \mathcal{P} \longrightarrow \forall_\tau x \; B $
+								</div>
+							</div>
+							<div>
+								$ \forall_R $
+							</div>
+						</div>
+						<div class="rule_existsR rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									<div>$ \Sigma ; \mathcal{P} \longrightarrow B [t / x] $</div>
+									<div>$ \Sigma ; \Gamma \models t : \tau $</div>
+								</div>
+								<div class="rule-conclusion">
+									$ \Sigma ; \mathcal{P} \longrightarrow \exists_\tau x \; B $
+								</div>
+							</div>
+							<div>
+								$ \exists_R $
+							</div>
+						</div>
+						<div class="rule_backchain rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									<div>$ \Sigma ; \mathcal{P} \longrightarrow A_1 $</div>
+									<div>$\ldots$</div>
+									<div>$ \Sigma ; \mathcal{P} \longrightarrow A_n $</div>
+								</div>
+								<div class="rule-conclusion">
+									$ \Sigma ; \mathcal{P} \overset{\forall_{\tau_1} x_1 \ldots \forall_{\tau_m} x_m \; (A_1 \wedge \ldots \wedge A_n \supset A_0)}{\longrightarrow} A_0$
+								</div>
+							</div>
+							<div class="rule-name">
+								$ backchain $
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<div class="typing-rules rules hidden">typing rules</div>
+
+		</div>
+	</body>
+</html>
+

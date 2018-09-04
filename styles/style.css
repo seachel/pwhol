@@ -1,0 +1,286 @@
+/* colours for layout */
+
+
+x.temp-notes { color: white; background: black; }
+x.logic-selection{ background: aliceblue; }
+x.sequent-math { background: antiquewhite; }
+x.right-rules { background: aquamarine; }
+x.left-rules { background: lavender; }
+x.typing-rules { background: cornflowerblue; }
+x.expression-grammar { background: darkgrey; }
+x.introduction { background: pink; }
+x.notes { background: peachpuff; }
+x.menu {	background: white; }
+x.menu-container { background: green; }
+x.menu-container A { background: pink; }
+x.logic-comparison { background: peachpuff; }
+x.proof-strategy { background: wheat; }
+
+.todo
+{
+	font-size: 16px;
+	color: lightgrey;
+}
+
+.presentation-note
+{
+	font-size: 20px;
+	color: green;
+	/*display: none;*/
+}
+
+
+/*********************
+* Fonts
+
+font-family: 'Playfair Display', serif;
+font-family: 'Open Sans Condensed', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Slabo 27px', serif;
+font-family: 'Lobster Two', cursive;
+*********************/
+
+
+/*********************
+* Dev styles
+*********************/
+
+div.hidden
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+.note
+{
+	padding: 10px 30px;
+}
+
+.note-visual
+{
+	align-self: center;
+	padding: 10px 20px;
+}
+
+.children-horizontal
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.frame
+{
+	margin-top: 50px;
+	padding: 15px;
+	outline: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	background: white;
+}
+
+.last-frame
+{
+	margin-bottom: 50px;
+}
+
+.section
+{
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: lightgrey;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+.dock-bottom
+{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	background: white;
+	width: 100%;
+	max-height: 30%;
+	outline: 1px solid black;
+}
+
+.top-container
+{
+	background: lavender;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	font-size: 25px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.top-title
+{
+	font-size: 50px;
+	align-self: center;
+	font-family: 'Lobster Two', cursive;
+}
+
+.title
+{
+	font-size: 40px;
+	padding: 15px 0;
+	font-family: 'Slabo 27px', serif;
+}
+
+.subtitle
+{
+	font-size: 28px;
+	padding: 10px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+}
+
+.menu
+{
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	background: lavender;
+	outline: 1px solid black;
+	z-index: 1;
+}
+
+.menu-container
+{
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+}
+
+.menu-item
+{
+	font-family: 'Slabo 27px', serif;
+}
+
+div.rules
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: flex-end;
+	margin-bottom: 100px;
+	font-size: 25px;
+}
+
+.rule-container
+{
+	display: flex;
+	align-items: center;
+	padding: 30px;
+}
+
+.rule-body
+{
+	display: inline-block;
+}
+
+.rule-premises
+{
+	display: flex;
+	justify-content: space-between;
+	min-height: 20px;
+	padding: 10px 0;
+}
+
+.rule-premises > div
+{
+	padding: 0 15px;
+	align-self: center;
+}
+
+.rule-conclusion
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-top: 1px solid black;
+	padding: 10px 0;
+}
+
+.rule_backchain .rule-name
+{
+	padding-bottom: 20px;
+}
+
+.tree-symbols
+{
+	padding: 10px 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.tree-branch
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.feature
+{
+	border: 1px solid purple;
+	padding: 5px;
+}
+
+.hilight
+{
+	background: purple;
+}
+
+.example
+{
+	outline: 2px dashed black;
+	align-self: center;
+	padding: 15px;
+	margin: 30px;
+}
+
+.fuck
+{
+	background: yellow;
+}
+
+.scroll
+{
+	overflow: auto;
+}
