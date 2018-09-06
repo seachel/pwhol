@@ -48,62 +48,47 @@
 			}
 
 			var hiddenClassName = "hidden";
-
-			function toggleHiddenMenu(selectedClassName)
-			{
-				if ($(selectedClassName).hasClass(hiddenClassName))
-				{
-					$(selectedClassName).removeClass(hiddenClassName);	
-				}
-
-				if (selectedClassName != ".introduction")
-				{
-					$(".introduction").toggleClass(hiddenClassName);	
-				}
-				
-				$(".setting").toggleClass(hiddenClassName);
-				$(".search-strategy").toggleClass(hiddenClassName);
-				$(".logic-comparison").toggleClass(hiddenClassName);
-				$(".examples").toggleClass(hiddenClassName);
-				// $(".fohc").toggleClass(hiddenClassName);
-				// $(".fohh").toggleClass(hiddenClassName);
-				// $(".hohc").toggleClass(hiddenClassName);
-				// $(".hohh").toggleClass(hiddenClassName);
-
-				//better way to do this?
-			}
+			var focusedLinkClassName = "focus-link";
 
 			function introduction_click()
 			{
 				$(".introduction").removeClass(hiddenClassName);
+				$(".introduction").addClass(focusedLinkClassName);
+
 				$(".setting").addClass(hiddenClassName);
+				$(".setting").removeClass(focusedLinkClassName);
+
 				$(".search-strategy").addClass(hiddenClassName);
+				$(".search-strategy").removeClass(focusedLinkClassName);
+
 				$(".logic-comparison").addClass(hiddenClassName);
+				$(".logic-comparison").removeClass(focusedLinkClassName);
+
 				$(".examples").addClass(hiddenClassName);
-				// $(".fohc").addClass(hiddenClassName);
-				// $(".fohh").addClass(hiddenClassName);
-				// $(".hohc").addClass(hiddenClassName);
-				// $(".hohh").addClass(hiddenClassName);
+				$(".examples").addClass(focusedLinkClassName);
 			}
 
 			function setting_click()
 			{
 				$(".introduction").addClass(hiddenClassName);
+				$(".introduction").removeClass(focusedLinkClassName);				
+
 				$(".setting").removeClass(hiddenClassName);
+				$(".setting").addClass(focusedLinkClassName);
+
 				$(".search-strategy").addClass(hiddenClassName);
 				$(".logic-comparison").addClass(hiddenClassName);
 				$(".examples").addClass(hiddenClassName);
-				// $(".fohc").addClass(hiddenClassName);
-				// $(".fohh").addClass(hiddenClassName);
-				// $(".hohc").addClass(hiddenClassName);
-				// $(".hohh").addClass(hiddenClassName);
 			}
 
 			function strategy_click()
 			{
 				$(".introduction").addClass(hiddenClassName);
 				$(".setting").addClass(hiddenClassName);
+
 				$(".search-strategy").removeClass(hiddenClassName);
+				$(".search-strategy").addClass("focus");
+
 				$(".logic-comparison").addClass(hiddenClassName);
 				$(".examples").addClass(hiddenClassName);
 				// $(".fohc").addClass(hiddenClassName);
@@ -117,12 +102,11 @@
 				$(".introduction").addClass(hiddenClassName);
 				$(".setting").addClass(hiddenClassName);
 				$(".search-strategy").addClass(hiddenClassName);
+
 				$(".logic-comparison").removeClass(hiddenClassName);
+				$(".logic-comparison").addClass("focus-link");
+
 				$(".examples").addClass(hiddenClassName);
-				// $(".fohc").addClass(hiddenClassName);
-				// $(".fohh").addClass(hiddenClassName);
-				// $(".hohc").addClass(hiddenClassName);
-				// $(".hohh").addClass(hiddenClassName);
 			}
 
 			function examples_click()
@@ -136,58 +120,6 @@
 				// $(".fohh").addClass(hiddenClassName);
 				// $(".hohc").addClass(hiddenClassName);
 				// $(".hohh").addClass(hiddenClassName);
-			}
-
-			function fohc_click()
-			{
-				$(".introduction").addClass(hiddenClassName);
-				$(".setting").addClass(hiddenClassName);
-				$(".search-strategy").addClass(hiddenClassName);
-				$(".logic-comparison").addClass(hiddenClassName);
-				$(".examples").addClass(hiddenClassName);
-				// $(".fohc").removeClass(hiddenClassName);
-				// $(".fohh").addClass(hiddenClassName);
-				// $(".hohc").addClass(hiddenClassName);
-				// $(".hohh").addClass(hiddenClassName);
-			}
-
-			function fohh_click()
-			{
-				$(".introduction").addClass(hiddenClassName);
-				$(".setting").addClass(hiddenClassName);
-				$(".search-strategy").addClass(hiddenClassName);
-				$(".logic-comparison").addClass(hiddenClassName);
-				$(".examples").addClass(hiddenClassName);
-				// $(".fohc").addClass(hiddenClassName);
-				// $(".fohh").removeClass(hiddenClassName);
-				// $(".hohc").addClass(hiddenClassName);
-				// $(".hohh").addClass(hiddenClassName);
-			}
-
-			function hohc_click()
-			{
-				$(".introduction").addClass(hiddenClassName);
-				$(".setting").addClass(hiddenClassName);
-				$(".search-strategy").addClass(hiddenClassName);
-				$(".logic-comparison").addClass(hiddenClassName);
-				$(".examples").addClass(hiddenClassName);
-				// $(".fohc").addClass(hiddenClassName);
-				// $(".fohh").addClass(hiddenClassName);
-				// $(".hohc").removeClass(hiddenClassName);
-				// $(".hohh").addClass(hiddenClassName);
-			}
-
-			function hohh_click()
-			{
-				$(".introduction").addClass(hiddenClassName);
-				$(".setting").addClass(hiddenClassName);
-				$(".search-strategy").addClass(hiddenClassName);
-				$(".logic-comparison").addClass(hiddenClassName);
-				$(".examples").addClass(hiddenClassName);
-				$(".fohc").addClass(hiddenClassName);
-				$(".fohh").addClass(hiddenClassName);
-				$(".hohc").addClass(hiddenClassName);
-				$(".hohh").removeClass(hiddenClassName);
 			}
 
 			function expandRules_click()
@@ -210,10 +142,6 @@
 					<a class="menu-strategy menu-item" href="#" onclick="strategy_click()">Search Strategy</a>
 					<a class="menu-logic_comparison menu-item" href="#" onclick="logic_comparison_click()">Logic Comparison</a>
 					<a class="menu-examples menu-item" href="#" onclick="examples_click()">Examples</a>
-					<!-- <a class="menu-fohc menu-item" href="#" onclick="fohc_click()">fohc</a>
-					<a class="menu-fohh menu-item" href="#" onclick="fohh_click()">fohh</a>
-					<a class="menu-hohc menu-item" href="#" onclick="hohc_click()">hohc</a>
-					<a class="menu-hohh menu-item" href="#" onclick="hohh_click()">hohh</a> -->
 				</div>
 			</div>
 
@@ -232,6 +160,7 @@
 					<li>in future, add conventions</li>
 					<li>start with simple examples for concepts, show cool examples for later material to build interest?</li>
 					<li>notes about intuitionistic, minimal logic</li>
+					<li>pop-up things when term clicked</li>
 				</ul>
 			</div>
 
@@ -239,6 +168,19 @@
 				<div class="top-title">Programming with Higher Order Logic</div>
 				<a class="book-link note-visual" href="https://sites.google.com/site/proghol/">Book by Dale Miller and Gopalan Nadathur</a>
 				<div class="presentation-note">***Content in this font is a presentation note only and will be hidden in the final version***</div>
+				<div class="todo">***Content in this font is a TODO and will be hidden in the final version***</div>
+				<div class="presentation-note">
+					Presentation goal:
+					<ul>
+						<li>Introduce logic as programming via proof search and *substitution*</li>
+						<li>Basic idea of differences between different logic programming languages</li>
+						<li>Examples (as basic as possible) of problems that can be solved (elegantly?) with logic programming, one complicated example requiring hohh</li>
+						<li>Website as artifact for future reference, possibly extended with more explanation for learning the languages</li>
+					</ul>
+				</div>
+				<div class="todo">More focus on substitutions as solutions to problems</div>
+				<div class="todo">Put title on its own "home" link?</div>
+				<div class="todo">Math font vs teletype in examples</div>
 			</div>
 
 			<div class="introduction frame last-frame">
@@ -247,21 +189,30 @@
 					<div class="introduction-goal note">
 						<span class="subtitle">Goal:</span> use (higher-order) logic to express specifications of computations
 					</div>
-					<div class="example">lists and predicates representing reversal, ...</div>
-					<div class="example">encoding predicate logic</div>
-					<div class="note-visual">
-						<div class="formulas-display children-horizontal">
-							<div class="formula">$\top$</div>
-							<div class="formula">$B_1 \vee B_2$</div>
-							<div class="formula">$B_1 \wedge B_2$</div>
-							<div class="formula">$B_1 \supset B_2$</div>
-							<div class="formula">$\exists_\tau x \, B$</div>
-							<div class="formula">$\forall_\tau x \, B$</div>
-						</div>
-						<div class="todo">
-							(expand on this... examples of atoms we'd like to specify, relations on the data give formulas; show formulas with syntactic variables, note about quantification; fo vs ho; example of higher-order spec?)
+					<div class="example">Encode terms of type $\texttt{list}$ and predicates for reversal, concatenation, filtering, etc</div>
+					<div class="example">Encode and reason about other logics and languages</div>
+				</div>
+				<div class="section">
+					<div class="presentation-note">
+						<div class="subtitle">Considerations:</div>
+						<div class="note">
+							<ul>
+								<li>
+									how to define terms and predicates and their types
+								</li>
+								<li>
+									how order of a logic impacts computational possibilities
+								</li>
+								<li>
+									what are the structures we reason about and the rules for doing so
+								</li>
+								<li>
+									what does computation look like
+								</li>
+							</ul>
 						</div>
 					</div>
+					<div class="todo">Are all of these answered in the website/talk?</div>
 				</div>
 				<div class="section">
 					<div class="introduction-approach note">
@@ -293,11 +244,36 @@
 							</div>
 						</div>
 					</div>
+					<div class="note">
+						Substitutions for existential variables represent a $\textit{solution}$ to the computation
+					</div>
+					<div class="todo">Leave out above to avoid talking about implicit existential vars at this point?</div>
 				</div>
 			</div>
 
 			<div class="setting frame last-frame hidden">
 				<div class="title">Setting</div>
+
+				<div class="section">
+					<div class="subtitle">Types</div>
+					<div class="todo">A bit about the type system, sorts, kinds, types, with some kind of visualization</div>
+					<div class="todo">grammar for kinds, note about how using arrows gives parametrization of types</div>
+					<div class="note">
+						$$
+						\begin{align*}
+						\langle \textit{type expression} \rangle ::=& \; \langle \textit{type var} \rangle \\
+						|& \; \langle \textit{type expression} \rangle \rightarrow \langle \textit{type expression} \rangle \\
+						|& \; \langle \textit{tyc} \rangle \: \langle \textit{type expression} \rangle \: \ldots \: \langle \textit{type expression} \rangle
+						\end{align*}
+						$$
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="subtitle">Terms and Formulas</div>
+					<div class="todo">How to construct terms, formulas; mention what "$o$" is</div>
+				</div>
+
 				<div class="section">
 					<div class="subtitle">
 						Sequent, <span class="feature">$\Sigma ; \mathcal{P} \longrightarrow G$</span>
@@ -309,19 +285,17 @@
 						Goal $G$ is provable from the program $\mathcal{P}$ given the type declarations in the signature $\Sigma$
 					</div>
 				</div>
+
 				<div class="section">
 					<div class="subtitle">
-						Context, <span class="feature">$\Sigma$</span>
+						Signature, <span class="feature">$\Sigma$</span>
 					</div>
 					<div class="note">
 						Available constants and their associated type expressions
-						<div class="todo">(math stylinng, change mathjax font)</div>
 					</div>
 					<div class="example">
 							$\mathtt{nil}$ is a constant of type $\mathtt{list \, A}$ for some type $\mathtt{A}$
 					</div>
-					<div class="todo">terms vs formulas, introduce "o"</div>
-					<div class="todo">decide on fonts</div>
 					<div class="note">
 						Initially:
 						<ul>
@@ -343,15 +317,6 @@
 						$\mathtt{type} \qquad \mathtt{cons} \qquad \mathtt{A} \rightarrow \mathtt{list \, A} \rightarrow \mathtt{list \, A.}$
 					</div>
 					<div class="note">
-						$$
-						\begin{align*}
-						\langle \textit{type expression} \rangle ::=& \; \langle \textit{type var} \rangle \\
-						|& \; \langle \textit{type expression} \rangle \rightarrow \langle \textit{type expression} \rangle \\
-						|& \; \langle \textit{tyc} \rangle \: \langle \textit{type expression} \rangle \: \ldots \: \langle \textit{type expression} \rangle
-						\end{align*}
-						$$
-					</div>
-					<div class="note">
 						When necessary, define new types using a kind declaration:
 					</div>
 					<div class="note-visual">
@@ -360,8 +325,8 @@
 					<div class="example">
 						$\mathtt{kind} \qquad \mathtt{list} \qquad \mathtt{type} \rightarrow \mathtt{type.}$
 					</div>
-					<div class="todo">grammar for kind expressions? too much technical detail?</div>
 				</div>
+				
 				<div class="section">
 					<div class="subtitle">
 						Program, <span class="feature">$\mathcal{P}$</span>
@@ -371,12 +336,13 @@
 						(TODO: example)
 					</div>
 				</div>
+
 				<div class="section">
 					<div class="subtitle">
 						Goal, <span class="feature">$G$</span>
 					</div>
 					<div class="note">
-						A formula we would like to prove<!-- , assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$ --> (TODO: example)
+						A formula we would like to prove, assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$ (TODO: example)
 					</div>
 					<div class="todo">
 						(see section 2.2)
@@ -424,6 +390,7 @@
 					When the goal is atomic, look to the program to continue proof search
 				</div>
 				<div class="todo">Need example here</div>
+				<div class="todo">Note about substitution as solution to search</div>
 			</div>
 
 			<div class="logic-comparison frame hidden">
@@ -475,49 +442,127 @@
 
 			<div class="logic-comparison frame last-frame hidden">
 				<div class="title">First-Order vs. Higher-Order Logic</div>
-				<div class="note">
-					Restrictions:
-					<ul class="restriction-list">
-						<li>In a first-order language, restrict type expressions to be of order at most 1 and type variables substituted for only expressions of order 0 and must not be o (will need order def)</li>
-						<li>Restrictions on type declarations for first-order terms:
-							<ol>
-								<li>type expression must be of order at most 1</li>
-								<li>sort o must not be used in the type expression (this restriction is partially lifted later for defining first-order formulas)</li>
-							</ol>
-						</li>
-						<li>* o must not be used or subbed in for a type variable</li>
-						<li>In the first-order setting, a type expression representing the type of a term variable must have order 0 and not be o</li>
-						<li>In the first-order setting, assume types in signature have order at most 1 and types in context have order at most 0 and no types in the set contain o (follows from above and the way elements enter the context; these are type variables)</li>
-						<li>First-order constants may have o as their target type; called first-order predicate symbols</li>
-					</ul>
+				<div class="section">
+					<div class="subtitle">Type Expression Order</div>
+					<div class="note">
+						Type expressions constructed from the following grammar (restricted in first-order):
+						$$
+						\begin{align*}
+						\langle \textit{type expression} \rangle ::=& \; \langle \textit{type var} \rangle \\
+						|& \; \langle \textit{type expression} \rangle \rightarrow \langle \textit{type expression} \rangle \\
+						|& \; \langle \textit{tyc} \rangle \: \langle \textit{type expression} \rangle \: \ldots \: \langle \textit{type expression} \rangle
+						\end{align*}
+						$$
+					</div>
+					<div class="note">
+						The order of type expressions is defined as:
+						$$
+						\begin{align*}
+						\textit{ord}(\tau) =& 0, \qquad\qquad \textrm{provided } \tau \textrm{ is non-functional} \\
+						\textit{ord}(\tau_1 \rightarrow \tau_2) =& \textit{max}(\textit{ord}(\tau_1) + 1, \textit{ord}(\tau_2))
+						\end{align*}
+						$$
+					</div>
+					<div class="note">Informally, order is the maximum number of nested arrows</div>
 				</div>
-				<div class="note">
-					First-Order Logic:
-					<div class="note">Type expression order $\leq$ 1</div>
-					<div class="note">Type variable substituted for expressions of order 0, not $o$ (not a formula)</div>
-					<div class="todo">reorganize this list, possibly to allow more emojis in the presentation for yes/no</div>
-					<div><span class="em em-no_entry_sign"></span><span class="em em-exclamation"></span><span class="em em-white_check_mark"></span><span class="em em-warning"></span></div>
+				<div class="section">
+					<div class="note">
+						<div class="subtitle">First-Order Restrictions:</div>
+						<div class="note"><span class="em em-warning"></span>Type expression order $\leq$ 1</div>
+						<div class="presentation-note">No functional arguments</div>
+						<div class="note"><span class="em em-warning"></span>Type variable substitutions are expressions of order $0$ and not $o$</div>
+						<div class="presentation-note">Order of type expressions can be increased and?</div>
+						<div class="todo">explain what problem $o$ will cause, increasing order of type expressions?</div>
+						<div class="note"><span class="em em-warning"></span>Sort $o$ not used in type expressions except as target type (called a predicate symbol)</div>
+						<div class="todo">explain what problem this will cause</div>
+						<div class="note"><span class="em em-warning"></span>Type expressions representing type of a term variable must have order $0$ and not be $o$</div>
+
+						<div class="todo">Distinction between formulas and terms somewhere</div>
+					</div>
 				</div>
 			</div>
 
+			<div class="exmaples frame hidden todo">
+				<div class="todo">TODO: fill in details of examples; definitions for all, and one computation</div>
+				<div class="todo">Select one example for each logic?</div>
+			</div>
 
 			<div class="fohc examples frame hidden">
 				<div class="title">First-Order Horn Clauses (fohc)</div>
-				<div>$\Sigma ; \Gamma \longrightarrow B$</div>
-				<div>blah blah blagh</div>
+				<div class="example">list and list predicates</div>
+				<div class="example">binary tree and binary tree predicates</div>
 			</div>
 
 			<div class="fohh examples frame hidden">
 				<div class="title">First-Order Hereditary Harrop Formulas (fohh)</div>
+				<div class="example">encoding predicate logic (uses implication for predicate logic implication)</div>
+				<div class="example">modular programming (implpication allows local scope for predicates)</div>
 			</div>
 
 			<div class="hohc examples frame hidden">
 				<div class="title">Higher-Order Horn Clauses (hohc)</div>				
-				<div class="example">getting the flagged items in a list? focus is on foreach as use of higher-order logic</div>
+				<div class="example">getting the flagged items in a list using sublist predicate as use of higher-order logic</div>
 			</div>
 
-			<div class="hohh examples frame hidden">
+			<div class="hohh examples frame last-frame hidden">
 				<div class="title">Higher-Order Hereditary Harrop Formulas (hohh)</div>
+				<div class="subtitle">Example: Encoding type inference for a fragment of minimal logic</div>
+				<div class="todo">correct understanding of example?</div>
+				<div class="example">
+					<code>
+						<table class="declaration-tp">
+							<tr>
+								<td>kind</td>
+								<td>tp</td>
+								<td>type.</td>
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>basetp</td>
+								<td>tp.</td>
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>arr</td>
+								<td>tp -> tp -> tp.</td>
+							</tr>
+							<tr class="space-row"></tr>
+							<tr>
+								<td>kind</td>
+								<td>expr</td>
+								<td>type.</td>	
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>app</td>
+								<td>expr -> expr -> expr.</td>
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>fun</td>
+								<td>(expr -> expr) -> expr.</td>
+							</tr>
+							<tr class="space-row"></tr>
+							<tr>
+								<td>type</td>
+								<td>tp_pred</td>
+								<td>expr -> tp -> o.</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									tp_pred (app E1 E2) T1 :- tp_pred E1 (arr T2 T1) & tp_pred E2 T2.
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									tp_pred (fun x (E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (E x) T2).				
+								</td>
+							</tr>
+						</table>
+					</code>
+				</div>
+				<div class="note">type of <code>fun</code> has order 2, so higher-order</div>
+				<div class="note">goal in second <code>tp_pred</code> predicate spec has universal quantification and implication in the goal, so HH</div>
 			</div>
 
 			<div class="dock-bottom">
