@@ -182,8 +182,9 @@
 				<div class="todo">Put title on its own "home" link?</div>
 				<div class="todo">Math font vs teletype in examples</div>
 				<div class="todo">Visual indication of which menu link is currently selected</div>
-				<div class="todo">Fix scrolling in rules panel at the bottom</div>
 				<div class="todo">Add discussion on typing rules? Unification?</div>
+				<div class="todo">Earlier sample run to show how goals used?</div>
+				<div class="todo">choose consistent notation... code vs math</div>
 			</div>
 
 			<div class="introduction frame last-frame">
@@ -192,7 +193,7 @@
 					<div class="introduction-goal note">
 						<span class="subtitle">Goal:</span> use (higher-order) logic to express specifications of computations
 					</div>
-					<div class="example">Encode terms of type $\texttt{list}$ and predicates for reversal, concatenation, filtering, etc</div>
+					<div class="example">Encode terms of type <span class="code">list</span> and predicates for reversal, concatenation, filtering, etc</div>
 					<div class="example">Encode and reason about other logics and languages</div>
 				</div>
 				<div class="section">
@@ -297,7 +298,7 @@
 						Available constants and their associated type expressions
 					</div>
 					<div class="example">
-							$\mathtt{nil}$ is a constant of type $\mathtt{list \, A}$ for some type $\mathtt{A}$
+							<span class="code">nil</span> is a constant of type <span class="code">list A</span> for some type <span class="code">A</span>
 					</div>
 					<div class="note">
 						Initially:
@@ -314,19 +315,60 @@
 						Extend using a type declaration:
 					</div>
 					<div class="note-visual">
-						$\mathtt{type} \qquad \textit{(identifier)} \qquad \textit{(type expression)} \mathtt{.}$
+						<table class="code display-table">
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									(<em>identifier</em>)
+								</td>
+								<td>
+									(type expression).
+								</td>
+							</tr>
+							<tr class="example-row">
+								<td>
+									type
+								</td>
+								<td>
+									cons
+								</td>
+								<td>
+									A -> list A -> list A.
+								</td>
+							</tr>
+						</table>
 					</div>
-					<div class="example">
-						$\mathtt{type} \qquad \mathtt{cons} \qquad \mathtt{A} \rightarrow \mathtt{list \, A} \rightarrow \mathtt{list \, A.}$
-					</div>
+					
 					<div class="note">
 						When necessary, define new types using a kind declaration:
 					</div>
 					<div class="note-visual">
-						$\mathtt{kind} \qquad \textit{(identifier)} \qquad \textit{(kind expression)} \mathtt{.}$
-					</div>
-					<div class="example">
-						$\mathtt{kind} \qquad \mathtt{list} \qquad \mathtt{type} \rightarrow \mathtt{type.}$
+						<table class="code display-table">
+							<tr>
+								<td>
+									kind
+								</td>
+								<td>
+									(<em>identifier</em>)
+								</td>
+								<td>
+									(kind expression).
+								</td>
+							</tr>
+							<tr class="example-row">
+								<td>
+									kind
+								</td>
+								<td>
+									list
+								</td>
+								<td>
+									type -> type.
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				
@@ -491,78 +533,357 @@
 			</div>
 
 			<div class="fohc examples frame hidden">
-				<div class="title">First-Order Horn Clauses (fohc)</div>
-				<div class="example">list and list predicates</div>
-				<div class="example">binary tree and binary tree predicates</div>
+				<div class="title">First-Order Horn Clauses (FOHC)</div>
+				<div class="note">
+					<span class="subtitle">Binary trees:</span> specification of terms and predicate for <span class="todo">pick predicate example</span>
+				</div>
+				<div class="example">
+					<table class="code">
+						<tr>
+							<td colspan="3">
+								/* Signature declarations: */
+							</td>
+						</tr>
+						<tr>
+							<td>
+								kind					
+							</td>
+							<td>
+								bintree
+							</td>
+							<td>
+								type -> type.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								type
+							</td>
+							<td>
+								empty
+							</td>
+							<td>
+								bintree A.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								type
+							</td>
+							<td>
+								node
+							</td>
+							<td>
+								A -> bintree A -> bintree A -> bintree A.
+							</td>
+						</tr>
+						<tr class="space-row"></tr>
+						<tr>
+							<td colspan="3">
+								/* Program definition: */
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								nodeCount (node V T1 T2) (1 + N1 + N2) :- nodeCount T1 N1 & nodeCount T2 N2. 
+							</td>
+						</tr>
+					</table>
+					<div class="todo">Draw the tree?</div>
+					<div class="todo">Give goal?</div>
+				</div>Your login is incorrect. Please try again
 			</div>
 
 			<div class="fohh examples frame hidden">
-				<div class="title">First-Order Hereditary Harrop Formulas (fohh)</div>
-				<div class="example">encoding predicate logic (uses implication for predicate logic implication)</div>
-				<div class="example">modular programming (implpication allows local scope for predicates)</div>
+				<div class="title">First-Order Hereditary Harrop Formulas (FOHH)</div>
+				<div class="note">
+					<span class="subtitle">Encoding predicate logic:</span> <span class="todo">finish this example... (uses implication for predicate logic implication)</span>
+				</div>
+				<div class="example">
+						<table class="code">
+							<tr>
+								<td colspan="3">
+									/* Signature declarations: */
+								</td>
+							</tr>
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									q, r, s, t, u
+								</td>
+								<td>
+									o.
+								</td>
+							</tr>
+							<tr class="space-row"></tr>
+							<tr>
+								<td colspan="3">
+									/* Program definition: */
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									s :- r, q.
+								</td>						
+							</tr>
+							<tr>
+								<td colspan="3">
+									t :- q, u.
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									q :- r.
+								</td>
+							</tr>
+						</table>
+				</div>
+
+				<div class="subtitle">Proof of <span class="code">s :- r</span>:</div>
+				<div class="todo">Major overhaul of rule/proof layout in styles and possibly structure; more thought needed</div>
+				<div class="rule-container">
+					<div class="rule-body">
+						<div class="rule-premises">
+							<div class="rule-container">
+								<div class="rule-body">
+									<div class="rule-premises">
+										<div class="rule-container">
+											<div class="rule-body">
+												<div class="rule-premises">
+													<div class="rule-container">
+														<div class="rule-body">
+															<div class="rule-premises">
+																<div class="rule-container">
+																	<div class="rule-body">
+																		<div class="rule-premises">
+																			
+																		</div>
+																		<div class="rule-conclusion">
+																			$\Sigma ; \mathcal{P}, r \overset{r}{\longrightarrow} r$
+																		</div>
+																	</div>
+																	<div class="rule-name">
+																		initial
+																	</div>
+																</div>
+															</div>
+															<div class="rule-conclusion">
+																$\Sigma ; \mathcal{P} , r \longrightarrow r$
+															</div>
+														</div>											
+														<div class="rule-name">
+															decide
+														</div>
+													</div>
+													<div class="rule-container">
+														<div class="rule-body">
+															<div class="rule-premises">
+																<div class="rule-container">
+																	<div class="rule-body">
+																		<div class="rule-premises">
+																			<div class="rule-container">
+																				<div class="rule-body">
+																					<div class="rule-premises">
+																						
+																					</div>
+																					<div class="rule-conclusion">
+																						$\Sigma ; \mathcal{P} , r \longrightarrow r$
+																					</div>
+																				</div>
+																				<div class="rule-name">
+																					initial
+																				</div>
+																			</div>
+																		</div>
+																		<div class="rule-conclusion">
+																			$\Sigma ; \mathcal{P} , r \overset{r \supset q}{\longrightarrow} q$
+																		</div>
+																	</div>
+																	<div class="rule-name">
+																		backchain
+																	</div>
+																</div>
+															</div>
+															<div class="rule-conclusion">
+																$\Sigma ; \mathcal{P} , r \longrightarrow q$
+															</div>
+														</div>
+														<div class="rule-name">
+															decide
+														</div>
+													</div>
+												</div>
+												<div class="rule-conclusion">
+													$\Sigma ; \mathcal{P} , r \overset{(r \wedge q) \supset s}{\longrightarrow} s$
+												</div>
+											</div>
+											<div class="rule-name">
+												backchain
+											</div>
+										</div>
+									</div>
+									<div class="rule-conclusion">
+										$\Sigma ; \mathcal{P} , r \longrightarrow s$
+									</div>
+								</div>
+								<div class="rule-name">
+									decide
+								</div>	
+							</div>
+						</div>
+						<div class="rule-conclusion">
+							$\Sigma; \mathcal{P} \longrightarrow r \supset s$
+						</div>	
+					</div>
+					<div class="rule-name">
+						$\supset_R$
+					</div>
+				</div>
+				<div class="todo">some proof explanation</div>
+				<div class="todo">Reference example from book</div>
 			</div>
 
 			<div class="hohc examples frame hidden">
-				<div class="title">Higher-Order Horn Clauses (hohc)</div>				
+				<div class="title">Higher-Order Horn Clauses (HOHC)</div>
+				<div class="example">
+					<table class="code">
+						<tr>
+							<td colspan="3">
+								/* Signature declarations: */
+							</td>
+						</tr>
+						<tr>
+							<td>
+								type
+							</td>
+							<td>
+								sublist
+							</td>
+							<td>
+								(A -> o) -> list A -> list A -> o.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								type
+							</td>
+							<td>
+								flagged
+							</td>
+							<td>
+								A -> o.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								type
+							</td>
+							<td>
+								u, v, w, x, y, z
+							</td>
+							<td>
+								A.
+							</td>
+						</tr>
+						<tr class="space-row"></tr>
+						<tr>
+							<td colspan="3">
+								/* Program definition: */
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								sublist P (X :: L) (X :: K) :- P X, sublist P L K.
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								sublist P (X :: L) K :- sublist P L K.
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								sublist P nil nil.
+							</td>
+						</tr>
+						<tr class="space-row"></tr>
+						<tr>
+							<td colspan="3">
+								flagged x, flagged y, flagged z.
+							</td>
+						</tr>
+					</table>
+				</div>
 				<div class="example">getting the flagged items in a list using sublist predicate as use of higher-order logic</div>
 			</div>
 
 			<div class="hohh examples frame last-frame hidden">
-				<div class="title">Higher-Order Hereditary Harrop Formulas (hohh)</div>
+				<div class="title">Higher-Order Hereditary Harrop Formulas (HOHH)</div>
 				<div class="subtitle">Example: Encoding type inference for a fragment of minimal logic</div>
 				<div class="todo">correct understanding of example?</div>
 				<div class="example">
-					<code>
-						<table class="declaration-tp">
-							<tr>
-								<td>kind</td>
-								<td>tp</td>
-								<td>type.</td>
-							</tr>
-							<tr>
-								<td>type</td>
-								<td>basetp</td>
-								<td>tp.</td>
-							</tr>
-							<tr>
-								<td>type</td>
-								<td>arr</td>
-								<td>tp -> tp -> tp.</td>
-							</tr>
-							<tr class="space-row"></tr>
-							<tr>
-								<td>kind</td>
-								<td>expr</td>
-								<td>type.</td>	
-							</tr>
-							<tr>
-								<td>type</td>
-								<td>app</td>
-								<td>expr -> expr -> expr.</td>
-							</tr>
-							<tr>
-								<td>type</td>
-								<td>fun</td>
-								<td>(expr -> expr) -> expr.</td>
-							</tr>
-							<tr class="space-row"></tr>
-							<tr>
-								<td>type</td>
-								<td>tp_pred</td>
-								<td>expr -> tp -> o.</td>
-							</tr>
-							<tr>
-								<td colspan="3">
-									tp_pred (app E1 E2) T1 :- tp_pred E1 (arr T2 T1) & tp_pred E2 T2.
-								</td>
-							</tr>
-							<tr>
-								<td colspan="3">
-									tp_pred (fun x (E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (E x) T2).				
-								</td>
-							</tr>
-						</table>
-					</code>
+					<table class="code">
+						<tr>
+							<td colspan="3">
+								/* Signature declarations: */
+							</td>
+						</tr>
+						<tr>
+							<td>kind</td>
+							<td>tp</td>
+							<td>type.</td>
+						</tr>
+						<tr>
+							<td>type</td>
+							<td>basetp</td>
+							<td>tp.</td>
+						</tr>
+						<tr>
+							<td>type</td>
+							<td>arr</td>
+							<td>tp -> tp -> tp.</td>
+						</tr>
+						<tr class="space-row"></tr>
+						<tr>
+							<td>kind</td>
+							<td>expr</td>
+							<td>type.</td>	
+						</tr>
+						<tr>
+							<td>type</td>
+							<td>app</td>
+							<td>expr -> expr -> expr.</td>
+						</tr>
+						<tr>
+							<td>type</td>
+							<td>fun</td>
+							<td>(expr -> expr) -> expr.</td>
+						</tr>
+						<tr class="space-row"></tr>
+						<tr>
+							<td>type</td>
+							<td>tp_pred</td>
+							<td>expr -> tp -> o.</td>
+						</tr>
+						<tr class="space-row"></tr>
+						<tr>
+							<td colspan="3">
+								/* Program definition: */
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								tp_pred (app E1 E2) T1 :- tp_pred E1 (arr T2 T1) & tp_pred E2 T2.
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								tp_pred (fun x (E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (E x) T2).				
+							</td>
+						</tr>
+					</table>
 				</div>
 				<div class="note">type of <code>fun</code> has order 2, so higher-order</div>
 				<div class="note">goal in second <code>tp_pred</code> predicate spec has universal quantification and implication in the goal, so HH</div>
@@ -576,6 +897,7 @@
 					<span class="em em-hammer_and_wrench"></span>
 				</button>
 				<div class="scroll hidden">
+					<div class="todo">Fix scrolling in rules panel; make minimal example</div>
 					<div class="rules">
 						<div class="rule_TR rule-container">
 							<div class="rule-premises">

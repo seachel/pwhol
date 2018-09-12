@@ -282,12 +282,28 @@ div.rules
 	overflow: auto;
 }
 
-.declaration-tp td
+.code td
 {
-	min-width: 150px;
+	min-width: 250px;
+}
+
+.code
+{
+	font-family: "Courier New";
 }
 
 .space-row
 {
 	height: 20px;
+}
+
+.example-row
+{
+	outline: 2px dashed black;
+}
+
+.display-table td
+{
+	padding: 20px;
+	margin: 20px;
 }
