@@ -185,6 +185,10 @@
 				<div class="todo">Add discussion on typing rules? Unification?</div>
 				<div class="todo">Earlier sample run to show how goals used?</div>
 				<div class="todo">choose consistent notation... code vs math</div>
+				<div class="todo">Add rule side-conditions</div>
+				<div class="todo">Area for conventions?</div>
+				<div class="todo">Future: unification</div>
+				<div class="todo">Future: module system?</div>
 			</div>
 
 			<div class="introduction frame last-frame">
@@ -193,7 +197,26 @@
 					<div class="introduction-goal note">
 						<span class="subtitle">Goal:</span> use (higher-order) logic to express specifications of computations
 					</div>
-					<div class="example">Encode terms of type <span class="code">list</span> and predicates for reversal, concatenation, filtering, etc</div>
+					<div class="example">
+						<span class="subtitle">Example:</span> Encode terms of type <span class="code">list</span> and predicates for reversal, concatenation, filtering, etc
+						<table class="code">
+							<tr>
+								<td>
+									list : type -> type
+								</td>
+							</tr>
+							<tr>
+								<td>
+									nil : list A
+								</td>
+							</tr>
+							<tr>
+								<td>
+									cons : A -> list A -> list A
+								</td>
+							</tr>
+						</table>
+					</div>
 					<div class="example">Encode and reason about other logics and languages</div>
 				</div>
 				<div class="section">
@@ -259,93 +282,10 @@
 				<div class="title">Setting</div>
 
 				<div class="section">
-					<div class="subtitle">Types</div>
-					<div class="todo">A bit about the type system, sorts, kinds, types, with some kind of visualization</div>
-					<div class="todo">grammar for kinds, note about how using arrows gives parametrization of types</div>
-					<div class="note">
-						$$
-						\begin{align*}
-						\langle \textit{type expression} \rangle ::=& \; \langle \textit{type var} \rangle \\
-						|& \; \langle \textit{type expression} \rangle \rightarrow \langle \textit{type expression} \rangle \\
-						|& \; \langle \textit{tyc} \rangle \: \langle \textit{type expression} \rangle \: \ldots \: \langle \textit{type expression} \rangle
-						\end{align*}
-						$$
-					</div>
-				</div>
-
-				<div class="section">
-					<div class="subtitle">Terms and Formulas</div>
-					<div class="todo">How to construct terms, formulas; mention what "$o$" is</div>
-				</div>
-
-				<div class="section">
-					<div class="subtitle">
-						Sequent, <span class="feature">$\Sigma ; \mathcal{P} \longrightarrow G$</span>
-					</div>
-					<div class="note">
-						Represents state of a computation
-					</div>
-					<div class="note">
-						Goal $G$ is provable from the program $\mathcal{P}$ given the type declarations in the signature $\Sigma$
-					</div>
-				</div>
-
-				<div class="section">
-					<div class="subtitle">
-						Signature, <span class="feature">$\Sigma$</span>
-					</div>
-					<div class="note">
-						Available constants and their associated type expressions
-					</div>
-					<div class="example">
-							<span class="code">nil</span> is a constant of type <span class="code">list A</span> for some type <span class="code">A</span>
-					</div>
-					<div class="note">
-						Initially:
-						<ul>
-							<li>$\top : o$</li>
-							<li>$\wedge : o \rightarrow o \rightarrow o$</li>
-							<li>$\vee : o \rightarrow o \rightarrow o$</li>
-							<li>$\supset : o \rightarrow o \rightarrow o$</li>
-							<li>$\forall : (\tau \rightarrow o) \rightarrow o$ <div class="todo">what is the type in the first-order setting?</div></li>
-							<li>$\exists : (\tau \rightarrow o) \rightarrow o$</li>
-						</ul>
-					</div>
-					<div class="note">
-						Extend using a type declaration:
-					</div>
-					<div class="note-visual">
-						<table class="code display-table">
-							<tr>
-								<td>
-									type
-								</td>
-								<td>
-									(<em>identifier</em>)
-								</td>
-								<td>
-									(type expression).
-								</td>
-							</tr>
-							<tr class="example-row">
-								<td>
-									type
-								</td>
-								<td>
-									cons
-								</td>
-								<td>
-									A -> list A -> list A.
-								</td>
-							</tr>
-						</table>
-					</div>
-					
-					<div class="note">
-						When necessary, define new types using a kind declaration:
-					</div>
-					<div class="note-visual">
-						<table class="code display-table">
+					<div class="subtitle">Kinds, Types, Terms, and Formulas</div>
+					<div class="section">
+						<div class="note">Each type or type constructor is related to a <em>kind expression</em>, declared in a <em>kind</em> declaration:</div>
+						<table class="note-visual code display-table">
 							<tr>
 								<td>
 									kind
@@ -369,7 +309,113 @@
 								</td>
 							</tr>
 						</table>
+						<div class="presentation-note">The example above creates a new type constructor "list" related to the kind "type -> type"</div>
+						<div class="note">Kind expressions are built from the following grammar:</div>
+						<div class="note">
+							$$
+							\begin{align*}
+							\langle \textit{kind expression} \rangle ::=& \; \textit{type} \\
+							|& \; \textit{type} \rightarrow \langle \textit{kind expression} \rangle
+							\end{align*}
+							$$
+						</div>
+						<div class="note">Kind expressions using "$\rightarrow$" allow parametrization of types</div>
 					</div>
+					<div class="section">
+						<div class="note">Each term or predicate symbol is related to a <em>type expression</em>, declared in a <em>type</em> declaration:</div>
+						<table class="note-visual code display-table">
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									(<em>identifier</em>)
+								</td>
+								<td>
+									(type expression).
+								</td>
+							</tr>
+							<tr class="example-row">
+								<td>
+									type
+								</td>
+								<td>
+									cons
+								</td>
+								<td>
+									A -> list A -> list A.
+								</td>
+							</tr>
+						</table>
+						<div class="presentation-note">The example above creates a new term constructor "cons" of type "A -> list A -> list A"</div>
+						<div class="note">Type expressions are built from the following grammar:</div>
+						<div class="note">
+							$$
+							\begin{align*}
+							\langle \textit{type expression} \rangle ::=& \; \langle \textit{type variable} \rangle \\
+							|& \; \langle \textit{type expression} \rangle \rightarrow \langle \textit{type expression} \rangle \\
+							|& \; \langle \textit{type constructor} \rangle \: \langle \textit{type expression} \rangle \: \ldots \: \langle \textit{type expression} \rangle
+							\end{align*}
+							$$
+						</div>
+						<div class="note">Gramamr above allows higher-order types, but this will be restricted for certain sublogics</div>
+						<div class="note">Type expressions using type variables allow polymorphism</div>
+						<div class="note">A <em>sort</em> is a zero-arity type constructor (unanalyzable type)</div>
+						<div class="note">Well-formed type expressions are related to the kind <span class="code">type</span></div>
+						<div class="presentation-note">Well-formed type expressions must have any type constructors present be fully applied</div>
+						<div class="todo">Introduce terminology "target type", "argument type", "functional type", "primitive type"?</div>
+					</div>
+					<div class="todo">How to construct terms, formulas; mention what "$o$" is... need to discuss fo vs ho first?</div>
+					<div class="note">A term related to a type expression using $\rightarrow$ is called a <em>value constructor</em> and can be used to build structured data</div>
+					<div class="todo">Add an example here?</div>
+					<div class="todo">Discuss term variables, after structure of terms? Need to have introduced form of terms and formulas to talk about quantification</div>
+				</div>
+
+				<div class="section">
+					<div class="subtitle">
+						Sequent, <span class="feature">$\Sigma ; \mathcal{P} \longrightarrow G$</span>
+					</div>
+					<div class="note">
+						Represents state of a computation
+					</div>
+					<div class="note">
+						Goal $G$ is provable from the program $\mathcal{P}$ given the type declarations in the signature $\Sigma$
+					</div>
+					<div class="note">
+						<span class="subtitle">NOTE:</span> $\rightarrow$, the function arrow, and $\longrightarrow$, the sequent arrow, are different symbols
+					</div>
+				</div>
+
+				<div class="section">
+					<div class="subtitle">
+						Signature, <span class="feature">$\Sigma$</span>
+					</div>
+					<div class="note">
+						Available constants and their associated type expressions
+					</div>
+					<div class="example">
+							<span class="code">nil</span> is a constant of type <span class="code">list A</span> for some type <span class="code">A</span>
+					</div>
+					<div class="note">
+						Initially:
+						<ul>
+							<li>$\top : o$</li>
+							<li>$\wedge : o \rightarrow o \rightarrow o$</li>
+							<li>$\vee : o \rightarrow o \rightarrow o$</li>
+							<li>$\supset : o \rightarrow o \rightarrow o$</li>
+							<li>$\forall : (\tau \rightarrow o) \rightarrow o$</li>
+							<li>$\exists : (\tau \rightarrow o) \rightarrow o$</li>
+						</ul>
+					</div>
+					<div class="note">
+						Extend using a type declaration (as above).
+					</div>
+					
+					
+					<div class="note">
+						When necessary, define new types using a kind declaration (as above).
+					</div>
+					
 				</div>
 				
 				<div class="section">
