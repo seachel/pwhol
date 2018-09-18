@@ -59,7 +59,10 @@ div.hidden
 
 .note
 {
-	padding: 10px 30px;
+	padding: 20px;
+	margin: 10px;
+	/*outline: 2px solid purple;*/
+	background: ghostwhite;
 }
 
 .note-visual
@@ -92,10 +95,16 @@ div.hidden
 
 .section
 {
-	margin-top: 20px;
+	margin: 20px;
+	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	align-content: center;
+}
+
+.outline
+{
+	outline: 2px solid lightgray;
 }
 
 /* Style the button that is used to open and close the collapsible content */

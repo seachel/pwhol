@@ -169,8 +169,8 @@
 				<a class="book-link note-visual" href="https://sites.google.com/site/proghol/">Book by Dale Miller and Gopalan Nadathur</a>
 				<div class="presentation-note">***Content in this font is a presentation note only and will be hidden in the final version***</div>
 				<div class="todo">***Content in this font is a TODO and will be hidden in the final version***</div>
-				<div class="presentation-note">
-					Presentation goal:
+				<div class="note">
+					Goals:
 					<ul>
 						<li>Introduce logic as programming via proof search and *substitution*</li>
 						<li>Basic idea of differences between different logic programming languages</li>
@@ -189,11 +189,12 @@
 				<div class="todo">Area for conventions?</div>
 				<div class="todo">Future: unification</div>
 				<div class="todo">Future: module system?</div>
+				<div class="todo">Arrow through notes?</div>
 			</div>
 
 			<div class="introduction frame last-frame">
+				<div class="title">Introduction</div>
 				<div class="section">
-					<div class="title">Introduction</div>
 					<div class="introduction-goal note">
 						<span class="subtitle">Goal:</span> use (higher-order) logic to express specifications of computations
 					</div>
@@ -222,7 +223,7 @@
 				<div class="section">
 					<div class="presentation-note">
 						<div class="subtitle">Considerations:</div>
-						<div class="note">
+						<div class="presentation-note">
 							<ul>
 								<li>
 									how to define terms and predicates and their types
@@ -283,7 +284,7 @@
 
 				<div class="section">
 					<div class="subtitle">Kinds, Types, Terms, and Formulas</div>
-					<div class="section">
+					<div class="section outline">
 						<div class="note">Each type or type constructor is related to a <em>kind expression</em>, declared in a <em>kind</em> declaration:</div>
 						<table class="note-visual code display-table">
 							<tr>
@@ -319,9 +320,11 @@
 							\end{align*}
 							$$
 						</div>
+						<div class="presentation-note">Kinds are either <span class="code">type</span> or some number of <span class="code">type</span>s with arrows between</div>
 						<div class="note">Kind expressions using "$\rightarrow$" allow parametrization of types</div>
+						<div class="presentation-note">The constant list, when applied to a type, is parametric in that "argument" type</div>
 					</div>
-					<div class="section">
+					<div class="section outline">
 						<div class="note">Each term or predicate symbol is related to a <em>type expression</em>, declared in a <em>type</em> declaration:</div>
 						<table class="note-visual code display-table">
 							<tr>
@@ -358,15 +361,43 @@
 							\end{align*}
 							$$
 						</div>
-						<div class="note">Gramamr above allows higher-order types, but this will be restricted for certain sublogics</div>
+						<div class="note">*The grammar above allows higher-order types, but this will be restricted for certain sublogics</div>
+						
 						<div class="note">Type expressions using type variables allow polymorphism</div>
-						<div class="note">A <em>sort</em> is a zero-arity type constructor (unanalyzable type)</div>
+						<div class="note">Type expressions using "$\rightarrow$" allow value constructors for building structured data</div>
+						<div class="note">Type espressions using type constructors must be fully applied</div>
+
 						<div class="note">Well-formed type expressions are related to the kind <span class="code">type</span></div>
-						<div class="presentation-note">Well-formed type expressions must have any type constructors present be fully applied</div>
+
+						<div class="note">A <em>sort</em> is a zero-arity type constructor (unanalyzable type)</div>
+						
 						<div class="todo">Introduce terminology "target type", "argument type", "functional type", "primitive type"?</div>
+
 					</div>
-					<div class="todo">How to construct terms, formulas; mention what "$o$" is... need to discuss fo vs ho first?</div>
-					<div class="note">A term related to a type expression using $\rightarrow$ is called a <em>value constructor</em> and can be used to build structured data</div>
+					<div class="section outline">
+						<div class="todo">More on how to construct terms here (var, application, abstraction, quantifiers as binding constructs)</div>
+						<div class="note">
+							A <em>term</em> is typable according to the typing rules of the logic; it is either:
+							<ul>
+								<li>
+									a variable of appropriate type
+								</li>
+								<li>
+									a constant
+								</li>
+								<li>
+									an application of a fully-applied term symbol
+								</li>
+								<li>
+									a lambda-abstraction of a term variable of appropriate type over a term
+								</li>
+							</ul>
+							<div class="todo">Expand the list above with examples?</div>
+						</div>
+						<div class="note"><em>Term variables</em> are either explicitly bound using a quantifier, or are implicitly bound</div>
+						<div class="todo">Expand above with an example, or show the rule?</div>
+						<div class="note">Formulas are terms of type $o$</div>
+					</div>
 					<div class="todo">Add an example here?</div>
 					<div class="todo">Discuss term variables, after structure of terms? Need to have introduced form of terms and formulas to talk about quantification</div>
 				</div>
@@ -379,7 +410,7 @@
 						Represents state of a computation
 					</div>
 					<div class="note">
-						Goal $G$ is provable from the program $\mathcal{P}$ given the type declarations in the signature $\Sigma$
+						"Goal $G$ is provable from the program $\mathcal{P}$ given the type declarations in the signature $\Sigma$"
 					</div>
 					<div class="note">
 						<span class="subtitle">NOTE:</span> $\rightarrow$, the function arrow, and $\longrightarrow$, the sequent arrow, are different symbols
@@ -408,12 +439,56 @@
 						</ul>
 					</div>
 					<div class="note">
-						Extend using a type declaration (as above).
+						Extend the signature using kind and type declarations, as above.
 					</div>
 					
-					
-					<div class="note">
-						When necessary, define new types using a kind declaration (as above).
+					<div class="example">
+						<table class="code">
+							<tr>
+								<td>
+									kind
+								</td>
+								<td>
+									list
+								</td>
+								<td>
+									type -> type.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									nil
+								</td>
+								<td>
+									list A.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									cons
+								</td>
+								<td>
+									A -> list A -> list A.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									length
+								</td>
+								<td>
+									list A -> int -> o.
+								</td>
+							</tr>
+						</table>
 					</div>
 					
 				</div>
@@ -424,7 +499,20 @@
 					</div>
 					<div class="note">
 						A set of assumed formulas representing partial definitions of predicates
-						(TODO: example)
+					</div>
+					<div class="example">
+						<table class="code">
+							<tr>
+								<td>
+									length nil 0.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									length (cons H T) (1 + N) :- length T N.
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 
@@ -433,7 +521,10 @@
 						Goal, <span class="feature">$G$</span>
 					</div>
 					<div class="note">
-						A formula we would like to prove, assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$ (TODO: example)
+						A formula we would like to prove, assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$
+					</div>
+					<div class="example">
+						$\exists$ <span class="code">M, length (cons 1 (cons 2 (cons 3 nil))) M.</span>
 					</div>
 					<div class="todo">
 						(see section 2.2)
