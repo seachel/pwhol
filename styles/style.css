@@ -46,7 +46,7 @@ font-family: 'Lobster Two', cursive;
 * Dev styles
 *********************/
 
-div.hidden
+.hidden
 {
 	position: absolute;
 	top: 0;
@@ -171,6 +171,11 @@ div.hidden
 	padding: 10px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: bold;
+}
+
+.subsub
+{
+	font-size: 24px;
 }
 
 .menu
@@ -311,8 +316,13 @@ div.rules
 	outline: 2px dashed black;
 }
 
-.display-table td
+.code-table td
 {
 	padding: 20px;
 	margin: 20px;
+}
+
+.display-table td
+{
+	min-width: 250px;
 }

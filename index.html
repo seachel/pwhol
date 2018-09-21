@@ -172,9 +172,9 @@
 				<div class="note">
 					Goals:
 					<ul>
-						<li>Introduce logic as programming via proof search and *substitution*</li>
+						<li>Introduce logic as programming via proof search and *substitution* for existentially quantified variables</li>
 						<li>Basic idea of differences between different logic programming languages</li>
-						<li>Examples of problems that can be solved (elegantly?) with logic programming, most as basic as possible to present idea quickly, one more complicated example requiring hohh (show a proof/computation?)</li>
+						<li>Examples of problems that can be solved with logic programming</li>
 						<li>Website as artifact for future reference, possibly extended with more explanation for learning the languages</li>
 					</ul>
 				</div>
@@ -190,17 +190,25 @@
 				<div class="todo">Future: unification</div>
 				<div class="todo">Future: module system?</div>
 				<div class="todo">Arrow through notes?</div>
+				<div class="todo">Wikipedia links?</div>
+				<div class="todo">Mapping between math and code notations</div>
 			</div>
 
 			<div class="introduction frame last-frame">
 				<div class="title">Introduction</div>
 				<div class="section">
 					<div class="introduction-goal note">
-						<span class="subtitle">Goal:</span> use (higher-order) logic to express specifications of computations
+						<span class="subtitle">Goal:</span> use (higher-order) logic to express relational specifications of computations
 					</div>
+					<div class="presentation-note">The first-order and higher-order distinction will be explored more later</div>
+					<div class="presentation-note">We're used to defining functions to operate on data, e.g. a function for reversing lists that takes a list as input and returns the passed list reversed, but here we are seeing things relationally; a relation representing list reversal is between two lists, where one is the reverse of the other; usually the last argument represents the "output", but the whole expression is a formula</div>
 					<div class="example">
-						<span class="subtitle">Example:</span> Encode terms of type <span class="code">list</span> and predicates for reversal, concatenation, filtering, etc
-						<table class="code">
+						<span class="subtitle subsub">Example:</span>
+						<div class="note">
+							Encode terms of type <span class="code">list</span> and predicates for reversal, concatenation, filtering, etc		
+						</div>
+						
+						<table class="code hidden">
 							<tr>
 								<td>
 									list : type -> type
@@ -218,7 +226,12 @@
 							</tr>
 						</table>
 					</div>
-					<div class="example">Encode and reason about other logics and languages</div>
+					<div class="example">
+						<span class="subtitle subsub">Example:</span>
+						<div class="note">	
+							Encode and reason about other logics and languages
+						</div>
+					</div>
 				</div>
 				<div class="section">
 					<div class="presentation-note">
@@ -272,10 +285,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="note">
-						Substitutions for existential variables represent a $\textit{solution}$ to the computation
-					</div>
-					<div class="todo">Leave out above to avoid talking about implicit existential vars at this point?</div>
 				</div>
 			</div>
 
@@ -286,7 +295,7 @@
 					<div class="subtitle">Kinds, Types, Terms, and Formulas</div>
 					<div class="section outline">
 						<div class="note">Each type or type constructor is related to a <em>kind expression</em>, declared in a <em>kind</em> declaration:</div>
-						<table class="note-visual code display-table">
+						<table class="note-visual code code-table">
 							<tr>
 								<td>
 									kind
@@ -321,12 +330,13 @@
 							$$
 						</div>
 						<div class="presentation-note">Kinds are either <span class="code">type</span> or some number of <span class="code">type</span>s with arrows between</div>
-						<div class="note">Kind expressions using "$\rightarrow$" allow parametrization of types</div>
+						<div class="note">Type constructors related to kind expressions using "$\rightarrow$" can later be used to construct type expressions representing parametric types</div>
+						<div class="todo">Better phrasing?</div>
 						<div class="presentation-note">The constant list, when applied to a type, is parametric in that "argument" type</div>
 					</div>
 					<div class="section outline">
 						<div class="note">Each term or predicate symbol is related to a <em>type expression</em>, declared in a <em>type</em> declaration:</div>
-						<table class="note-visual code display-table">
+						<table class="note-visual code code-table">
 							<tr>
 								<td>
 									type
@@ -429,14 +439,76 @@
 					</div>
 					<div class="note">
 						Initially:
-						<ul>
-							<li>$\top : o$</li>
-							<li>$\wedge : o \rightarrow o \rightarrow o$</li>
-							<li>$\vee : o \rightarrow o \rightarrow o$</li>
-							<li>$\supset : o \rightarrow o \rightarrow o$</li>
-							<li>$\forall : (\tau \rightarrow o) \rightarrow o$</li>
-							<li>$\exists : (\tau \rightarrow o) \rightarrow o$</li>
-						</ul>
+						<table class="display-table">
+							<tr>
+								<td>
+									Math font
+								</td>
+								<td>
+									Code font
+								</td>
+								<td>
+									Type
+								</td>
+							</tr>
+							<tr>
+								<td>
+									$\top$
+								</td>
+								<td class="code">
+									tt
+								</td>
+								<td>
+									$o \rightarrow o \rightarrow o$
+								</td>
+							</tr>
+							<tr>
+								<td>
+									$\wedge$
+								</td>
+								<td>
+									<span>&</span> or <span>,</span>
+								</td>
+								<td>
+									$o \rightarrow o \rightarrow o$
+								</td>
+							</tr>
+							<tr>
+								<td>
+									$\vee$
+								</td>
+								<td class="code">
+									;
+								</td>
+								<td>
+									$o \rightarrow o \rightarrow o$
+								</td>
+							</tr>
+							<tr>
+								<td>
+									$\supset$
+								</td>
+								<td class="code">
+									=>
+								</td>
+								<td>
+									$o \rightarrow o \rightarrow o$
+								</td>
+							</tr>
+							<tr>
+								<td>
+									$\leftarrow$
+								</td>
+								<td class="code">
+									:-
+								</td>
+								<td>
+									$o \rightarrow o \rightarrow o$
+								</td>
+							</tr>
+						</table>
+						<div class="note">Note that <span class="code">-></span> is used in place of $\rightarrow$ as the function arrow in code</div>
+						<div class="todo">tt not actually in the system?</div>
 					</div>
 					<div class="note">
 						Extend the signature using kind and type declarations, as above.
@@ -528,6 +600,14 @@
 					</div>
 					<div class="todo">
 						(see section 2.2)
+					</div>
+
+					<div class="note">
+						<em>Unification</em> is a process of finding substitutions for variables that simultaneously satisfy a set of equalities
+					</div>
+					<div class="todo">example unification problem... use one from example above?</div>
+					<div class="note">
+						Valid substitutions for existential variables found by unification represent a <em>solution</em> to the computation
 					</div>
 				</div>
 			</div>
@@ -728,7 +808,7 @@
 					</table>
 					<div class="todo">Draw the tree?</div>
 					<div class="todo">Give goal?</div>
-				</div>Your login is incorrect. Please try again
+				</div>
 			</div>
 
 			<div class="fohh examples frame hidden">
