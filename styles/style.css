@@ -293,7 +293,8 @@ div.rules
 
 .scroll
 {
-	overflow: auto;
+	overflow-y: scroll;
+	max-height: 240px;
 }
 
 .code td
