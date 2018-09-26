@@ -139,8 +139,8 @@
 				<div class="menu-container">
 					<a class="menu-introduction menu-item" href="#" onclick="introduction_click()">Introduction</a>
 					<a class="menu-setting menu-item" href="#" onclick="setting_click()">Setting</a>
-					<a class="menu-strategy menu-item" href="#" onclick="strategy_click()">Search Strategy</a>
 					<a class="menu-logic_comparison menu-item" href="#" onclick="logic_comparison_click()">Logic Comparison</a>
+					<a class="menu-strategy menu-item" href="#" onclick="strategy_click()">Search Strategy</a>
 					<a class="menu-examples menu-item" href="#" onclick="examples_click()">Examples</a>
 				</div>
 			</div>
@@ -177,6 +177,12 @@
 				<div class="todo">Talk about minimal vs intuitionistic logic?</div>
 				<div class="todo">Button to toggle visibility of presentation notes?</div>
 			</div>
+
+
+<!----------------------------------------
+	INTRODUCTION
+----------------------------------------->
+
 
 			<div class="introduction frame last-frame">
 				<div class="title">Introduction</div>
@@ -275,6 +281,12 @@
 					</div>
 				</div>
 			</div>
+
+
+<!----------------------------------------
+	SETTING
+----------------------------------------->
+
 
 			<div class="setting frame last-frame hidden">
 				<div class="title">Setting</div>
@@ -656,67 +668,9 @@
 				</div>
 			</div>
 
-			<div class="search-strategy frame last-frame hidden">
-				<div class="title">Proof Search Strategy</div>
-				<div class="note">The proof search process alternates between goal reduction and backchaining phases</div>
-				<div class="subtitle">
-					Goal reduction:
-				</div>
-				<div class="goal-reduction note">
-					When the top-level symbol of the goal is a logical constant, use the appropriate right-rule
-				</div>
-				<div class="example">
-					<div class="rule-container">
-						<div class="rule-body">
-							<div class="rule-premises">
-								<div class="tree-branch">
-									<div>$\vdots$</div>
-									<div>$\Sigma ; \mathcal{P} \longrightarrow B_1$</div>
-								</div>
-								<div class="tree-branch">
-									<div>$\vdots$</div>
-									<div>$\Sigma ; \mathcal{P} \longrightarrow B_2$</div>
-								</div>
-							</div>
-							<div class="rule-conclusion">
-								<div>$\Sigma ; \mathcal{P} \longrightarrow B_1 \wedge B_2$</div>
-								<div>$\vdots$</div>
-							</div>
-						</div>
-						<div class="rule-name">
-							$\wedge_R$
-						</div>
-					</div>
-				</div>
-				<div class="goal-reduction note">
-					During goal reduction, search process is independent of the context and program
-				</div>
-				<div class="todo">Rules visible here; describe how used; explain that or-rule ignored?</div>
-				<div class="subtitle">Backchaining:</div>
-				<div class="backchaining note">
-					When the goal is atomic, look to the program to continue proof search:
-					<ol>
-						<li>
-							use the decide rule to select a program clause
-						</li>
-						<li>
-							use the backchaining rule on the chosen clause
-						</li>
-					</ol>
-				</div>
-
-				<div class="example">
-					<div class="note">
-						Let the context $\Sigma$ be augmented with <span class="code">nil : list A</span> and <span class="code">cons : A $\rightarrow$ list A $\rightarrow$ list A</span>
-					</div>
-					<div class="note">
-						Let the program be $\mathcal{P} = ...todo; length predicates$
-					</div>
-				</div>
-
-				<div class="todo">Need example here</div>
-				<div class="todo">Note about substitution as solution to search</div>
-			</div>
+<!----------------------------------------
+	LOGIC COMPARISON
+----------------------------------------->
 
 			<div class="logic-comparison frame hidden">
 				<div class="title">Horn Clauses vs Hereditary Harrop Formulas</div>
@@ -809,6 +763,79 @@
 					</div>
 				</div>
 			</div>
+
+
+
+<!----------------------------------------
+	SEARCH STRATEGY
+----------------------------------------->
+
+			<div class="search-strategy frame last-frame hidden">
+				<div class="title">Proof Search Strategy</div>
+				<div class="note">The proof search process alternates between goal reduction and backchaining phases</div>
+				<div class="subtitle">
+					Goal reduction:
+				</div>
+				<div class="goal-reduction note">
+					When the top-level symbol of the goal is a logical constant, use the appropriate right-rule
+				</div>
+				<div class="example">
+					<div class="rule-container">
+						<div class="rule-body">
+							<div class="rule-premises">
+								<div class="tree-branch">
+									<div>$\vdots$</div>
+									<div>$\Sigma ; \mathcal{P} \longrightarrow B_1$</div>
+								</div>
+								<div class="tree-branch">
+									<div>$\vdots$</div>
+									<div>$\Sigma ; \mathcal{P} \longrightarrow B_2$</div>
+								</div>
+							</div>
+							<div class="rule-conclusion">
+								<div>$\Sigma ; \mathcal{P} \longrightarrow B_1 \wedge B_2$</div>
+								<div>$\vdots$</div>
+							</div>
+						</div>
+						<div class="rule-name">
+							$\wedge_R$
+						</div>
+					</div>
+				</div>
+				<div class="goal-reduction note">
+					During goal reduction, search process is independent of the context and program
+				</div>
+				<div class="todo">Rules visible here; describe how used; explain that or-rule ignored?</div>
+				<div class="subtitle">Backchaining:</div>
+				<div class="backchaining note">
+					When the goal is atomic, look to the program to continue proof search:
+					<ol>
+						<li>
+							use the decide rule to select a program clause
+						</li>
+						<li>
+							use the backchaining rule on the chosen clause
+						</li>
+					</ol>
+				</div>
+
+				<div class="example">
+					<div class="note">
+						Let the context $\Sigma$ be augmented with <span class="code">nil : list A</span> and <span class="code">cons : A $\rightarrow$ list A $\rightarrow$ list A</span>
+					</div>
+					<div class="note">
+						Let the program be $\mathcal{P} = ...todo; length predicates$
+					</div>
+				</div>
+
+				<div class="todo">Need example here</div>
+				<div class="todo">Note about substitution as solution to search</div>
+			</div>
+
+
+<!----------------------------------------
+	EXAMPLES
+----------------------------------------->
 
 			<div class="examples frame hidden todo">
 				<div class="todo">TODO: fill in details of examples; definitions for all, and one computation</div>
