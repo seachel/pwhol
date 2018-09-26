@@ -145,32 +145,13 @@
 				</div>
 			</div>
 
-			<div class="hidden">
-				Todo and presentation notes
-				<ul>
-					<li>best way to structure document and id and class names? don't style based on id; use unique class names; always use class name</li>
-					<li>best development tools?</li>
-					<li>too many class names? what is proper form? </li>
-					<li>dock sequent to top</li>
-					<li>on element selection, will need functions to also hilight the related objects</li>
-					<li>switch to grid layout for rules container?</li>
-					<li>minimize sections?</li>
-					<li>download MathJax?</li>
-					<li>need distinction between grammars and typing rules for first-order and higher-order</li>
-					<li>in future, add conventions</li>
-					<li>start with simple examples for concepts, show cool examples for later material to build interest?</li>
-					<li>notes about intuitionistic, minimal logic</li>
-					<li>pop-up things when term clicked</li>
-				</ul>
-			</div>
-
 			<div class="introduction frame header">
 				<div class="top-title">Programming with Higher Order Logic</div>
 				<a class="book-link note-visual" href="https://sites.google.com/site/proghol/">Book by Dale Miller and Gopalan Nadathur</a>
 				<div class="presentation-note">***Content in this font is a presentation note only and will be hidden in the final version***</div>
 				<div class="todo">***Content in this font is a TODO and will be hidden in the final version***</div>
 				<div class="note">
-					Goals:
+					<span class="subtitle">Presentation Goals:</span>
 					<ul>
 						<li>Introduce logic as programming via proof search and *substitution* for existentially quantified variables</li>
 						<li>Basic idea of differences between different logic programming languages</li>
@@ -192,22 +173,32 @@
 				<div class="todo">Arrow through notes?</div>
 				<div class="todo">Wikipedia links?</div>
 				<div class="todo">Mapping between math and code notations</div>
+				<div class="todo">Download MathJax</div>
+				<div class="todo">Talk about minimal vs intuitionistic logic?</div>
+				<div class="todo">Button to toggle visibility of presentation notes?</div>
 			</div>
 
 			<div class="introduction frame last-frame">
 				<div class="title">Introduction</div>
 				<div class="section">
 					<div class="introduction-goal note">
-						<span class="subtitle">Goal:</span> use (higher-order) logic to express relational specifications of computations
+						<span class="subtitle">Objective:</span>
+						<div class="note">
+							Use (higher-order) typed logic to express relational specifications of computations and construct valid proofs of contextual queries
+						</div>
 					</div>
 					<div class="presentation-note">The first-order and higher-order distinction will be explored more later</div>
 					<div class="presentation-note">We're used to defining functions to operate on data, e.g. a function for reversing lists that takes a list as input and returns the passed list reversed, but here we are seeing things relationally; a relation representing list reversal is between two lists, where one is the reverse of the other; usually the last argument represents the "output", but the whole expression is a formula</div>
 					<div class="example">
 						<span class="subtitle subsub">Example:</span>
-						<div class="note">
-							Encode terms of type <span class="code">list</span> and predicates for reversal, concatenation, filtering, etc		
-						</div>
-						
+						<ul>
+							<li>
+								Encode terms of type <span class="code">list</span> and predicates to define reversal	
+							</li>
+							<li>
+								<span class="code">reverse L1 L2</span> is true or false and can mean <span class="code">L2</span> is the reverse of <span class="code">L1</span>
+							</li>
+						</ul>
 						<table class="code hidden">
 							<tr>
 								<td>
@@ -233,30 +224,28 @@
 						</div>
 					</div>
 				</div>
-				<div class="presentation-note">
-					<div class="subtitle">Considerations:</div>
-					<div class="presentation-note">
-						<ul>
-							<li>
-								how to define terms and predicates and their types
-							</li>
-							<li>
-								how order of a logic impacts computational possibilities
-							</li>
-							<li>
-								what are the structures we reason about and the rules for doing so
-							</li>
-							<li>
-								what does computation look like
-							</li>
-						</ul>
-					</div>
+				<div class="note">
+					<div class="subtitle">Concerns:</div>
+					<ul>
+						<li>
+							how to define terms and predicates and their types
+						</li>
+						<li>
+							how order of a logic impacts computational possibilities
+						</li>
+						<li>
+							what are the structures we reason about and the rules for doing so
+						</li>
+						<li>
+							what does computation look like
+						</li>
+					</ul>
 				</div>
 				<div class="todo">Are all of these answered in the website/talk?</div>
 				
 				<div class="section">
 					<div class="introduction-approach note">
-						<span class="subtitle">Approach:</span> using sequent calculus, computation is goal-directed proof search
+						<span class="subtitle">Approach:</span> using sequent calculus, computation is goal-directed proof search, so we start with what we want to prove at the root of a proof tree
 					</div>
 					<div class="note-visual">
 						<div class="rule-body">
@@ -293,6 +282,25 @@
 				<div class="section">
 					<div class="subtitle">Kinds, Types, Terms, and Formulas</div>
 					<div class="section outline">
+						<div class="note">
+							Think of a kind as the type of a type
+						</div>
+						<div class="todo">visual?</div>
+
+						<div class="note">
+							Kind expressions are built from the following grammar:
+							<div class="note">
+								$$
+								\begin{align*}
+								\langle \textit{kind expression} \rangle ::=& \; \textit{type} \\
+								|& \; \textit{type} \rightarrow \langle \textit{kind expression} \rangle
+								\end{align*}
+								$$
+							</div>
+						</div>
+						
+						<div class="presentation-note">Kinds are either <span class="code">type</span> or some number of <span class="code">type</span>s with arrows between</div>
+
 						<div class="note">Each type or type constructor is related to a <em>kind expression</em>, declared in a <em>kind</em> declaration:</div>
 						<table class="note-visual code code-table">
 							<tr>
@@ -319,21 +327,24 @@
 							</tr>
 						</table>
 						<div class="presentation-note">The example above creates a new type constructor "list" related to the kind "type -> type"</div>
-						<div class="note">Kind expressions are built from the following grammar:</div>
-						<div class="note">
-							$$
-							\begin{align*}
-							\langle \textit{kind expression} \rangle ::=& \; \textit{type} \\
-							|& \; \textit{type} \rightarrow \langle \textit{kind expression} \rangle
-							\end{align*}
-							$$
-						</div>
-						<div class="presentation-note">Kinds are either <span class="code">type</span> or some number of <span class="code">type</span>s with arrows between</div>
-						<div class="note">Type constructors related to kind expressions using "$\rightarrow$" can later be used to construct type expressions representing parametric types</div>
-						<div class="todo">Better phrasing?</div>
-						<div class="presentation-note">The constant list, when applied to a type, is parametric in that "argument" type</div>
+						
+						<div class="note">Type constructors related to kind expressions using "$\rightarrow$" allow parametric polymorphism</div>
+						<div class="example">The constant <span class="code">list</span>, when applied to a type, is parametric in that "argument" type</div>
+						<div class="presentation-note">see page 20/21 for discussion</div>
 					</div>
 					<div class="section outline">
+						<div class="note">Type expressions are built from the following grammar:
+							<div class="note">
+								$$
+								\begin{align*}
+								\langle \textit{type expression} \rangle ::=& \; \langle \textit{type variable} \rangle \\
+								|& \; \langle \textit{type expression} \rangle \rightarrow \langle \textit{type expression} \rangle \\
+								|& \; \langle \textit{type constructor} \rangle \: \langle \textit{type expression} \rangle \: \ldots \: \langle \textit{type expression} \rangle
+								\end{align*}
+								$$
+							</div>
+						</div>
+
 						<div class="note">Each term or predicate symbol is related to a <em>type expression</em>, declared in a <em>type</em> declaration:</div>
 						<table class="note-visual code code-table">
 							<tr>
@@ -360,53 +371,78 @@
 							</tr>
 						</table>
 						<div class="presentation-note">The example above creates a new term constructor "cons" of type "A -> list A -> list A"</div>
-						<div class="note">Type expressions are built from the following grammar:</div>
-						<div class="note">
-							$$
-							\begin{align*}
-							\langle \textit{type expression} \rangle ::=& \; \langle \textit{type variable} \rangle \\
-							|& \; \langle \textit{type expression} \rangle \rightarrow \langle \textit{type expression} \rangle \\
-							|& \; \langle \textit{type constructor} \rangle \: \langle \textit{type expression} \rangle \: \ldots \: \langle \textit{type expression} \rangle
-							\end{align*}
-							$$
-						</div>
 						
 						<div class="note">Type expressions using type variables allow polymorphism</div>
+						<div class="example"><span class="code">cons</span> is related to the polymorphic type expression <span class="code">A -> list A -> list A</span></div>
+
 						<div class="note">Type expressions using "$\rightarrow$" allow value constructors for building structured data</div>
-						<div class="note">Type espressions using type constructors must be fully applied</div>
+						<div class="example"><span class="code">cons</span> can be used to build lists, given an element and a list of appropriate type</div>						
 
-						<div class="note">Well-formed type expressions are related to the kind <span class="code">type</span></div>
-
-						<div class="note">A <em>sort</em> is a zero-arity type constructor (unanalyzable type)</div>
+						<div class="note">Type espressions using type constructors must be fully applied, so well-formed type expressions are related to the kind <span class="code">type</span></div>
+						<div class="example">
+							<ul>
+								<li>
+									<span class="code">list</span>, related to the kind <span class="code">type -> type</span> is not a valid type expression
+								</li>
+								<li>
+									<span class="code">list int</span>, related to the kind <span class="code">type</span>, is a type expression
+								</li>
+							</ul>
+						</div>
 						
 						<div class="todo">Introduce terminology "target type", "argument type", "functional type", "primitive type"?</div>
 
 					</div>
-					<div class="section outline">
-						<div class="todo">More on how to construct terms here (var, application, abstraction, quantifiers as binding constructs)</div>
+					<div class="section outline">						
+						<div class="note">
+							The type $o$ is reserved for predicates and formulas and its use is restricted for different logics (see the description of Context below and Logic Comparison)
+						</div>
+						<div class="example">
+							Declare the predicate reverse as
+							<table class="note code">
+								<tr>
+									<td>type</td>
+									<td>reverse</td>
+									<td>list A -> list A -> o.</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="note">Formulas are terms of type $o$</div>
+						<div class="example">
+							<span class="code">reverse (cons 1 (cons 2 nil)) (cons 2 (cons 1 nil))</span> is a formula
+						</div>
+
 						<div class="note">
 							A <em>term</em> is typable according to the typing rules of the logic; it is either:
 							<ul>
 								<li>
-									a variable of appropriate type
+									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier
 								</li>
 								<li>
-									a constant
+									a constant from the signature with any type variables instantiated
+									<div>
+										(e.g. <span class="code">nil</span> of type <span class="code">list int</span>)
+									</div>
 								</li>
 								<li>
 									an application of a fully-applied term symbol
+									<div>
+										(e.g. <span class="code">cons 1 nil</span>)
+									</div>
 								</li>
 								<li>
 									a lambda-abstraction of a term variable of appropriate type over a term
+									<div>
+										(e.g. <span class="code">(x : list int) \ reverse (cons 1 (cons 2 nil)) x</span>)
+									</div>
 								</li>
 							</ul>
+							
 							<div class="todo">Expand the list above with examples?</div>
 						</div>
-						<div class="note"><em>Term variables</em> are either explicitly bound using a quantifier, or are implicitly bound</div>
-						<div class="todo">Expand above with an example, or show the rule?</div>
-						<div class="note">Formulas are terms of type $o$</div>
+						<div class="todo">Expand above with an example, or show the rules?</div>
 					</div>
-					<div class="todo">Add an example here?</div>
 					<div class="todo">Discuss term variables, after structure of terms? Need to have introduced form of terms and formulas to talk about quantification</div>
 				</div>
 
@@ -414,14 +450,19 @@
 					<div class="subtitle">
 						Sequent, <span class="feature">$\Sigma ; \mathcal{P} \longrightarrow G$</span>
 					</div>
-					<div class="note">
-						Represents state of a computation
-					</div>
-					<div class="note">
-						"Goal $G$ is provable from the program $\mathcal{P}$ given the type declarations in the signature $\Sigma$"
-					</div>
-					<div class="note">
-						<span class="subtitle">NOTE:</span> $\rightarrow$, the function arrow, and $\longrightarrow$, the sequent arrow, are different symbols
+					<div class="section outline">
+						<div class="note">
+							Represents state of a computation
+						</div>
+						<div class="presentation-note">
+							Compare with state in other paradigms
+						</div>
+						<div class="note">
+							"Goal $G$ is provable from the program $\mathcal{P}$ given the type declarations in the signature $\Sigma$"
+						</div>
+						<div class="note">
+							<span class="subtitle subsub">Note:</span> $\rightarrow$, the function arrow, and $\longrightarrow$, the sequent arrow, are different symbols
+						</div>
 					</div>
 				</div>
 
@@ -429,160 +470,163 @@
 					<div class="subtitle">
 						Signature, <span class="feature">$\Sigma$</span>
 					</div>
-					<div class="note">
-						Available constants and their associated type expressions
+					<div class="section outline">
+						<div class="note">
+							Available constants and their associated type expressions
+						</div>
+						<div class="example">
+								<span class="code">nil</span> is a constant of type <span class="code">list A</span> for some type <span class="code">A</span>
+						</div>
+						<div class="note">
+							Initially in the signature:
+							<table class="display-table">
+								<tr>
+									<td>
+										Math font
+									</td>
+									<td>
+										Code font
+									</td>
+									<td>
+										Type
+									</td>
+								</tr>
+								<tr>
+									<td>
+										$\top$
+									</td>
+									<td class="code">
+										tt
+									</td>
+									<td>
+										$o \rightarrow o \rightarrow o$
+									</td>
+								</tr>
+								<tr>
+									<td>
+										$\wedge$
+									</td>
+									<td>
+										<span class="code">&</span> or <span class="code">,</span>
+									</td>
+									<td>
+										$o \rightarrow o \rightarrow o$
+									</td>
+								</tr>
+								<tr>
+									<td>
+										$\vee$
+									</td>
+									<td class="code">
+										;
+									</td>
+									<td>
+										$o \rightarrow o \rightarrow o$
+									</td>
+								</tr>
+								<tr>
+									<td>
+										$\supset$
+									</td>
+									<td class="code">
+										=>
+									</td>
+									<td>
+										$o \rightarrow o \rightarrow o$
+									</td>
+								</tr>
+								<tr>
+									<td>
+										$\leftarrow$
+									</td>
+									<td class="code">
+										:-
+									</td>
+									<td>
+										$o \rightarrow o \rightarrow o$
+									</td>
+								</tr>
+							</table>
+							<div class="note"><span class="subtitle subsub">Note:</span> <span class="code">-></span> is used in place of $\rightarrow$ as the function arrow in code</div>
+							<div class="todo">tt not actually in the system?</div>
+						</div>
+						<div class="note">
+							Extend the signature using kind and type declarations, as above.
+						</div>
+						
+						<div class="example">
+							<table class="code">
+								<tr>
+									<td>
+										kind
+									</td>
+									<td>
+										list
+									</td>
+									<td>
+										type -> type.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										type
+									</td>
+									<td>
+										nil
+									</td>
+									<td>
+										list A.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										type
+									</td>
+									<td>
+										cons
+									</td>
+									<td>
+										A -> list A -> list A.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										type
+									</td>
+									<td>
+										length
+									</td>
+									<td>
+										list A -> int -> o.
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
-					<div class="example">
-							<span class="code">nil</span> is a constant of type <span class="code">list A</span> for some type <span class="code">A</span>
-					</div>
-					<div class="note">
-						Initially:
-						<table class="display-table">
-							<tr>
-								<td>
-									Math font
-								</td>
-								<td>
-									Code font
-								</td>
-								<td>
-									Type
-								</td>
-							</tr>
-							<tr>
-								<td>
-									$\top$
-								</td>
-								<td class="code">
-									tt
-								</td>
-								<td>
-									$o \rightarrow o \rightarrow o$
-								</td>
-							</tr>
-							<tr>
-								<td>
-									$\wedge$
-								</td>
-								<td>
-									<span>&</span> or <span>,</span>
-								</td>
-								<td>
-									$o \rightarrow o \rightarrow o$
-								</td>
-							</tr>
-							<tr>
-								<td>
-									$\vee$
-								</td>
-								<td class="code">
-									;
-								</td>
-								<td>
-									$o \rightarrow o \rightarrow o$
-								</td>
-							</tr>
-							<tr>
-								<td>
-									$\supset$
-								</td>
-								<td class="code">
-									=>
-								</td>
-								<td>
-									$o \rightarrow o \rightarrow o$
-								</td>
-							</tr>
-							<tr>
-								<td>
-									$\leftarrow$
-								</td>
-								<td class="code">
-									:-
-								</td>
-								<td>
-									$o \rightarrow o \rightarrow o$
-								</td>
-							</tr>
-						</table>
-						<div class="note">Note that <span class="code">-></span> is used in place of $\rightarrow$ as the function arrow in code</div>
-						<div class="todo">tt not actually in the system?</div>
-					</div>
-					<div class="note">
-						Extend the signature using kind and type declarations, as above.
-					</div>
-					
-					<div class="example">
-						<table class="code">
-							<tr>
-								<td>
-									kind
-								</td>
-								<td>
-									list
-								</td>
-								<td>
-									type -> type.
-								</td>
-							</tr>
-							<tr>
-								<td>
-									type
-								</td>
-								<td>
-									nil
-								</td>
-								<td>
-									list A.
-								</td>
-							</tr>
-							<tr>
-								<td>
-									type
-								</td>
-								<td>
-									cons
-								</td>
-								<td>
-									A -> list A -> list A.
-								</td>
-							</tr>
-							<tr>
-								<td>
-									type
-								</td>
-								<td>
-									length
-								</td>
-								<td>
-									list A -> int -> o.
-								</td>
-							</tr>
-						</table>
-					</div>
-					
 				</div>
 				
 				<div class="section">
 					<div class="subtitle">
 						Program, <span class="feature">$\mathcal{P}$</span>
 					</div>
-					<div class="note">
-						A set of assumed formulas representing partial definitions of predicates
-					</div>
-					<div class="example">
-						<table class="code">
-							<tr>
-								<td>
-									length nil 0.
-								</td>
-							</tr>
-							<tr>
-								<td>
-									length (cons H T) (1 + N) :- length T N.
-								</td>
-							</tr>
-						</table>
+					<div class="section outline">
+						<div class="note">
+							A set of assumed formulas representing partial definitions of predicates
+						</div>
+						<div class="example">
+							<table class="code">
+								<tr>
+									<td>
+										length nil 0.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										length (cons H T) (1 + N) :- length T N.
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 
@@ -590,28 +634,31 @@
 					<div class="subtitle">
 						Goal, <span class="feature">$G$</span>
 					</div>
-					<div class="note">
-						A formula we would like to prove, assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$
-					</div>
-					<div class="example">
-						$\exists$ <span class="code">M, length (cons 1 (cons 2 (cons 3 nil))) M.</span>
-					</div>
-					<div class="todo">
-						(see section 2.2)
-					</div>
+					<div class="section outline">
+						<div class="note">
+							A formula we would like to prove, assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$
+						</div>
+						<div class="example">
+							$\exists$ <span class="code">M, length (cons 1 (cons 2 (cons 3 nil))) M.</span>
+						</div>
+						<div class="todo">
+							(see section 2.2)
+						</div>
 
-					<div class="note">
-						<em>Unification</em> is a process of finding substitutions for variables that simultaneously satisfy a set of equalities
-					</div>
-					<div class="todo">example unification problem... use one from example above?</div>
-					<div class="note">
-						Valid substitutions for existential variables found by unification represent a <em>solution</em> to the computation
+						<div class="note">
+							<em>Unification</em> is a process of finding substitutions for variables that simultaneously satisfy a set of equalities
+						</div>
+						<div class="todo">example unification problem... use one from example above?</div>
+						<div class="note">
+							Valid substitutions for existential variables found by unification represent a <em>solution</em> to the computation
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="search-strategy frame last-frame hidden">
 				<div class="title">Proof Search Strategy</div>
+				<div class="note">The proof search process alternates between goal reduction and backchaining phases</div>
 				<div class="subtitle">
 					Goal reduction:
 				</div>
@@ -642,13 +689,31 @@
 					</div>
 				</div>
 				<div class="goal-reduction note">
-					Search process is independent of the context and program
+					During goal reduction, search process is independent of the context and program
 				</div>
 				<div class="todo">Rules visible here; describe how used; explain that or-rule ignored?</div>
 				<div class="subtitle">Backchaining:</div>
 				<div class="backchaining note">
-					When the goal is atomic, look to the program to continue proof search
+					When the goal is atomic, look to the program to continue proof search:
+					<ol>
+						<li>
+							use the decide rule to select a program clause
+						</li>
+						<li>
+							use the backchaining rule on the chosen clause
+						</li>
+					</ol>
 				</div>
+
+				<div class="example">
+					<div class="note">
+						Let the context $\Sigma$ be augmented with <span class="code">nil : list A</span> and <span class="code">cons : A $\rightarrow$ list A $\rightarrow$ list A</span>
+					</div>
+					<div class="note">
+						Let the program be $\mathcal{P} = ...todo; length predicates$
+					</div>
+				</div>
+
 				<div class="todo">Need example here</div>
 				<div class="todo">Note about substitution as solution to search</div>
 			</div>

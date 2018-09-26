@@ -20,8 +20,8 @@ x.proof-strategy { background: wheat; }
 {
 	font-size: 16px;
 	color: lightgrey;
-	display: none;
-	visibility: hidden;
+	/*display: none;
+	visibility: hidden;*/
 }
 
 .presentation-note
@@ -29,8 +29,8 @@ x.proof-strategy { background: wheat; }
 	font-size: 20px;
 	color: green;
 	padding: 15px 0;
-	display: none;
-	visibility: hidden;
+	/*display: none;
+	visibility: hidden;*/
 }
 
 /*********************
@@ -61,8 +61,8 @@ font-family: 'Lobster Two', cursive;
 
 .note
 {
-	padding: 20px;
-	margin: 20px;
+	padding: 10px;
+	margin: 10px;
 	/*outline: 2px solid purple;*/
 	/*background: ghostwhite;*/
 }
@@ -71,6 +71,11 @@ font-family: 'Lobster Two', cursive;
 {
 	align-self: center;
 	padding: 10px 20px;
+}
+
+.note-nested
+{
+	padding: 0 20px;
 }
 
 .children-horizontal
@@ -287,9 +292,9 @@ div.rules
 .example
 {
 	outline: 2px dashed black;
-	align-self: center;
+	xalign-self: center;
 	padding: 15px;
-	margin: 30px;
+	margin: 30px auto;
 }
 
 .scroll
@@ -324,7 +329,14 @@ div.rules
 	margin: 20px;
 }
 
+.display-table
+{
+	margin: 0 auto;
+	padding: 10px;
+}
+
 .display-table td
 {
-	min-width: 250px;
+	padding: 5px 40px;
+	/*min-width: 250px;*/
 }
