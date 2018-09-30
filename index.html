@@ -822,15 +822,28 @@
 
 				<div class="example">
 					<div class="note">
-						Let the context $\Sigma$ be augmented with <span class="code">nil : list A</span> and <span class="code">cons : A $\rightarrow$ list A $\rightarrow$ list A</span>
+						Let the context $\Sigma$ be augmented with $\mathtt{nil : list A}$ and $\mathtt{cons : A \rightarrow list A \rightarrow list A}.
 					</div>
 					<div class="note">
-						Let the program be $\mathcal{P} = ...todo; length predicates$
+						Let the program be $\mathcal{P} = \{ \mathtt{length nil 0}, \mathtt{length (cons H T) (1 + N) :- length T N} \}$, the set of predicates defining length of a list.
+					</div>
+					<div class="note goal-reduction">
+						Our initial goal is $\exists \mathtt{M} , \mathtt{length (cons 1 (cons 2 (cons 3 nil))) M}$. We are in a goal-reduction phase.
+					</div>
+					<div class="note goal-reduction">
+						First use $\exists_R$ to reduce the goal and get the new state $\Sigma ; \mathcal{P} \longrightarrow \mathtt{length (cons 1 (cons 2 (cons 3 nil))) t}$. We have a side condition that $M = t$. 
+					</div>
+					<div class="note backchain">
+						The new goal is atomic, so bachkchain choosing the second program clause. The new state is $\Sigma ; \mathcal{P} \overset{\mathtt{length (cons 1 (cons 2 (cons 3 nil))) (1 + N) :- length T N}}{\longrightarrow} \mathtt{length (cons 1 (cons 2 (cons 3 nil))) t}$.
+					</div>
+					<div class="note goal reduction">
+						Keeping track of the side condition $t = 1 + N$, use the $\mathit{backchain}$ rule to get the new state $\Sigma ; \mathcal{P} \longrightarrow \mathtt{length (cons 2 (cons 3 nil)) N}$.
+					</div>
+					<div class="note">
+						Backchain two more times to get the substitution $M = 3$ as the solution to the query, once the system of equations of side conditions is solved.
 					</div>
 				</div>
 
-				<div class="todo">Need example here</div>
-				<div class="todo">Note about substitution as solution to search</div>
 			</div>
 
 
