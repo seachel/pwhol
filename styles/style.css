@@ -326,6 +326,10 @@ div.rules
 	padding-bottom: 270px;
 }
 
+.center
+{
+	margin: 0 auto;
+}
 
 
 /*
@@ -341,6 +345,12 @@ Update before presentation (make sure both hidden)
 	visibility: hidden;
 }
 
+.todo-urgent
+{
+	font-size: 25px;
+	color: red;
+}
+
 .presentation-note
 {
 	font-size: 20px;
@@ -353,7 +363,7 @@ Update before presentation (make sure both hidden)
 .question-for-amy
 {
 	font-size: 25px;
-	color: red;
+	color: blueviolet;
 	/*display: none;
 	visibility: none;*/
 }

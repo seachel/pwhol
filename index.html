@@ -896,88 +896,251 @@
 	EXAMPLES
 ----------------------------------------->
 
-			<div class="examples frame hidden todo">
-				<div class="todo">TODO: fill in details of examples; definitions for all, and one computation</div>
-				<div class="todo">Select one example for each logic?</div>
-			</div>
-
 			<div class="fohc examples frame hidden">
 				<div class="title">First-Order Horn Clauses (FOHC)</div>
 				<div class="note">
-					<span class="subtitle">Binary trees:</span> specification of terms and predicate for counting the nodes in the tree.
-				</div>
-				<div class="example">
-					<table class="code">
-						<tr>
-							<td colspan="3">
-								/* Signature declarations: */
-							</td>
-						</tr>
-						<tr>
-							<td>
-								kind					
-							</td>
-							<td>
-								bintree
-							</td>
-							<td>
-								type -> type.
-							</td>
-						</tr>
-						<tr>
-							<td>
-								type
-							</td>
-							<td>
-								empty
-							</td>
-							<td>
-								bintree A.
-							</td>
-						</tr>
-						<tr>
-							<td>
-								type
-							</td>
-							<td>
-								node
-							</td>
-							<td>
-								A -> bintree A -> bintree A -> bintree A.
-							</td>
-						</tr>
-						<tr class="space-row"></tr>
-						<tr>
-							<td colspan="3">
-								/* Program definition: */
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-								nodeCount empty 0.
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-								nodeCount (node V T1 T2) (1 + N1 + N2) :- nodeCount T1 N1 & nodeCount T2 N2. 
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="note">
-					Example goal: $\exists$ <span class="code">M, nodeCount (node 1 (node 2 (node 3 empty empty) (node 4 empty empty)) (node 5 empty empty)) M</span>
-				</div>
-				<div class="note">
-					Answer set substitution: <span class="code">M = 5</span>
+					<span class="subtitle">Binary trees:</span>
+					<div class="note">
+						Specification of terms and predicate for counting the nodes in the tree.
+					</div>
+					<div class="example">
+						<table class="code">
+							<tr>
+								<td colspan="3">
+									/* Signature declarations: */
+								</td>
+							</tr>
+							<tr>
+								<td>
+									kind					
+								</td>
+								<td>
+									bintree
+								</td>
+								<td>
+									type -> type.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									empty
+								</td>
+								<td>
+									bintree A.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									node
+								</td>
+								<td>
+									A -> bintree A -> bintree A -> bintree A.
+								</td>
+							</tr>
+							<tr class="space-row"></tr>
+							<tr>
+								<td colspan="3">
+									/* Program definition: */
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									nodeCount empty 0.
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									nodeCount (node V T1 T2) (1 + N1 + N2) :- nodeCount T1 N1 & nodeCount T2 N2. 
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="note">
+						Example goal: $\exists$ <span class="code">M, nodeCount (node 1 (node 2 (node 3 empty empty) (node 4 empty empty)) (node 5 empty empty)) M</span>
+					</div>
+					<div class="note">
+						Answer set substitution: <span class="code">M = 5</span>
+					</div>
 				</div>
 			</div>
 
 			<div class="fohh examples frame hidden">
 				<div class="title">First-Order Hereditary Harrop Formulas (FOHH)</div>
 				<div class="note">
-					<span class="subtitle">Encoding propositional logic:</span> declare constants of type $o$ to represent propositions and program clauses to specify relationships between the propositional variables. The implication of the object logic (propositional logic) is encoded as implication in the FOHH (ambient) logic. <span class="question-for-amy">Correct understanding and phrasing here?</span>
+					<span class="subtitle">Encoding horn clauses:</span>
+					<div class="note">
+						Declare propositional constants of type $o$ and write program clauses to specify relationships between the propositional variables. The implication of the object logic (FOHC) is encoded as implication in the ambient logic (FOHH). <span class="question-for-amy">Correct understanding and phrasing here?</span>
+					</div>
+					<div class="note">
+						Example from p. <span class="todo-urgent">Fill in!</span> of PwHOL.
+					</div>
+				
+					<div class="example">
+							<table class="code">
+								<tr>
+									<td colspan="3">
+										/* Signature declarations: */
+									</td>
+								</tr>
+								<tr>
+									<td>
+										type
+									</td>
+									<td>
+										q, r, s, t, u
+									</td>
+									<td>
+										o.
+									</td>
+								</tr>
+								<tr class="space-row"></tr>
+								<tr>
+									<td colspan="3">
+										/* Program definition: */
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										s :- r, q.
+									</td>						
+								</tr>
+								<tr>
+									<td colspan="3">
+										t :- q, u.
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										q :- r.
+									</td>
+								</tr>
+							</table>
+					</div>
+
+					<div class="note">Proof of <span class="code">r => s</span>:</div>
+					<div class="note-visual center">
+						<div class="rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									<div class="rule-container">
+										<div class="rule-body">
+											<div class="rule-premises">
+												<div class="rule-container">
+													<div class="rule-body">
+														<div class="rule-premises">
+															<div class="rule-container">
+																<div class="rule-body">
+																	<div class="rule-premises">
+																		<div class="rule-container">
+																			<div class="rule-body">
+																				<div class="rule-premises">
+																					
+																				</div>
+																				<div class="rule-conclusion">
+																					$\Sigma ; \mathcal{P}, r \overset{r}{\longrightarrow} r$
+																				</div>
+																			</div>
+																			<div class="rule-name">
+																				initial
+																			</div>
+																		</div>
+																	</div>
+																	<div class="rule-conclusion">
+																		$\Sigma ; \mathcal{P} , r \longrightarrow r$
+																	</div>
+																</div>											
+																<div class="rule-name">
+																	decide
+																</div>
+															</div>
+															<div class="rule-container">
+																<div class="rule-body">
+																	<div class="rule-premises">
+																		<div class="rule-container">
+																			<div class="rule-body">
+																				<div class="rule-premises">
+																					<div class="rule-container">
+																						<div class="rule-body">
+																							<div class="rule-premises">
+																								
+																							</div>
+																							<div class="rule-conclusion">
+																								$\Sigma ; \mathcal{P} , r \longrightarrow r$
+																							</div>
+																						</div>
+																						<div class="rule-name">
+																							initial
+																						</div>
+																					</div>
+																				</div>
+																				<div class="rule-conclusion">
+																					$\Sigma ; \mathcal{P} , r \overset{r \supset q}{\longrightarrow} q$
+																				</div>
+																			</div>
+																			<div class="rule-name">
+																				backchain
+																			</div>
+																		</div>
+																	</div>
+																	<div class="rule-conclusion">
+																		$\Sigma ; \mathcal{P} , r \longrightarrow q$
+																	</div>
+																</div>
+																<div class="rule-name">
+																	decide
+																</div>
+															</div>
+														</div>
+														<div class="rule-conclusion">
+															$\Sigma ; \mathcal{P} , r \overset{(r \wedge q) \supset s}{\longrightarrow} s$
+														</div>
+													</div>
+													<div class="rule-name">
+														backchain
+													</div>
+												</div>
+											</div>
+											<div class="rule-conclusion">
+												$\Sigma ; \mathcal{P} , r \longrightarrow s$
+											</div>
+										</div>
+										<div class="rule-name">
+											decide
+										</div>	
+									</div>
+								</div>
+								<div class="rule-conclusion">
+									$\Sigma; \mathcal{P} \longrightarrow r \supset s$
+								</div>	
+							</div>
+							<div class="rule-name">
+								$\supset_R$
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="example">
+				<div class="todo">some proof explanation</div>
+				<div class="todo">Reference example from book</div>
+			</div>
+
+			<div class="hohc examples frame hidden">
+				<div class="title">Higher-Order Horn Clauses (HOHC)</div>
+				<div class="note">
+					<span class="subtitle">Higher-order predicate</span>
+					<div class="note">
+						Filter a list by items that are flagged using a higher-order predicate. We call this predicate <span class="code">sublist</span> and it takes a functional argument (order > 1) representing a polymorphic formula. <span class="question-for-amy">Should I rephrase to talk about this relationally instead of talking about arguments?</span>
+					</div>
+					<div class="note">
+						Example from p. <span class="todo-urgent">Fill in!</span> of PwHOL.
+					</div>
+				
+					<div class="example">
 						<table class="code">
 							<tr>
 								<td colspan="3">
@@ -989,10 +1152,32 @@
 									type
 								</td>
 								<td>
-									q, r, s, t, u
+									sublist
 								</td>
 								<td>
-									o.
+									(A -> o) -> list A -> list A -> o.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									flagged
+								</td>
+								<td>
+									A -> o.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									type
+								</td>
+								<td>
+									v, w, x, y, z
+								</td>
+								<td>
+									A.
 								</td>
 							</tr>
 							<tr class="space-row"></tr>
@@ -1003,200 +1188,35 @@
 							</tr>
 							<tr>
 								<td colspan="3">
-									s :- r, q.
-								</td>						
-							</tr>
-							<tr>
-								<td colspan="3">
-									t :- q, u.
+									sublist P (X :: L) (X :: K) :- P X, sublist P L K.
 								</td>
 							</tr>
 							<tr>
 								<td colspan="3">
-									q :- r.
+									sublist P (X :: L) K :- sublist P L K.
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									sublist P nil nil.
+								</td>
+							</tr>
+							<tr class="space-row"></tr>
+							<tr>
+								<td colspan="3">
+									flagged x, flagged y, flagged z.
 								</td>
 							</tr>
 						</table>
-				</div>
-
-				<div class="subtitle">Proof of <span class="code">r => s</span>:</div>
-				<div class="todo">Major overhaul of rule/proof layout in styles and possibly structure; more thought needed</div>
-				<div class="note-visual">
-					<div class="rule-container">
-						<div class="rule-body">
-							<div class="rule-premises">
-								<div class="rule-container">
-									<div class="rule-body">
-										<div class="rule-premises">
-											<div class="rule-container">
-												<div class="rule-body">
-													<div class="rule-premises">
-														<div class="rule-container">
-															<div class="rule-body">
-																<div class="rule-premises">
-																	<div class="rule-container">
-																		<div class="rule-body">
-																			<div class="rule-premises">
-																				
-																			</div>
-																			<div class="rule-conclusion">
-																				$\Sigma ; \mathcal{P}, r \overset{r}{\longrightarrow} r$
-																			</div>
-																		</div>
-																		<div class="rule-name">
-																			initial
-																		</div>
-																	</div>
-																</div>
-																<div class="rule-conclusion">
-																	$\Sigma ; \mathcal{P} , r \longrightarrow r$
-																</div>
-															</div>											
-															<div class="rule-name">
-																decide
-															</div>
-														</div>
-														<div class="rule-container">
-															<div class="rule-body">
-																<div class="rule-premises">
-																	<div class="rule-container">
-																		<div class="rule-body">
-																			<div class="rule-premises">
-																				<div class="rule-container">
-																					<div class="rule-body">
-																						<div class="rule-premises">
-																							
-																						</div>
-																						<div class="rule-conclusion">
-																							$\Sigma ; \mathcal{P} , r \longrightarrow r$
-																						</div>
-																					</div>
-																					<div class="rule-name">
-																						initial
-																					</div>
-																				</div>
-																			</div>
-																			<div class="rule-conclusion">
-																				$\Sigma ; \mathcal{P} , r \overset{r \supset q}{\longrightarrow} q$
-																			</div>
-																		</div>
-																		<div class="rule-name">
-																			backchain
-																		</div>
-																	</div>
-																</div>
-																<div class="rule-conclusion">
-																	$\Sigma ; \mathcal{P} , r \longrightarrow q$
-																</div>
-															</div>
-															<div class="rule-name">
-																decide
-															</div>
-														</div>
-													</div>
-													<div class="rule-conclusion">
-														$\Sigma ; \mathcal{P} , r \overset{(r \wedge q) \supset s}{\longrightarrow} s$
-													</div>
-												</div>
-												<div class="rule-name">
-													backchain
-												</div>
-											</div>
-										</div>
-										<div class="rule-conclusion">
-											$\Sigma ; \mathcal{P} , r \longrightarrow s$
-										</div>
-									</div>
-									<div class="rule-name">
-										decide
-									</div>	
-								</div>
-							</div>
-							<div class="rule-conclusion">
-								$\Sigma; \mathcal{P} \longrightarrow r \supset s$
-							</div>	
-						</div>
-						<div class="rule-name">
-							$\supset_R$
-						</div>
+					</div>
+					<div class="note">
+						Example query: $\exists$ <span class="code">L, sublist flagged (cons v (cons w (cons x (cons y (cons z nil))))) M</span>
+					</div>
+					<div class="note">
+						Answer set substitution: <span class="code">M = cons x (cons y (cons z nil))</span>
 					</div>
 				</div>
-				<div class="todo">some proof explanation</div>
-				<div class="todo">Reference example from book</div>
-			</div>
 
-			<div class="hohc examples frame hidden">
-				<div class="title">Higher-Order Horn Clauses (HOHC)</div>
-				<div class="example">
-					<table class="code">
-						<tr>
-							<td colspan="3">
-								/* Signature declarations: */
-							</td>
-						</tr>
-						<tr>
-							<td>
-								type
-							</td>
-							<td>
-								sublist
-							</td>
-							<td>
-								(A -> o) -> list A -> list A -> o.
-							</td>
-						</tr>
-						<tr>
-							<td>
-								type
-							</td>
-							<td>
-								flagged
-							</td>
-							<td>
-								A -> o.
-							</td>
-						</tr>
-						<tr>
-							<td>
-								type
-							</td>
-							<td>
-								u, v, w, x, y, z
-							</td>
-							<td>
-								A.
-							</td>
-						</tr>
-						<tr class="space-row"></tr>
-						<tr>
-							<td colspan="3">
-								/* Program definition: */
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-								sublist P (X :: L) (X :: K) :- P X, sublist P L K.
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-								sublist P (X :: L) K :- sublist P L K.
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-								sublist P nil nil.
-							</td>
-						</tr>
-						<tr class="space-row"></tr>
-						<tr>
-							<td colspan="3">
-								flagged x, flagged y, flagged z.
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="example">getting the flagged items in a list using sublist predicate as use of higher-order logic</div>
 			</div>
 
 			<div class="hohh examples frame hidden">
