@@ -197,19 +197,18 @@
 				<div class="todo">Math font vs teletype in examples</div>
 				<div class="todo">Visual indication of which menu link is currently selected</div>
 				<div class="todo">Add discussion on typing rules? Unification?</div>
-				<div class="todo">Earlier sample run to show how goals used?</div>
 				<div class="todo">choose consistent notation... code vs math</div>
-				<div class="todo">Add rule side-conditions</div>
+				<div class="todo">Add rule side-conditions (in notes, or in rules if time)</div>
 				<div class="todo">Area for conventions?</div>
 				<div class="todo">Future: unification</div>
 				<div class="todo">Future: module system?</div>
 				<div class="todo">Arrow through notes?</div>
 				<div class="todo">Wikipedia links?</div>
-				<div class="todo">Mapping between math and code notations</div>
 				<div class="todo">Download MathJax</div>
 				<div class="todo">Talk about minimal vs intuitionistic logic?</div>
 				<div class="todo">Button to toggle visibility of presentation notes?</div>
-				<div class="todo">Deal with focused link class names</div>
+				<div class="todo">Deal with focused link class names (??)</div>
+				<div class="todo">Page of definitions and links throughout page</div>
 			</div>
 
 
@@ -268,7 +267,7 @@
 					<div class="subtitle">Concerns:</div>
 					<ul>
 						<li>
-							how to define terms and predicates and their types
+							how to define terms and predicates and declare their types
 						</li>
 						<li>
 							how order of a logic impacts computational possibilities
@@ -281,7 +280,6 @@
 						</li>
 					</ul>
 				</div>
-				<div class="todo">Are all of these answered in the website/talk?</div>
 				
 				<div class="section approach-section">
 					<span class="subtitle">Approach:</span>
@@ -438,8 +436,6 @@
 								</li>
 							</ul>
 						</div>
-						
-						<div class="todo">Introduce terminology "target type", "argument type", "functional type", "primitive type"?</div>
 
 					</div>
 
@@ -469,6 +465,7 @@
 							<ul>
 								<li>
 									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier
+									<div class="presentation-note">(show rules with quantifiers)</div>
 								</li>
 								<li>
 									a constant from the signature with any type variables instantiated
@@ -489,12 +486,8 @@
 									</div>
 								</li>
 							</ul>
-							
-							<div class="todo">Expand the list above with examples?</div>
 						</div>
-						<div class="todo">Expand above with an example, or show the rules?</div>
 					</div>
-					<div class="todo">Discuss term variables, after structure of terms? Need to have introduced form of terms and formulas to talk about quantification</div>
 				</div>
 
 			</div>
@@ -856,7 +849,7 @@
 				<div class="goal-reduction note">
 					During goal reduction, search process is independent of the context and program
 				</div>
-				<div class="todo">Rules visible here; describe how used; explain that or-rule ignored?</div>
+				<div class="presentation-note">(Rules visible here; describe how used; explain that or-rule ignored?)</div>
 				<div class="subtitle">Backchaining:</div>
 				<div class="backchaining note">
 					When the goal is atomic, look to the program to continue proof search:
@@ -911,7 +904,7 @@
 			<div class="fohc examples frame hidden">
 				<div class="title">First-Order Horn Clauses (FOHC)</div>
 				<div class="note">
-					<span class="subtitle">Binary trees:</span> specification of terms and predicate for <span class="todo">pick predicate example</span>
+					<span class="subtitle">Binary trees:</span> specification of terms and predicate for counting the nodes in the tree.
 				</div>
 				<div class="example">
 					<table class="code">
@@ -961,12 +954,21 @@
 						</tr>
 						<tr>
 							<td colspan="3">
+								nodeCount empty 0.
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
 								nodeCount (node V T1 T2) (1 + N1 + N2) :- nodeCount T1 N1 & nodeCount T2 N2. 
 							</td>
 						</tr>
 					</table>
-					<div class="todo">Draw the tree?</div>
-					<div class="todo">Give goal?</div>
+				</div>
+				<div class="note">
+					Example goal: $\exists$ <span class="code">M, nodeCount (node 1 (node 2 (node 3 empty empty) (node 4 empty empty)) (node 5 empty empty)) M</span>
+				</div>
+				<div class="note">
+					Answer set substitution: <span class="code">M = 6</span>
 				</div>
 			</div>
 
@@ -1279,7 +1281,6 @@
 					<span class="em em-hammer_and_wrench"></span>
 				</button>
 				<div class="scroll hidden">
-					<div class="todo">Fix scrolling in rules panel; make minimal example</div>
 					<div class="rules">
 						<div class="rule_TR rule-container">
 							<div class="rule-premises">
