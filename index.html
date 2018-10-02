@@ -886,7 +886,7 @@
 						First use $\exists_R$ to reduce the goal and get the new state $\Sigma ; \mathcal{P} \longrightarrow \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; t}$. We have a side condition that $M = t$. 
 					</div>
 					<div class="note backchain">
-						The new goal is atomic, so backchain choosing the second program clause, $\mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) (1 + N) :- length T N}$, which we will call $P_2$. The new state is $\Sigma ; \mathcal{P} \overset{P_2}{\longrightarrow} \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; t}$.
+						The new goal is atomic, so backchain choosing the second program clause, $\mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) (1 + N) :- length \; T \; N}$, which we will call $P_2$. The new state is $\Sigma ; \mathcal{P} \overset{P_2}{\longrightarrow} \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; t}$.
 					</div>
 					<div class="note goal reduction">
 						Keeping track of the side condition $t = 1 + N$, use the $\mathit{backchain}$ rule to get the new state $\Sigma ; \mathcal{P} \longrightarrow \mathtt{length \; (cons \; 2 \; (cons \; 3 \; nil)) \; N}$.
