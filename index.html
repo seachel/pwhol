@@ -55,6 +55,9 @@
 				$(".introduction").removeClass(hiddenClassName);
 				$(".introduction").addClass(focusedLinkClassName);
 
+				$(".language").addClass(hiddenClassName);
+				$(".language").removeClass(focusedLinkClassName);
+
 				$(".setting").addClass(hiddenClassName);
 				$(".setting").removeClass(focusedLinkClassName);
 
@@ -68,10 +71,29 @@
 				$(".examples").addClass(focusedLinkClassName);
 			}
 
+			function language_click()
+			{
+				$(".introduction").addClass(hiddenClassName);
+				$(".introduction").removeClass(focusedLinkClassName);				
+
+				$(".language").removeClass(hiddenClassName);
+				$(".language").addClass(focusedLinkClassName);
+
+				$(".setting").addClass(hiddenClassName);
+				$(".setting").removeClass(focusedLinkClassName);
+
+				$(".search-strategy").addClass(hiddenClassName);
+				$(".logic-comparison").addClass(hiddenClassName);
+				$(".examples").addClass(hiddenClassName);
+			}
+
 			function setting_click()
 			{
 				$(".introduction").addClass(hiddenClassName);
 				$(".introduction").removeClass(focusedLinkClassName);				
+
+				$(".language").addClass(hiddenClassName);
+				$(".language").removeClass(focusedLinkClassName);
 
 				$(".setting").removeClass(hiddenClassName);
 				$(".setting").addClass(focusedLinkClassName);
@@ -84,6 +106,10 @@
 			function strategy_click()
 			{
 				$(".introduction").addClass(hiddenClassName);
+
+				$(".language").addClass(hiddenClassName);
+				$(".language").removeClass(focusedLinkClassName);
+
 				$(".setting").addClass(hiddenClassName);
 
 				$(".search-strategy").removeClass(hiddenClassName);
@@ -100,6 +126,10 @@
 			function logic_comparison_click()
 			{
 				$(".introduction").addClass(hiddenClassName);
+
+				$(".language").addClass(hiddenClassName);
+				$(".language").removeClass(focusedLinkClassName);
+
 				$(".setting").addClass(hiddenClassName);
 				$(".search-strategy").addClass(hiddenClassName);
 
@@ -113,6 +143,7 @@
 			{
 				$(".introduction").addClass(hiddenClassName);
 				$(".setting").addClass(hiddenClassName);
+				$(".language").addClass(hiddenClassName);
 				$(".search-strategy").addClass(hiddenClassName);
 				$(".logic-comparison").addClass(hiddenClassName);
 				$(".examples").removeClass(hiddenClassName);
@@ -139,8 +170,9 @@
 			<div class="menu">
 				<div class="menu-container">
 					<a class="menu-introduction menu-item" href="#" onclick="introduction_click()">Introduction</a>
-					<a class="menu-setting menu-item" href="#" onclick="setting_click()">Setting</a>
+					<a class="menu-language menu-item" href="#" onclick="language_click()">Type System</a>
 					<a class="menu-logic_comparison menu-item" href="#" onclick="logic_comparison_click()">Logic Comparison</a>
+					<a class="menu-setting menu-item" href="#" onclick="setting_click()">Setting</a>
 					<a class="menu-strategy menu-item" href="#" onclick="strategy_click()">Search Strategy</a>
 					<a class="menu-examples menu-item" href="#" onclick="examples_click()">Examples</a>
 				</div>
@@ -177,6 +209,7 @@
 				<div class="todo">Download MathJax</div>
 				<div class="todo">Talk about minimal vs intuitionistic logic?</div>
 				<div class="todo">Button to toggle visibility of presentation notes?</div>
+				<div class="todo">Deal with focused link class names</div>
 			</div>
 
 
@@ -185,9 +218,9 @@
 ----------------------------------------->
 
 
-			<div class="introduction frame last-frame">
+			<div class="introduction frame">
 				<div class="title">Introduction</div>
-				<div class="section">
+				<div class="section goal-section">
 					<div class="introduction-goal note">
 						<span class="subtitle">Objective:</span>
 						<div class="note">
@@ -231,7 +264,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="note">
+				<div class="section concerns-section">
 					<div class="subtitle">Concerns:</div>
 					<ul>
 						<li>
@@ -250,9 +283,10 @@
 				</div>
 				<div class="todo">Are all of these answered in the website/talk?</div>
 				
-				<div class="section">
-					<div class="introduction-approach note">
-						<span class="subtitle">Approach:</span> using sequent calculus, computation is goal-directed proof search, so we start with what we want to prove at the root of a proof tree
+				<div class="section approach-section">
+					<span class="subtitle">Approach:</span>
+					<div class="note">
+						Using sequent calculus, computation is goal-directed proof search, so we start with what we want to prove at the root of a proof tree
 					</div>
 					<div class="note-visual">
 						<div class="rule-body">
@@ -285,15 +319,15 @@
 
 
 <!----------------------------------------
-	SETTING
+	THE TYPE SYSTEM
 ----------------------------------------->
 
-
-			<div class="setting frame last-frame hidden">
-				<div class="title">Setting</div>
+			<div class="language frame hidden">
+				<div class="title">The Type System</div>
+				<div class="todo">Better name?</div>
 
 				<div class="section">
-					<div class="subtitle">Kinds, Types, Terms, and Formulas</div>
+					<div class="subtitle">Kinds and Types</div>
 					<div class="section outline">
 						<div class="note">
 							Think of a kind as the type of a type
@@ -345,6 +379,8 @@
 						<div class="example">The constant <span class="code">list</span>, when applied to a type, is parametric in that "argument" type</div>
 						<div class="presentation-note">see page 20/21 for discussion</div>
 					</div>
+
+					<div class="subtitle">Types and Terms</div>					
 					<div class="section outline">
 						<div class="note">Type expressions are built from the following grammar:
 							<div class="note">
@@ -406,6 +442,8 @@
 						<div class="todo">Introduce terminology "target type", "argument type", "functional type", "primitive type"?</div>
 
 					</div>
+
+					<div class="subtitle">Types and Formulas</div>
 					<div class="section outline">						
 						<div class="note">
 							The type $o$ is reserved for predicates and formulas and its use is restricted for different logics (see the description of Context below and Logic Comparison)
@@ -458,6 +496,18 @@
 					</div>
 					<div class="todo">Discuss term variables, after structure of terms? Need to have introduced form of terms and formulas to talk about quantification</div>
 				</div>
+
+			</div>
+
+
+
+<!----------------------------------------
+	SETTING
+----------------------------------------->
+
+
+			<div class="setting frame hidden">
+				<div class="title">Setting</div>
 
 				<div class="section">
 					<div class="subtitle">
@@ -702,14 +752,14 @@
 					</div>
 				</div>
 				<div class="section">
-					<div class="subtitle">Modular programming:</div>
+					<div class="subtitle">Modular programming and hypothetical reasoning:</div>
 					<div class="note">
 						<ul class="note-list">
 							<li>Implication in goals allows program modification during proof search via $\supset_R$ rule</li>
 						</ul>
 						<div class="todo">example</div>
 					</div>
-					<div class="subtitle">Hypothetical reasoning:</div>
+					<div class="subtitle">Generic reasoning:</div>
 					<div class="note">
 						<ul class="note-list">
 							<li>Universal quantification in goals allows context modification during proof search via $\forall_R$ rule</li>
@@ -720,7 +770,7 @@
 				</div>
 			</div>
 
-			<div class="logic-comparison frame last-frame hidden">
+			<div class="logic-comparison frame hidden">
 				<div class="title">First-Order vs. Higher-Order Logic</div>
 				<div class="section">
 					<div class="subtitle">Type Expression Order</div>
@@ -771,7 +821,7 @@
 	SEARCH STRATEGY
 ----------------------------------------->
 
-			<div class="search-strategy frame last-frame hidden">
+			<div class="search-strategy frame hidden">
 				<div class="title">Proof Search Strategy</div>
 				<div class="note">The proof search process alternates between goal reduction and backchaining phases</div>
 				<div class="subtitle">
@@ -812,32 +862,34 @@
 					When the goal is atomic, look to the program to continue proof search:
 					<ol>
 						<li>
-							use the decide rule to select a program clause
+							use the <em>decide</em> rule to select a program clause
 						</li>
 						<li>
-							use the backchaining rule on the chosen clause
+							use the <em>backchaining</em> rule on the chosen clause
 						</li>
 					</ol>
 				</div>
 
+				<div class="todo">procedural example vs static?</div>
+
 				<div class="example">
 					<div class="note">
-						Let the context $\Sigma$ be augmented with $\mathtt{nil : list A}$ and $\mathtt{cons : A \rightarrow list A \rightarrow list A}.
+						Let the context $\Sigma$ be augmented with $\mathtt{nil : list \; A}$ and $\mathtt{cons : A \rightarrow list\; A \rightarrow list \; A}$.
 					</div>
 					<div class="note">
-						Let the program be $\mathcal{P} = \{ \mathtt{length nil 0}, \mathtt{length (cons H T) (1 + N) :- length T N} \}$, the set of predicates defining length of a list.
+						Let the program be $\mathcal{P} = \{ \mathtt{length \; nil \; 0}, \mathtt{length \; (cons \; H \; T) \; (1 + N) :- length \; T \; N} \}$, the set of predicates defining length of a list.
 					</div>
 					<div class="note goal-reduction">
-						Our initial goal is $\exists \mathtt{M} , \mathtt{length (cons 1 (cons 2 (cons 3 nil))) M}$. We are in a goal-reduction phase.
+						Our initial goal is $\exists \mathtt{M} , \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; M}$. We are in a goal-reduction phase.
 					</div>
 					<div class="note goal-reduction">
-						First use $\exists_R$ to reduce the goal and get the new state $\Sigma ; \mathcal{P} \longrightarrow \mathtt{length (cons 1 (cons 2 (cons 3 nil))) t}$. We have a side condition that $M = t$. 
+						First use $\exists_R$ to reduce the goal and get the new state $\Sigma ; \mathcal{P} \longrightarrow \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; t}$. We have a side condition that $M = t$. 
 					</div>
 					<div class="note backchain">
-						The new goal is atomic, so bachkchain choosing the second program clause. The new state is $\Sigma ; \mathcal{P} \overset{\mathtt{length (cons 1 (cons 2 (cons 3 nil))) (1 + N) :- length T N}}{\longrightarrow} \mathtt{length (cons 1 (cons 2 (cons 3 nil))) t}$.
+						The new goal is atomic, so backchain choosing the second program clause, $\mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) (1 + N) :- length T N}$, which we will call $P_2$. The new state is $\Sigma ; \mathcal{P} \overset{P_2}{\longrightarrow} \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; t}$.
 					</div>
 					<div class="note goal reduction">
-						Keeping track of the side condition $t = 1 + N$, use the $\mathit{backchain}$ rule to get the new state $\Sigma ; \mathcal{P} \longrightarrow \mathtt{length (cons 2 (cons 3 nil)) N}$.
+						Keeping track of the side condition $t = 1 + N$, use the $\mathit{backchain}$ rule to get the new state $\Sigma ; \mathcal{P} \longrightarrow \mathtt{length \; (cons \; 2 \; (cons \; 3 \; nil)) \; N}$.
 					</div>
 					<div class="note">
 						Backchain two more times to get the substitution $M = 3$ as the solution to the query, once the system of equations of side conditions is solved.
@@ -965,104 +1017,106 @@
 						</table>
 				</div>
 
-				<div class="subtitle">Proof of <span class="code">s :- r</span>:</div>
+				<div class="subtitle">Proof of <span class="code">r => s</span>:</div>
 				<div class="todo">Major overhaul of rule/proof layout in styles and possibly structure; more thought needed</div>
-				<div class="rule-container">
-					<div class="rule-body">
-						<div class="rule-premises">
-							<div class="rule-container">
-								<div class="rule-body">
-									<div class="rule-premises">
-										<div class="rule-container">
-											<div class="rule-body">
-												<div class="rule-premises">
-													<div class="rule-container">
-														<div class="rule-body">
-															<div class="rule-premises">
-																<div class="rule-container">
-																	<div class="rule-body">
-																		<div class="rule-premises">
-																			
-																		</div>
-																		<div class="rule-conclusion">
-																			$\Sigma ; \mathcal{P}, r \overset{r}{\longrightarrow} r$
-																		</div>
-																	</div>
-																	<div class="rule-name">
-																		initial
-																	</div>
-																</div>
-															</div>
-															<div class="rule-conclusion">
-																$\Sigma ; \mathcal{P} , r \longrightarrow r$
-															</div>
-														</div>											
-														<div class="rule-name">
-															decide
-														</div>
-													</div>
-													<div class="rule-container">
-														<div class="rule-body">
-															<div class="rule-premises">
-																<div class="rule-container">
-																	<div class="rule-body">
-																		<div class="rule-premises">
-																			<div class="rule-container">
-																				<div class="rule-body">
-																					<div class="rule-premises">
-																						
-																					</div>
-																					<div class="rule-conclusion">
-																						$\Sigma ; \mathcal{P} , r \longrightarrow r$
-																					</div>
-																				</div>
-																				<div class="rule-name">
-																					initial
-																				</div>
+				<div class="note-visual">
+					<div class="rule-container">
+						<div class="rule-body">
+							<div class="rule-premises">
+								<div class="rule-container">
+									<div class="rule-body">
+										<div class="rule-premises">
+											<div class="rule-container">
+												<div class="rule-body">
+													<div class="rule-premises">
+														<div class="rule-container">
+															<div class="rule-body">
+																<div class="rule-premises">
+																	<div class="rule-container">
+																		<div class="rule-body">
+																			<div class="rule-premises">
+																				
+																			</div>
+																			<div class="rule-conclusion">
+																				$\Sigma ; \mathcal{P}, r \overset{r}{\longrightarrow} r$
 																			</div>
 																		</div>
-																		<div class="rule-conclusion">
-																			$\Sigma ; \mathcal{P} , r \overset{r \supset q}{\longrightarrow} q$
+																		<div class="rule-name">
+																			initial
 																		</div>
 																	</div>
-																	<div class="rule-name">
-																		backchain
+																</div>
+																<div class="rule-conclusion">
+																	$\Sigma ; \mathcal{P} , r \longrightarrow r$
+																</div>
+															</div>											
+															<div class="rule-name">
+																decide
+															</div>
+														</div>
+														<div class="rule-container">
+															<div class="rule-body">
+																<div class="rule-premises">
+																	<div class="rule-container">
+																		<div class="rule-body">
+																			<div class="rule-premises">
+																				<div class="rule-container">
+																					<div class="rule-body">
+																						<div class="rule-premises">
+																							
+																						</div>
+																						<div class="rule-conclusion">
+																							$\Sigma ; \mathcal{P} , r \longrightarrow r$
+																						</div>
+																					</div>
+																					<div class="rule-name">
+																						initial
+																					</div>
+																				</div>
+																			</div>
+																			<div class="rule-conclusion">
+																				$\Sigma ; \mathcal{P} , r \overset{r \supset q}{\longrightarrow} q$
+																			</div>
+																		</div>
+																		<div class="rule-name">
+																			backchain
+																		</div>
 																	</div>
 																</div>
+																<div class="rule-conclusion">
+																	$\Sigma ; \mathcal{P} , r \longrightarrow q$
+																</div>
 															</div>
-															<div class="rule-conclusion">
-																$\Sigma ; \mathcal{P} , r \longrightarrow q$
+															<div class="rule-name">
+																decide
 															</div>
-														</div>
-														<div class="rule-name">
-															decide
 														</div>
 													</div>
+													<div class="rule-conclusion">
+														$\Sigma ; \mathcal{P} , r \overset{(r \wedge q) \supset s}{\longrightarrow} s$
+													</div>
 												</div>
-												<div class="rule-conclusion">
-													$\Sigma ; \mathcal{P} , r \overset{(r \wedge q) \supset s}{\longrightarrow} s$
+												<div class="rule-name">
+													backchain
 												</div>
-											</div>
-											<div class="rule-name">
-												backchain
 											</div>
 										</div>
+										<div class="rule-conclusion">
+											$\Sigma ; \mathcal{P} , r \longrightarrow s$
+										</div>
 									</div>
-									<div class="rule-conclusion">
-										$\Sigma ; \mathcal{P} , r \longrightarrow s$
-									</div>
+									<div class="rule-name">
+										decide
+									</div>	
 								</div>
-								<div class="rule-name">
-									decide
-								</div>	
 							</div>
+							<div class="rule-conclusion">
+								$\Sigma; \mathcal{P} \longrightarrow r \supset s$
+							</div>	
 						</div>
-						<div class="rule-conclusion">
-							$\Sigma; \mathcal{P} \longrightarrow r \supset s$
-						</div>	
-					</div>
-					<div class="rule-name">
-						$\supset_R$
+						<div class="rule-name">
+							$\supset_R$
+						</div>
 					</div>
 				</div>
 				<div class="todo">some proof explanation</div>
@@ -1143,7 +1197,7 @@
 				<div class="example">getting the flagged items in a list using sublist predicate as use of higher-order logic</div>
 			</div>
 
-			<div class="hohh examples frame last-frame hidden">
+			<div class="hohh examples frame hidden">
 				<div class="title">Higher-Order Hereditary Harrop Formulas (HOHH)</div>
 				<div class="subtitle">Example: Encoding type inference for a fragment of minimal logic</div>
 				<div class="todo">correct understanding of example?</div>
@@ -1256,7 +1310,7 @@
 									$ \Sigma ; \mathcal{P} \longrightarrow B_1 \vee B_2 $
 								</div>
 							</div>
-							<div>
+							<div class="rule-name">
 								$ \vee_{R_2} $
 							</div>
 						</div>
@@ -1270,7 +1324,7 @@
 									$ \Sigma ; \mathcal{P} \longrightarrow B_1 \wedge B_2 $
 								</div>
 							</div>
-							<div>
+							<div class="rule-name">
 								$ \wedge_R $
 							</div>
 						</div>
@@ -1283,7 +1337,7 @@
 									$ \Sigma ; \mathcal{P} \longrightarrow B_1 \supset B_2 $
 								</div>
 							</div>
-							<div>
+							<div class="rule-name">
 								$ \supset_R $
 							</div>
 						</div>
@@ -1296,7 +1350,7 @@
 									$ \Sigma ; \mathcal{P} \longrightarrow \forall_\tau x \; B $
 								</div>
 							</div>
-							<div>
+							<div class="rule-name">
 								$ \forall_R $
 							</div>
 						</div>
@@ -1310,8 +1364,34 @@
 									$ \Sigma ; \mathcal{P} \longrightarrow \exists_\tau x \; B $
 								</div>
 							</div>
-							<div>
+							<div class="rule-name">
 								$ \exists_R $
+							</div>
+						</div>
+						<div class="rule_backchain rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									<div>$ \Sigma ; \mathcal{P} \overset{D}{\longrightarrow} A $</div>
+								</div>
+								<div class="rule-conclusion">
+									$ \Sigma ; \mathcal{P} \longrightarrow A$
+								</div>
+							</div>
+							<div class="rule-name">
+								$ decide $
+							</div>
+						</div>
+						<div class="rule_backchain rule-container">
+							<div class="rule-body">
+								<div class="rule-premises">
+									
+								</div>
+								<div class="rule-conclusion">
+									$ \Sigma ; \mathcal{P} \overset{A}{\longrightarrow} A$
+								</div>
+							</div>
+							<div class="rule-name">
+								$ initial $
 							</div>
 						</div>
 						<div class="rule_backchain rule-container">

@@ -16,22 +16,6 @@ x.menu-container A { background: pink; }
 x.logic-comparison { background: peachpuff; }
 x.proof-strategy { background: wheat; }
 
-.todo
-{
-	font-size: 16px;
-	color: lightgrey;
-	/*display: none;
-	visibility: hidden;*/
-}
-
-.presentation-note
-{
-	font-size: 20px;
-	color: green;
-	padding: 15px 0;
-	/*display: none;
-	visibility: hidden;*/
-}
 
 /*********************
 * Fonts
@@ -62,20 +46,13 @@ font-family: 'Lobster Two', cursive;
 .note
 {
 	padding: 10px;
-	margin: 10px;
-	/*outline: 2px solid purple;*/
-	/*background: ghostwhite;*/
+	margin: 20px;
 }
 
 .note-visual
 {
 	align-self: center;
-	padding: 10px 20px;
-}
-
-.note-nested
-{
-	padding: 0 20px;
+	margin: 10px 20px;
 }
 
 .children-horizontal
@@ -221,7 +198,7 @@ div.rules
 .rule-container
 {
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	padding: 30px;
 }
 
@@ -241,7 +218,7 @@ div.rules
 .rule-premises > div
 {
 	padding: 0 15px;
-	align-self: center;
+	/*align-self: center;*/
 }
 
 .rule-conclusion
@@ -254,9 +231,14 @@ div.rules
 	padding: 10px 0;
 }
 
+.rule-name
+{
+	padding-bottom: 35px;
+}
+
 .rule_backchain .rule-name
 {
-	padding-bottom: 20px;
+	padding-bottom: 50px;
 }
 
 .tree-symbols
@@ -291,6 +273,7 @@ div.rules
 	xalign-self: center;
 	padding: 15px;
 	margin: 30px auto;
+	max-width: 70%;
 }
 
 .scroll
@@ -341,4 +324,28 @@ div.rules
 .pad-bottom
 {
 	padding-bottom: 270px;
+}
+
+
+
+/*
+Update before presentation (make sure both hidden)
+*/
+
+
+.todo
+{
+	font-size: 16px;
+	color: lightgrey;
+	display: none;
+	visibility: hidden;
+}
+
+.presentation-note
+{
+	font-size: 20px;
+	color: green;
+	margin: 15px 0;
+	display: none;
+	visibility: hidden;
 }
