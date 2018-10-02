@@ -1221,72 +1221,97 @@
 
 			<div class="hohh examples frame hidden">
 				<div class="title">Higher-Order Hereditary Harrop Formulas (HOHH)</div>
-				<div class="subtitle">Example: Encoding type inference for a fragment of minimal logic</div>
-				<div class="todo">correct understanding of example?</div>
-				<div class="example">
-					<table class="code">
-						<tr>
-							<td colspan="3">
-								/* Signature declarations: */
-							</td>
-						</tr>
-						<tr>
-							<td>kind</td>
-							<td>tp</td>
-							<td>type.</td>
-						</tr>
-						<tr>
-							<td>type</td>
-							<td>basetp</td>
-							<td>tp.</td>
-						</tr>
-						<tr>
-							<td>type</td>
-							<td>arr</td>
-							<td>tp -> tp -> tp.</td>
-						</tr>
-						<tr class="space-row"></tr>
-						<tr>
-							<td>kind</td>
-							<td>expr</td>
-							<td>type.</td>	
-						</tr>
-						<tr>
-							<td>type</td>
-							<td>app</td>
-							<td>expr -> expr -> expr.</td>
-						</tr>
-						<tr>
-							<td>type</td>
-							<td>fun</td>
-							<td>(expr -> expr) -> expr.</td>
-						</tr>
-						<tr class="space-row"></tr>
-						<tr>
-							<td>type</td>
-							<td>tp_pred</td>
-							<td>expr -> tp -> o.</td>
-						</tr>
-						<tr class="space-row"></tr>
-						<tr>
-							<td colspan="3">
-								/* Program definition: */
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-								tp_pred (app E1 E2) T1 :- tp_pred E1 (arr T2 T1) & tp_pred E2 T2.
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-								tp_pred (fun x (E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (E x) T2).				
-							</td>
-						</tr>
-					</table>
+				<div class="note">
+					<div class="subtitle">Encoding type inference for a fragment of minimal logic</div>
+					<div class="note">
+						<ul>
+							<li>
+								Declare a kind for object logic types and types for object logic type constructors
+							</li>
+							<li>
+								Declare a kind for object logic expressions and types for application and abstraction and a predicate for typing 
+							</li>
+							<li>
+								Declare a type representing object logic typing
+							</li>
+							<li>
+								Write program clauses to specify the type inference rules
+							</li>
+						</ul>
+						<div class="note">
+							Higher-order: The type of <code>fun</code>, the constant representing function abstraction, has order 2
+						</div>
+						<div class="note">
+							Hereditary Harrop: The goal in the second <code>tp_pred</code> predicate specification has universal quantification and implication in the goal
+						</div>
+					</div>
+					<div class="note">
+						Example from <span class="todo-urgent">Fill in Hybrid paper ref or link!</span>
+					</div>
+					<div class="todo">correct understanding of example?</div>
+					<div class="example">
+						<table class="code">
+							<tr>
+								<td colspan="3">
+									/* Signature declarations: */
+								</td>
+							</tr>
+							<tr>
+								<td>kind</td>
+								<td>tp</td>
+								<td>type.</td>
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>basetp</td>
+								<td>tp.</td>
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>arr</td>
+								<td>tp -> tp -> tp.</td>
+							</tr>
+							<tr class="space-row"></tr>
+							<tr>
+								<td>kind</td>
+								<td>expr</td>
+								<td>type.</td>	
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>app</td>
+								<td>expr -> expr -> expr.</td>
+							</tr>
+							<tr>
+								<td>type</td>
+								<td>fun</td>
+								<td>(expr -> expr) -> expr.</td>
+							</tr>
+							<tr class="space-row"></tr>
+							<tr>
+								<td>type</td>
+								<td>tp_pred</td>
+								<td>expr -> tp -> o.</td>
+							</tr>
+							<tr class="space-row"></tr>
+							<tr>
+								<td colspan="3">
+									/* Program definition: */
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									tp_pred (app E1 E2) T1 :- tp_pred E1 (arr T2 T1) & tp_pred E2 T2.
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									tp_pred (fun x (E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (E x) T2).				
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
-				<div class="note">type of <code>fun</code> has order 2, so higher-order</div>
-				<div class="note">goal in second <code>tp_pred</code> predicate spec has universal quantification and implication in the goal, so HH</div>
 			</div>
 
 			
