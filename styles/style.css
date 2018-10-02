@@ -349,3 +349,11 @@ Update before presentation (make sure both hidden)
 	display: none;
 	visibility: hidden;
 }
+
+.question-for-amy
+{
+	font-size: 25px;
+	color: red;
+	/*display: none;
+	visibility: none;*/
+}
