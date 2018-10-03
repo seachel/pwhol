@@ -209,6 +209,7 @@
 				<div class="todo">Button to toggle visibility of presentation notes?</div>
 				<div class="todo">Deal with focused link class names (??)</div>
 				<div class="todo">Page of definitions and links throughout page</div>
+				<div class="todo">Separate rules into "Goal Reduction" and "Backchaining"</div>
 			</div>
 
 
@@ -421,6 +422,7 @@
 						
 						<div class="note">Type expressions using type variables allow polymorphism</div>
 						<div class="example"><span class="code">cons</span> is related to the polymorphic type expression <span class="code">A -> list A -> list A</span></div>
+						<div class="presentation-note">The constant cons is a polymorphic data constructor to be applied to an element of type A and a list with elements of type A to give a new list of elements of type A</div>
 
 						<div class="note">Type expressions using "$\rightarrow$" allow value constructors for building structured data</div>
 						<div class="example"><span class="code">cons</span> can be used to build lists, given an element and a list of appropriate type</div>						
@@ -978,7 +980,7 @@
 						Declare propositional constants of type $o$ and write program clauses to specify relationships between the propositional variables. The implication of the object logic (FOHC) is encoded as implication in the ambient logic (FOHH). <span class="question-for-amy">Correct understanding and phrasing here?</span>
 					</div>
 					<div class="note">
-						Example from p. <span class="todo-urgent">Fill in!</span> of PwHOL.
+						Example from p. 78 of <a class="book-link" href="https://sites.google.com/site/proghol/">PwHOL</a>.
 					</div>
 				
 					<div class="example">
@@ -1023,8 +1025,10 @@
 							</table>
 					</div>
 
-					<div class="note">Proof of <span class="code">r => s</span>:</div>
-					<div class="note-visual center">
+					<div class="note">
+						Proof of <span class="code">r => s</span>:
+					</div>
+					<div class="center-flex">
 						<div class="rule-container">
 							<div class="rule-body">
 								<div class="rule-premises">
@@ -1124,6 +1128,7 @@
 							</div>
 						</div>
 					</div>
+					
 				</div>
 				<div class="todo">some proof explanation</div>
 				<div class="todo">Reference example from book</div>
@@ -1137,7 +1142,7 @@
 						Filter a list by items that are flagged using a higher-order predicate. We call this predicate <span class="code">sublist</span> and it takes a functional argument (order > 1) representing a polymorphic formula. <span class="question-for-amy">Should I rephrase to talk about this relationally instead of talking about arguments?</span>
 					</div>
 					<div class="note">
-						Example from p. <span class="todo-urgent">Fill in!</span> of PwHOL.
+						<span class="code">sublist</span> definition from p. 127 of <a class="book-link" href="https://sites.google.com/site/proghol/">PwHOL</a>.
 					</div>
 				
 					<div class="example">
@@ -1245,7 +1250,7 @@
 							Hereditary Harrop: The goal in the second <code>tp_pred</code> predicate specification has universal quantification and implication in the goal
 						</div>
 						<div class="note">
-							Example from <span class="todo-urgent">Fill in Hybrid paper ref or link!</span>
+							Example from <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.157.608&rep=rep1&type=pdf">Hybrid: A Definitional Two-Level Approach to Reasoning with Higher-Order Abstract Syntax</a>
 						</div>
 					</div>
 					<div class="todo">correct understanding of example?</div>

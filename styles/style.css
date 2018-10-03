@@ -199,7 +199,7 @@ div.rules
 {
 	display: flex;
 	align-items: flex-end;
-	padding: 30px;
+	padding: 0px;
 }
 
 .rule-body
@@ -212,7 +212,7 @@ div.rules
 	display: flex;
 	justify-content: space-between;
 	min-height: 20px;
-	padding: 10px 0;
+	padding-bottom: 5px;
 }
 
 .rule-premises > div
@@ -326,9 +326,10 @@ div.rules
 	padding-bottom: 270px;
 }
 
-.center
+.center-flex
 {
-	margin: 0 auto;
+	display: flex;
+	justify-content: center;
 }
 
 
