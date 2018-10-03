@@ -199,7 +199,7 @@ div.rules
 {
 	display: flex;
 	align-items: flex-end;
-	padding: 0px;
+	padding: 0px 30px;
 }
 
 .rule-body

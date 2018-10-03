@@ -171,8 +171,8 @@
 				<div class="menu-container">
 					<a class="menu-introduction menu-item" href="#" onclick="introduction_click()">Introduction</a>
 					<a class="menu-language menu-item" href="#" onclick="language_click()">Type System</a>
-					<a class="menu-logic_comparison menu-item" href="#" onclick="logic_comparison_click()">Logic Comparison</a>
 					<a class="menu-setting menu-item" href="#" onclick="setting_click()">Setting</a>
+					<a class="menu-logic_comparison menu-item" href="#" onclick="logic_comparison_click()">Logic Comparison</a>
 					<a class="menu-strategy menu-item" href="#" onclick="strategy_click()">Search Strategy</a>
 					<a class="menu-examples menu-item" href="#" onclick="examples_click()">Examples</a>
 				</div>
@@ -346,7 +346,7 @@
 								$$
 							</div>
 						</div>
-						
+
 						<div class="presentation-note">Kinds are either <span class="code">type</span> or some number of <span class="code">type</span>s with arrows between</div>
 
 						<div class="note">Each type or type constructor is related to a <em>kind expression</em>, declared in a <em>kind</em> declaration:</div>
@@ -374,6 +374,9 @@
 								</td>
 							</tr>
 						</table>
+						<div class="note">
+							We say "<span class="code">list</span> has kind <span class="code">type -> type</span>"
+						</div>
 						<div class="presentation-note">The example above creates a new type constructor "list" related to the kind "type -> type"</div>
 						
 						<div class="note">Type constructors related to kind expressions using "$\rightarrow$" allow parametric polymorphism</div>
@@ -428,6 +431,9 @@
 
 						<div class="note">Type expressions using "$\rightarrow$" allow value constructors for building structured data</div>
 						<div class="example"><span class="code">cons</span> can be used to build lists, given an element and a list of appropriate type</div>						
+						<div class="note">
+							We say "<span class="code">cons</span> has type <span class="code">A -> list A -> list A</span>"
+						</div>
 
 						<div class="note">Type espressions using type constructors must be fully applied, so well-formed type expressions are related to the kind <span class="code">type</span></div>
 						<div class="example">
@@ -559,7 +565,7 @@
 										tt
 									</td>
 									<td>
-										$o \rightarrow o \rightarrow o$
+										$o$
 									</td>
 								</tr>
 								<tr>
@@ -610,6 +616,7 @@
 							<div class="note"><span class="subtitle subsub">Note:</span> <span class="code">-></span> is used in place of $\rightarrow$ as the function arrow in code</div>
 							<div class="todo">tt not actually in the system?</div>
 						</div>
+						<div class="todo-urgent">Talk about quantifiers here!</div>
 						<div class="note">
 							Extend the signature using kind and type declarations, as above.
 						</div>
@@ -699,7 +706,7 @@
 							A formula we would like to prove, assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$
 						</div>
 						<div class="example">
-							$\exists$ <span class="code">M, length (cons 1 (cons 2 (cons 3 nil))) M.</span>
+							$\exists$ <span class="code">M \ length (cons 1 (cons 2 (cons 3 nil))) M.</span>
 						</div>
 						<div class="todo">
 							(see section 2.2)
@@ -723,7 +730,6 @@
 			<div class="logic-comparison frame hidden">
 				<div class="title">Horn Clauses vs Hereditary Harrop Formulas</div>
 				<div class="section hc">
-					<div class="todo-urgent">This can't occur before the "Setting" section because the sequent already needs to be introduced</div>
 					<div class="subtitle">Horn clause grammar:</div>
 					<div class="hc-grammar note">
 						<div>
@@ -868,7 +874,9 @@
 					</ol>
 				</div>
 
-				<div class="todo">procedural example vs static?</div>
+				<div class="todo-urgent">Add proof tree</div>
+
+				<div class="note">Proof of $\exists \mathtt{M} \backslash \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; M}$:</div>
 
 				<div class="example">
 					<div class="note">
@@ -878,7 +886,7 @@
 						Let the program be $\mathcal{P} = \{ \mathtt{length \; nil \; 0}, \mathtt{length \; (cons \; H \; T) \; (1 + N) :- length \; T \; N} \}$, the set of predicates defining length of a list.
 					</div>
 					<div class="note goal-reduction">
-						Our initial goal is $\exists \mathtt{M} , \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; M}$. We are in a goal-reduction phase.
+						Our initial goal is $\exists \mathtt{M} \backslash \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; M}$. We are in a goal-reduction phase.
 					</div>
 					<div class="note goal-reduction">
 						First use $\exists_R$ to reduce the goal and get the new state $\Sigma ; \mathcal{P} \longrightarrow \mathtt{length \; (cons \; 1 \; (cons \; 2 \; (cons \; 3 \; nil))) \; t}$. We have a side condition that $M = t$. 
@@ -967,7 +975,7 @@
 						</table>
 					</div>
 					<div class="note">
-						Example goal: $\exists$ <span class="code">M, nodeCount (node 1 (node 2 (node 3 empty empty) (node 4 empty empty)) (node 5 empty empty)) M</span>
+						Example goal: $\exists$ <span class="code">M \ nodeCount (node 1 (node 2 (node 3 empty empty) (node 4 empty empty)) (node 5 empty empty)) M</span>
 					</div>
 					<div class="note">
 						Answer set substitution: <span class="code">M = 5</span>
@@ -1218,7 +1226,7 @@
 						</table>
 					</div>
 					<div class="note">
-						Example query: $\exists$ <span class="code">L, sublist flagged (cons v (cons w (cons x (cons y (cons z nil))))) L</span>
+						Example query: $\exists$ <span class="code">L \ sublist flagged (cons v (cons w (cons x (cons y (cons z nil))))) L</span>
 					</div>
 					<div class="note">
 						Answer set substitution: <span class="code">L = cons x (cons y (cons z nil))</span>
@@ -1256,8 +1264,6 @@
 							Example modified from p. 103 of <a href="http://www.cis.upenn.edu/~bcpierce/tapl/">Types and Programming Languages</a> by B. Pierce <span class="question-for-amy">(Is it correct to say it's a modification of typing for STLC?)</span>. Discussion of a similar encoding using higher-order abstract syntax can be found on p. 17 of <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.157.608&rep=rep1&type=pdf">Hybrid: A Definitional Two-Level Approach to Reasoning with Higher-Order Abstract Syntax</a> by A. Felty and A. Momigliano.
 						</div>
 					</div>
-					<div class="todo">correct understanding of example?</div>
-					<div class="todo-urgent">Example won't do what I want? Better to write example for finding type of expressions in earlier logic?</div>
 					<div class="example">
 						<table class="code">
 							<tr>
@@ -1315,11 +1321,18 @@
 							</tr>
 							<tr>
 								<td colspan="3">
-									tp_pred (fun (x \ app E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (app E x) T2).
+									tp_pred (fun (x \ E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (E x) T2).
 								</td>
 							</tr>
 						</table>
 					</div>
+					<div class="note">
+						Example goal: $\exists$ <span class="code">T \ tp_pred (fun (f \ (fun (x \ (app f x))))) T</span>
+					</div>
+					<div class="note">
+						Answer set substitution: <span class="code">T = arr (arr T1 T2) (arr T1 T2)</span>
+					</div>
+					<div class="note">We find that the Church numeral for 1, $\lambda f \lambda x (f \; x)$, has type $(T_1 \rightarrow T_2) \rightarrow T_1 \rightarrow T_2$</div>
 				</div>
 			</div>
 
