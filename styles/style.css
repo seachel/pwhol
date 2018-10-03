@@ -236,7 +236,7 @@ div.rules
 	padding-bottom: 35px;
 }
 
-.rule_backchain .rule-name
+.rule_backchain > .rule-name
 {
 	padding-bottom: 50px;
 }
