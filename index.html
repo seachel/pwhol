@@ -192,6 +192,7 @@
 						<li>Website as artifact for future reference, possibly extended with more explanation for learning the languages</li>
 					</ul>
 				</div>
+				<div class="todo">MAIN TODO LIST:</div>
 				<div class="todo">More focus on substitutions as solutions to problems</div>
 				<div class="todo">Put title on its own "home" link?</div>
 				<div class="todo">Math font vs teletype in examples</div>
@@ -210,6 +211,7 @@
 				<div class="todo">Deal with focused link class names (??)</div>
 				<div class="todo">Page of definitions and links throughout page</div>
 				<div class="todo">Separate rules into "Goal Reduction" and "Backchaining"</div>
+				<div class="todo">Page with instructions on using lambda-prolog, linux, etc</div>
 			</div>
 
 
@@ -1245,16 +1247,17 @@
 							</li>
 						</ul>
 						<div class="note">
-							Higher-order: The type of <code>fun</code>, the constant representing function abstraction, has order 2
+							Higher-order: The type of <span class="code">fun</span>, the constant representing function abstraction, has order 2
 						</div>
 						<div class="note">
-							Hereditary Harrop: The goal in the second <code>tp_pred</code> predicate specification has universal quantification and implication in the goal
+							Hereditary Harrop: The goal in the second <span class="code">tp_pred</span> predicate specification has universal quantification and implication in the goal
 						</div>
 						<div class="note">
 							Example modified from p. 103 of <a href="http://www.cis.upenn.edu/~bcpierce/tapl/">Types and Programming Languages</a> by B. Pierce <span class="question-for-amy">(Is it correct to say it's a modification of typing for STLC?)</span>. Discussion of a similar encoding using higher-order abstract syntax can be found on p. 17 of <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.157.608&rep=rep1&type=pdf">Hybrid: A Definitional Two-Level Approach to Reasoning with Higher-Order Abstract Syntax</a> by A. Felty and A. Momigliano.
 						</div>
 					</div>
 					<div class="todo">correct understanding of example?</div>
+					<div class="todo-urgent">Example won't do what I want? Better to write example for finding type of expressions in earlier logic?</div>
 					<div class="example">
 						<table class="code">
 							<tr>
@@ -1312,7 +1315,7 @@
 							</tr>
 							<tr>
 								<td colspan="3">
-									tp_pred (fun x (E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (E x) T2).				
+									tp_pred (fun (x \ app E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (app E x) T2).
 								</td>
 							</tr>
 						</table>
