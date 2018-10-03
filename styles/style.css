@@ -320,6 +320,10 @@ div.rules
 	/*min-width: 250px;*/
 }
 
+li
+{
+	margin: 10px;
+}
 
 .pad-bottom
 {

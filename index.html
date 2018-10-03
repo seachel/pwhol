@@ -315,6 +315,17 @@
 							</div>
 						</div>
 					</div>
+					<div class="note">
+							Contrast this view of computation with:
+							<ul class="note">
+								<li>
+									Computation in functional languages as reductions to a normal form
+								</li>
+								<li>
+									Computation in imperative languages as updates to models of data
+								</li>
+							</ul>
+						</div>
 				</div>
 			</div>
 
@@ -449,8 +460,27 @@
 
 					</div>
 
-					<div class="subtitle">Types and Formulas</div>
-					<div class="section outline">						
+					<div class="subtitle">Terms and Formulas</div>
+					<div class="section outline">
+						<div class="note">
+							A <em>term</em> is typable according to the typing rules of the logic; it is either:
+							<ol>
+								<li>
+									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier
+									<div class="presentation-note">(show roles with quantifiers)</div>
+								</li>
+								<li>
+									a constant from the signature with any type variables instantiated (e.g. <span class="code">nil</span> of type <span class="code">list int</span>)
+								</li>
+								<li>
+									an application of a fully-applied term symbol (e.g. <span class="code">cons 1 nil</span>)
+								</li>
+								<li>
+									a lambda-abstraction of a term variable of appropriate type over a term (e.g. <span class="code">(x : list int) \ reverse (cons 1 (cons 2 nil)) x</span>)
+								</li>
+							</ul>
+						</div>
+
 						<div class="note">
 							The type $o$ is reserved for predicates and formulas and its use is restricted for different logics (see the description of Context in Setting and Logic Comparison) <span class="todo-urgent">Add links here</span>
 						</div>
@@ -468,34 +498,6 @@
 						<div class="note">Formulas are terms of type $o$</div>
 						<div class="example">
 							<span class="code">reverse (cons 1 (cons 2 nil)) (cons 2 (cons 1 nil))</span> is a formula
-						</div>
-
-						<div class="note">
-							A <em>term</em> is typable according to the typing rules of the logic; it is either:
-							<ul>
-								<li>
-									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier
-									<div class="presentation-note">(show rules with quantifiers)</div>
-								</li>
-								<li>
-									a constant from the signature with any type variables instantiated
-									<div>
-										(e.g. <span class="code">nil</span> of type <span class="code">list int</span>)
-									</div>
-								</li>
-								<li>
-									an application of a fully-applied term symbol
-									<div>
-										(e.g. <span class="code">cons 1 nil</span>)
-									</div>
-								</li>
-								<li>
-									a lambda-abstraction of a term variable of appropriate type over a term
-									<div>
-										(e.g. <span class="code">(x : list int) \ reverse (cons 1 (cons 2 nil)) x</span>)
-									</div>
-								</li>
-							</ul>
 						</div>
 					</div>
 				</div>
@@ -520,6 +522,7 @@
 						<div class="note">
 							Represents state of a computation
 						</div>
+						
 						<div class="presentation-note">
 							Compare with state in other paradigms
 						</div>
