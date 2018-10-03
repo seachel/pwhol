@@ -554,7 +554,7 @@
 										Math font
 									</td>
 									<td>
-										Code font
+										Concrete syntax font
 									</td>
 									<td>
 										Type
@@ -615,11 +615,52 @@
 										$o \rightarrow o \rightarrow o$
 									</td>
 								</tr>
+								<tr>
+									<td>
+										$\forall$
+									</td>
+									<td class="code">
+										pi
+									</td>
+									<td>
+										$(A \rightarrow o) \rightarrow o$
+									</td>
+								</tr>
+								<tr>
+									<td>
+										$\exists$
+									</td>
+									<td class="code">
+										sigma
+									</td>
+									<td>
+										$(A \rightarrow o) \rightarrow o$
+									</td>
+								</tr>
 							</table>
-							<div class="note"><span class="subtitle subsub">Note:</span> <span class="code">-></span> is used in place of $\rightarrow$ as the function arrow in code</div>
-							<div class="todo">tt not actually in the system?</div>
+							<div class="note">
+								<span class="subtitle subsub">Note:</span> <span class="code">-></span> is used in place of $\rightarrow$ as the function arrow in code
+							</div>
+							
 						</div>
-						<div class="todo-urgent">Talk about quantifiers here!</div>
+						<div class="note">
+								The symbol <span class="code">\</span> is used as a binding operator
+							</div>
+							<div class="example">
+								In the term $(f : \tau_1) \backslash (x : \tau_2) \backslash f \; x$, the variable names $f$ and $x$ are bound in the expression $f \; x$
+							</div>
+							<div class="note">
+								Types of bound variables can be indeferred and left out of the expression
+							</div>
+							<div class="example">
+								The term $(f : \tau_1) \backslash (x : \tau_2) \backslash f \; x$ can be rewritten as $f \backslash x \backslash f \; x$
+							</div>
+							<div class="note">
+								$\forall (x : T) \, F$ is shorthand for $\forall ((x : T) \, \backslash \, F)$ and $\exists (x : T) \, F$ is shorthand for $\exists ((x : T) \, \backslash \, F)$
+							</div>
+							<div class="note">
+								A variable bound using the binding operator is a <em>term variable</em>
+							</div>
 						<div class="note">
 							Extend the signature using kind and type declarations, as above.
 						</div>
