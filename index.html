@@ -879,7 +879,7 @@
 					When the top-level symbol of the goal is a logical constant, use the appropriate right-rule
 				</div>
 				<div class="example">
-					<div class="rule-container">
+					<div class="rule-container rule-root">
 						<div class="rule-body">
 							<div class="rule-premises">
 								<div class="tree-branch">
@@ -1019,7 +1019,7 @@
 						</table>
 					</div>
 					<div class="note">
-						Example goal: $\exists$ <span class="code">M \ nodeCount (node 1 (node 2 (node 3 empty empty) (node 4 empty empty)) (node 5 empty empty)) M</span>
+						Example goal: <span class="code">sigma M \ nodeCount (node 1 (node 2 (node 3 empty empty) (node 4 empty empty)) (node 5 empty empty)) M</span>
 					</div>
 					<div class="note">
 						Answer set substitution: <span class="code">M = 5</span>
@@ -1084,7 +1084,7 @@
 						Proof of <span class="code">r => s</span>:
 					</div>
 					<div class="center-flex">
-						<div class="rule-container">
+						<div class="rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									<div class="rule-container">
@@ -1194,7 +1194,7 @@
 				<div class="note">
 					<span class="subtitle">Higher-order predicate</span>
 					<div class="note">
-						Filter a list by items that are flagged using a higher-order predicate. We call this predicate <span class="code">sublist</span> and it takes a functional argument (order > 1) representing a polymorphic formula. <span class="question-for-amy">Should I rephrase to talk about this relationally instead of talking about arguments?</span>
+						Filter a list by items that are flagged using a higher-order predicate. We call this predicate <span class="code">sublist</span> and it takes a functional argument (order > 1) representing a polymorphic formula.
 					</div>
 					<div class="note">
 						<span class="code">sublist</span> definition from p. 127 of <a class="book-link" href="https://sites.google.com/site/proghol/">PwHOL</a>.
@@ -1305,7 +1305,7 @@
 							Hereditary Harrop: The goal in the second <span class="code">tp_pred</span> predicate specification has universal quantification and implication in the goal
 						</div>
 						<div class="note">
-							Example modified from p. 103 of <a href="http://www.cis.upenn.edu/~bcpierce/tapl/">Types and Programming Languages</a> by B. Pierce <span class="question-for-amy">(Is it correct to say it's a modification of typing for STLC?)</span>. Discussion of a similar encoding using higher-order abstract syntax can be found on p. 17 of <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.157.608&rep=rep1&type=pdf">Hybrid: A Definitional Two-Level Approach to Reasoning with Higher-Order Abstract Syntax</a> by A. Felty and A. Momigliano.
+							Example modified from p. 103 of <a href="http://www.cis.upenn.edu/~bcpierce/tapl/">Types and Programming Languages</a> by B. Pierce. Discussion of a similar encoding using higher-order abstract syntax can be found on p. 17 of <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.157.608&rep=rep1&type=pdf">Hybrid: A Definitional Two-Level Approach to Reasoning with Higher-Order Abstract Syntax</a> by A. Felty and A. Momigliano.
 						</div>
 					</div>
 					<div class="example">
@@ -1392,15 +1392,18 @@
 					<span class="em em-hammer_and_wrench"></span>
 				</button>
 				<div class="scroll hidden">
-					<div class="rules">
-						<div class="rule_TR rule-container">
+					<div class="note subtitle subsub">
+						Right rules:
+					</div>
+					<div class="rules right-rules">
+						<div class="rule_TR rule-container rule-root">
 							<div class="rule-premises">
 							</div>
 							<div class="rule-conclusion">
 								$ \Sigma ; \mathcal{P} \longrightarrow \top $
 							</div>
 						</div>
-						<div class="rule_or1R rule-container">
+						<div class="rule_or1R rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									<div>$ \Sigma ; \mathcal{P} \longrightarrow B_1 $</div>
@@ -1413,7 +1416,7 @@
 								$ \vee_{R_1} $
 							</div>
 						</div>
-						<div class="rule_or2R rule-container">
+						<div class="rule_or2R rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									<div>$ \Sigma ; \mathcal{P} \longrightarrow B_2 $</div>
@@ -1426,7 +1429,7 @@
 								$ \vee_{R_2} $
 							</div>
 						</div>
-						<div class="rule_andR rule-container">
+						<div class="rule_andR rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									<div>$ \Sigma ; \mathcal{P} \longrightarrow B_1 $</div>
@@ -1440,7 +1443,7 @@
 								$ \wedge_R $
 							</div>
 						</div>
-						<div class="rule_impR rule-container">
+						<div class="rule_impR rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									<div>$ \Sigma ; \mathcal{P} , B_1 \longrightarrow B_2 $</div>
@@ -1453,7 +1456,7 @@
 								$ \supset_R $
 							</div>
 						</div>
-						<div class="rule_forallR rule-container">
+						<div class="rule_forallR rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									<div>$ c : \tau , \Sigma ; \mathcal{P} \longrightarrow B [c / x] $</div>
@@ -1466,7 +1469,7 @@
 								$ \forall_R $
 							</div>
 						</div>
-						<div class="rule_existsR rule-container">
+						<div class="rule_existsR rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									<div>$ \Sigma ; \mathcal{P} \longrightarrow B [t / x] $</div>
@@ -1480,7 +1483,12 @@
 								$ \exists_R $
 							</div>
 						</div>
-						<div class="rule_backchain rule-container">
+					</div>
+					<div class="note subtitle subsub">
+						Left rules:
+					</div>
+					<div class="rules left-rules">
+						<div class="rule_backchain rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									<div>$ \Sigma ; \mathcal{P} \overset{D}{\longrightarrow} A $</div>
@@ -1493,7 +1501,7 @@
 								$ decide $
 							</div>
 						</div>
-						<div class="rule_backchain rule-container">
+						<div class="rule_backchain rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									
@@ -1506,7 +1514,7 @@
 								$ initial $
 							</div>
 						</div>
-						<div class="rule_backchain rule-container">
+						<div class="rule_backchain rule-container rule-root">
 							<div class="rule-body">
 								<div class="rule-premises">
 									<div>$ \Sigma ; \mathcal{P} \longrightarrow A_1 $</div>

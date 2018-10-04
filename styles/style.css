@@ -195,11 +195,16 @@ div.rules
 	font-size: 25px;
 }
 
+.rule-root
+{
+	margin: 30px;
+}
+
 .rule-container
 {
 	display: flex;
 	align-items: flex-end;
-	padding: 0px 30px;
+	padding: 0px 20px;
 }
 
 .rule-body
