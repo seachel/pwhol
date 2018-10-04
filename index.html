@@ -650,7 +650,7 @@
 								In the term $(f : \tau_1) \backslash (x : \tau_2) \backslash f \; x$, the variable names $f$ and $x$ are bound in the expression $f \; x$
 							</div>
 							<div class="note">
-								Types of bound variables can be indeferred and left out of the expression
+								Types of bound variables can be inferred and left out of the expression
 							</div>
 							<div class="example">
 								The term $(f : \tau_1) \backslash (x : \tau_2) \backslash f \; x$ can be rewritten as $f \backslash x \backslash f \; x$
@@ -750,7 +750,7 @@
 							A formula we would like to prove, assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$
 						</div>
 						<div class="example">
-							$\exists$ <span class="code">M \ length (cons 1 (cons 2 (cons 3 nil))) M.</span>
+							<span class="code">sigma M \ length (cons 1 (cons 2 (cons 3 nil))) M.</span>
 						</div>
 						<div class="todo">
 							(see section 2.2)
@@ -1032,7 +1032,7 @@
 				<div class="note">
 					<span class="subtitle">Encoding horn clauses:</span>
 					<div class="note">
-						Declare propositional constants of type $o$ and write program clauses to specify relationships between the propositional variables. The implication of the object logic (FOHC) is encoded as implication in the ambient logic (FOHH). <span class="question-for-amy">Correct understanding and phrasing here?</span>
+						Declare propositional constants of type $o$ and write program clauses to specify relationships between the propositional variables. The implication of the object logic (FOHC) is encoded as implication in the ambient logic (FOHH).
 					</div>
 					<div class="note">
 						Example from p. 78 of <a class="book-link" href="https://sites.google.com/site/proghol/">PwHOL</a>.
@@ -1270,7 +1270,7 @@
 						</table>
 					</div>
 					<div class="note">
-						Example query: $\exists$ <span class="code">L \ sublist flagged (cons v (cons w (cons x (cons y (cons z nil))))) L</span>
+						Example goal: <span class="code">sigma L \ sublist flagged (cons v (cons w (cons x (cons y (cons z nil))))) L</span>
 					</div>
 					<div class="note">
 						Answer set substitution: <span class="code">L = cons x (cons y (cons z nil))</span>
@@ -1371,7 +1371,7 @@
 						</table>
 					</div>
 					<div class="note">
-						Example goal: $\exists$ <span class="code">T \ tp_pred (fun (f \ (fun (x \ (app f x))))) T</span>
+						Example goal: <span class="code">sigma T \ tp_pred (fun (f \ (fun (x \ (app f x))))) T</span>
 					</div>
 					<div class="note">
 						Answer set substitution: <span class="code">T = arr (arr T1 T2) (arr T1 T2)</span>
