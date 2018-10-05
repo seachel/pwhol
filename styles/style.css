@@ -276,17 +276,26 @@ div.rules
   justify-content: center;
 }
 
-
-/* Keep below? */
-
-
-.tree-symbols
+.stack
 {
-	padding: 10px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.node-row
+{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
+
+.node-row i
+{
+	margin: 10px;
+}
+
+/* Keep below? */
 
 .tree-branch
 {
@@ -294,6 +303,7 @@ div.rules
 	flex-direction: column;
 	align-items: center;
 }
+
 
 .feature
 {
