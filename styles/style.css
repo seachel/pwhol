@@ -55,12 +55,24 @@ font-family: 'Lobster Two', cursive;
 	margin: 10px 20px;
 }
 
+.example
+{
+	outline: 2px dashed black;
+	padding: 15px;
+	margin: 30px auto;
+	max-width: 75%;
+}
+
 .children-horizontal
 {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 }
+
+/******************************
+*  TOP-LEVEL STRUCTURE
+******************************/
 
 .frame
 {
@@ -131,6 +143,10 @@ font-family: 'Lobster Two', cursive;
 	padding-bottom: 30px;
 }
 
+/**********
+*  TITLES
+**********/
+
 .top-title
 {
 	font-size: 50px;
@@ -157,6 +173,11 @@ font-family: 'Lobster Two', cursive;
 {
 	font-size: 24px;
 }
+
+
+/**********
+*  MENU
+**********/
 
 .menu
 {
@@ -185,6 +206,11 @@ font-family: 'Lobster Two', cursive;
 	font-family: 'Slabo 27px', serif;
 	color: white;
 }
+
+
+/********************
+*  RULES
+*********************/
 
 div.rules
 {
@@ -267,18 +293,7 @@ div.rules
 	padding: 5px;
 }
 
-.hilight
-{
-	background: purple;
-}
 
-.example
-{
-	outline: 2px dashed black;
-	padding: 15px;
-	margin: 30px auto;
-	max-width: 75%;
-}
 
 .scroll
 {
