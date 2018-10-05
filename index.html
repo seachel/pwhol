@@ -1130,109 +1130,192 @@
 						Proof of <span class="code">r => s</span>:
 					</div>
 					<div class="center-flex">
-						<div class="rule-container rule-root">
-							<div class="rule-body">
-								<div class="rule-premises">
-									<div class="rule-container">
-										<div class="rule-body">
-											<div class="rule-premises">
-												<div class="rule-container rule_backchain">
-													<div class="rule-body">
-														<div class="rule-premises">
-															<div class="rule-container">
-																<div class="rule-body">
-																	<div class="rule-premises">
-																		<div class="rule-container rule_backchain">
-																			<div class="rule-body">
-																				<div class="rule-premises">
-																					
-																				</div>
-																				<div class="rule-conclusion">
-																					$\Sigma ; \mathcal{P}, r \overset{r}{\longrightarrow} r$
-																				</div>
-																			</div>
-																			<div class="rule-name">
-																				initial
-																			</div>
+
+						<div class="rule-container proof-tree-mod">
+							<div class="rule-top">
+								<div class="rule-text-left rule-text">
+									
+								</div>
+								<div class="rule-top-center">
+									<div class="premise-container">
+						  				<div class="premise">
+											
+											<div class="rule-container">
+												<div class="rule-top">
+													<div class="rule-text-left rule-text">
+														{$(r \wedge q) \supset s \in \mathcal{P}$}
+													</div>
+													<div class="rule-top-center">
+														<div class="premise-container">
+											  				<div class="premise">
+
+																<div class="rule-container">
+																	<div class="rule-top">
+																		<div class="rule-text-left rule-text">
+																			
 																		</div>
-																	</div>
-																	<div class="rule-conclusion">
-																		$\Sigma ; \mathcal{P} , r \longrightarrow r$
-																	</div>
-																</div>											
-																<div class="rule-name">
-																	decide
-																</div>
-															</div>
-															<div class="rule-container">
-																<div class="rule-body">
-																	<div class="rule-premises">
-																		<div class="rule-container rule_backchain">
-																			<div class="rule-body">
-																				<div class="rule-premises">
-																					<div class="rule-container rule_backchain">
-																						<div class="rule-body">
-																							<div class="rule-premises">
+																		<div class="rule-top-center">
+																			<div class="premise-container">
+																  				<div class="premise">
+
+																					<div class="rule-container">
+																						<div class="rule-top">
+																							<div class="rule-text-left rule-text">
 																								
 																							</div>
-																							<div class="rule-conclusion">
-																								$\Sigma ; \mathcal{P} , r \overset{r}{\longrightarrow} r$
+																							<div class="rule-top-center">
+																								<div class="premise-container">
+																					  				<div class="premise">
+
+																										<div class="rule-container">
+																											<div class="rule-top">
+																												<div class="rule-text-left rule-text">
+																													
+																												</div>
+																												<div class="rule-top-center">
+																													<div class="premise-container">
+																										  				
+																										  			</div>
+																													<div class="divider">
+																													</div>
+																												</div>
+																												<div class="rule-text-right rule-text">
+																													initial
+																												</div>
+																											</div>
+																											<div class="rule-bottom">
+																												$\Sigma ; \mathcal{P} , r \overset{r}{\longrightarrow} r$
+																											</div>
+																										</div>
+
+																									</div>
+																					  			</div>
+																								<div class="divider">
+																								</div>
+																							</div>
+																							<div class="rule-text-right rule-text">
+																								decide
 																							</div>
 																						</div>
-																						<div class="rule-name">
-																							initial
+																						<div class="rule-bottom">
+																							$\Sigma ; \mathcal{P} , r \longrightarrow r$
 																						</div>
 																					</div>
+
 																				</div>
-																				<div class="rule-conclusion">
-																					$\Sigma ; \mathcal{P} , r \overset{r \supset q}{\longrightarrow} q$
+																				<div class="premise">
+
+																					<div class="rule-container">
+																						<div class="rule-top">
+																							<div class="rule-text-left rule-text">
+																								
+																							</div>
+																							<div class="rule-top-center">
+																								<div class="premise-container">
+																					  				<div class="premise">
+
+																										<div class="rule-container">
+																											<div class="rule-top">
+																												<div class="rule-text-left rule-text">
+																													
+																												</div>
+																												<div class="rule-top-center">
+																													<div class="premise-container">
+																										  				<div class="premise">
+
+																															<div class="rule-container">
+																																<div class="rule-top">
+																																	<div class="rule-text-left rule-text">
+																																		
+																																	</div>
+																																	<div class="rule-top-center">
+																																		<div class="premise-container">
+																															  				
+																															  			</div>
+																																		<div class="divider">
+																																		</div>
+																																	</div>
+																																	<div class="rule-text-right rule-text">
+																																		initial
+																																	</div>
+																																</div>
+																																<div class="rule-bottom">
+																																	$\Sigma ; \mathcal{P} , r \overset{r}{\longrightarrow} r$
+																																</div>
+																															</div>
+
+																														</div>
+																										  			</div>
+																													<div class="divider">
+																													</div>
+																												</div>
+																												<div class="rule-text-right rule-text">
+																													backchain
+																												</div>
+																											</div>
+																											<div class="rule-bottom">
+																												$\Sigma ; \mathcal{P} , r \overset{r \supset q}{\longrightarrow} q$
+																											</div>
+																										</div>
+
+																									</div>
+																					  			</div>
+																								<div class="divider">
+																								</div>
+																							</div>
+																							<div class="rule-text-right rule-text">
+																								decide
+																							</div>
+																						</div>
+																						<div class="rule-bottom">
+																							$\Sigma ; \mathcal{P} , r \longrightarrow q$
+																						</div>
+																					</div>
+
 																				</div>
-																			</div>
-																			<div class="rule-name">
-																				backchain
+																  			</div>
+																			<div class="divider">
 																			</div>
 																		</div>
+																		<div class="rule-text-right rule-text">
+																			backchain
+																		</div>
 																	</div>
-																	<div class="rule-conclusion">
-																		$\Sigma ; \mathcal{P} , r \longrightarrow q$
+																	<div class="rule-bottom">
+																		$\Sigma ; \mathcal{P} , r \overset{(r \wedge q) \supset s}{\longrightarrow} s$
 																	</div>
 																</div>
-																<div class="rule-name">
-																	decide
-																</div>
+
 															</div>
-														</div>
-														<div class="rule-conclusion">
-															$\Sigma ; \mathcal{P} , r \overset{(r \wedge q) \supset s}{\longrightarrow} s$
+											  			</div>
+														<div class="divider">
 														</div>
 													</div>
-													<div class="rule-name">
-														backchain
+													<div class="rule-text-right rule-text">
+														decide
 													</div>
 												</div>
+												<div class="rule-bottom">
+													$\Sigma ; \mathcal{P} , r \longrightarrow s$
+												</div>
 											</div>
-											<div class="rule-conclusion">
-												$\Sigma ; \mathcal{P} , r \longrightarrow s$
-											</div>
+
 										</div>
-										<div class="rule-name">
-											decide
-										</div>	
+						  			</div>
+									<div class="divider">
 									</div>
 								</div>
-								<div class="rule-conclusion">
-									$\Sigma; \mathcal{P} \longrightarrow r \supset s$
-								</div>	
+								<div class="rule-text-right rule-text">
+									$\supset_R$
+								</div>
 							</div>
-							<div class="rule-name">
-								$\supset_R$
+							<div class="rule-bottom">
+								$\Sigma ; \mathcal{P} \longrightarrow r \supset s$
 							</div>
 						</div>
-					</div>
 					
 				</div>
 				<div class="todo">some proof explanation</div>
-				<div class="todo">Reference example from book</div>
 			</div>
 
 			<div class="hohc examples frame hidden">

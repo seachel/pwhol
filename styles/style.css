@@ -238,8 +238,9 @@ div.rules
 
 .rule-text
 {
-	min-width: 100px;
-	margin: 0 10px;
+	min-width: 60px;
+	font-size: 20px;
+	margin-left: 0 10px;
 }
 
 .rule-top-center {}
@@ -260,8 +261,8 @@ div.rules
 .divider
 {
 	min-width: 200px;
-	outline: 1px solid black;
-	margin-bottom: 15px; /* best bottom margin will depend on the font size */
+	border-top: 1px solid black;
+	margin-bottom: 10px; /* best bottom margin will depend on the font size */
 	margin-top: 5px;
 }
 
@@ -274,6 +275,7 @@ div.rules
 {
   display: flex;
   justify-content: center;
+  padding-bottom: 5px;
 }
 
 .stack
@@ -295,6 +297,10 @@ div.rules
 	margin: 10px;
 }
 
+.proof-tree-mod .rule-text
+{
+	min-width: 0;
+}
 /* Keep below? */
 
 .tree-branch
