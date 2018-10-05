@@ -208,6 +208,8 @@ font-family: 'Lobster Two', cursive;
 }
 
 
+
+
 /********************
 *  RULES
 *********************/
@@ -226,51 +228,57 @@ div.rules
 	margin: 30px;
 }
 
-.rule-container
+
+.rule-top
 {
-	display: flex;
-	align-items: flex-end;
-	padding: 0px 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-.rule-body
+.rule-text
 {
-	display: inline-block;
+	min-width: 100px;
+	margin: 0 10px;
 }
 
-.rule-premises
+.rule-top-center {}
+
+.premise-container
 {
-	display: flex;
-	justify-content: space-between;
-	min-height: 20px;
-	padding-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.rule-premises > div
+.premise
 {
-	padding: 0 15px;
-	/*align-self: center;*/
+	margin: 0 auto;
+	padding: 0 20px; /* set minumum spacing between premises when no subtree */
 }
 
-.rule-conclusion
+.divider
 {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	border-top: 1px solid black;
-	padding: 10px 0;
+	min-width: 200px;
+	outline: 1px solid black;
+	margin-bottom: 15px; /* best bottom margin will depend on the font size */
+	margin-top: 5px;
 }
 
-.rule-name
+.rule-text-right
 {
-	padding-bottom: 35px;
+  display: inline;
 }
 
-.rule_backchain > .rule-name
+.rule-bottom
 {
-	padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
 }
+
+
+/* Keep below? */
+
 
 .tree-symbols
 {
