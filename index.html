@@ -899,27 +899,53 @@
 					When the top-level symbol of the goal is a logical constant, use the appropriate right-rule
 				</div>
 				<div class="example">
-					<div class="rule-container rule-root">
-						<div class="rule-body">
-							<div class="rule-premises">
-								<div class="tree-branch">
-									<div>$\vdots$</div>
-									<div>$\Sigma ; \mathcal{P} \longrightarrow B_1$</div>
-								</div>
-								<div class="tree-branch">
-									<div>$\vdots$</div>
-									<div>$\Sigma ; \mathcal{P} \longrightarrow B_2$</div>
+
+					<div class="rule-container">
+						<div class="rule-top">
+							<div class="rule-text-left rule-text">
+								
+							</div>
+							<div class="rule-top-center">
+								<div class="premise-container">
+					  				<div class="premise">
+					  					<div class="stack">
+					  						<div>
+												$\vdots$
+											</div>
+					  						<div>
+												$\Sigma ; \mathcal{P} \longrightarrow B_1$
+											</div>
+										</div>
+									</div><div class="premise">
+										<div class="stack">
+											<div>
+												$\vdots$
+											</div>
+											<div>
+												$\Sigma ; \mathcal{P} \longrightarrow B_2$
+											</div>
+										</div>
+									</div>
+					  			</div>
+								<div class="divider">
 								</div>
 							</div>
-							<div class="rule-conclusion">
-								<div>$\Sigma ; \mathcal{P} \longrightarrow B_1 \wedge B_2$</div>
+							<div class="rule-text-right rule-text">
+								$\wedge_R$
 							</div>
-							<div class="center-flex">$\vdots$</div>
 						</div>
-						<div class="rule-name">
-							$\wedge_R$
+						<div class="rule-bottom">
+							<div class="stack">
+								<div>
+									$\Sigma ; \mathcal{P} \longrightarrow B_1 \wedge B_2$
+								</div>
+								<div>
+									$\vdots$
+								</div>
+							</div>
 						</div>
 					</div>
+
 				</div>
 				<div class="goal-reduction note">
 					During goal reduction, search process is independent of the context and program
