@@ -986,12 +986,16 @@
 					<div class="note">
 						Let the program be
 						<div class="center-flex note">
-							$\mathcal{P} =$ { <span class="code">length nil 0, length (cons H T) (1 + N) :- length T N}</span>,
+							$\mathcal{P} =$ { <span class="code">length nil 0, length (cons H T) (1 + N) :- length T N</span>},
 						</div>
 						the set of predicates defining length of a list.
 					</div>
 					<div class="note goal-reduction">
-						Our initial goal is <span class="code">sigma M \ length (cons 1 (cons 2 (cons 3 nil))) M</span>. We are in a goal-reduction phase.
+						Our initial goal is
+						<div class="center-flex note">
+							<span class="code">sigma M \ length (cons 1 (cons 2 (cons 3 nil))) M</span>. 
+						</div>
+						We are in a goal-reduction phase.
 					</div>
 					<div class="note goal-reduction">
 						First use $\exists_R$ to reduce the goal and get the new state
@@ -1006,8 +1010,8 @@
 							<span class="code">length (cons H T) (1 + N) :- length T N</span>,
 						</div>
 						which we will call $P_2$. The new state is
-						<div class="center-flex note">
-							$\Sigma ; \mathcal{P} \overset{P_2}{\longrightarrow}$ <span class="code">length (cons 1 (cons 2 (cons 3 nil))) t</span>
+						<div class="center-flex note node-row">
+							$\Sigma ; \mathcal{P} \overset{P_2}{\longrightarrow}$ <span class="code flex-end">length (cons 1 (cons 2 (cons 3 nil))) t</span>
 						</div>
 					</div>
 					<div class="note goal reduction">

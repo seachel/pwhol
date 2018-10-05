@@ -302,21 +302,7 @@ div.rules
 {
 	min-width: 0;
 }
-/* Keep below? */
 
-.tree-branch
-{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-
-.feature
-{
-	border: 1px solid purple;
-	padding: 5px;
-}
 
 
 
@@ -369,6 +355,12 @@ li
 	margin: 10px;
 }
 
+.feature
+{
+	border: 1px solid purple;
+	padding: 5px;
+}
+
 .pad-bottom
 {
 	padding-bottom: 270px;
@@ -380,6 +372,10 @@ li
 	justify-content: center;
 }
 
+.flex-end
+{
+	align-self: flex-end;
+}
 
 /*
 Update before presentation (make sure both hidden)
