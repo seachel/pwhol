@@ -241,6 +241,7 @@ div.rules
 	min-width: 60px;
 	font-size: 20px;
 	margin-left: 0 10px;
+	font-style: oblique;
 }
 
 .rule-top-center {}

@@ -825,14 +825,22 @@
 						<ul class="note-list">
 							<li>Implication in goals allows program modification during proof search via $\supset_R$ rule</li>
 						</ul>
-						<div class="todo">example</div>
+						<div class="example">
+							<span class="subtitle subsub">Modular programming example:</span> Restricted scope for auxillary predicates
+							<div class="note">
+								<span class="todo-urgent">Add example using auxillary rev predicate, or use some other recursive function?</span>
+							</div>
+						</div>
+						<div class="node">
+							See FOHH in "Examples" for an example using hypothetical reasoning
+						</div>
 					</div>
 					<div class="subtitle">Generic reasoning:</div>
 					<div class="note">
 						<ul class="note-list">
 							<li>Universal quantification in goals allows context modification during proof search via $\forall_R$ rule</li>
 						</ul>
-						<div class="todo">example</div>
+						<div class="node">See HOHH in "Examples" for an example using generic reasoning</div>
 					</div>
 					<div class="presentation-note">Show appropriate rule when discussed</div>
 				</div>
@@ -1143,7 +1151,7 @@
 											<div class="rule-container">
 												<div class="rule-top">
 													<div class="rule-text-left rule-text">
-														{$(r \wedge q) \supset s \in \mathcal{P}$}
+														$(r \wedge q) \supset s \in \mathcal{P}$
 													</div>
 													<div class="rule-top-center">
 														<div class="premise-container">
@@ -1161,7 +1169,7 @@
 																					<div class="rule-container">
 																						<div class="rule-top">
 																							<div class="rule-text-left rule-text">
-																								
+																								$r \in \mathcal{P}$	
 																							</div>
 																							<div class="rule-top-center">
 																								<div class="premise-container">
@@ -1208,7 +1216,7 @@
 																					<div class="rule-container">
 																						<div class="rule-top">
 																							<div class="rule-text-left rule-text">
-																								
+																								$r \in \mathcal{P}$	
 																							</div>
 																							<div class="rule-top-center">
 																								<div class="premise-container">
@@ -1688,6 +1696,28 @@
 								$\Sigma ; \mathcal{P} \longrightarrow \exists_\tau x \; B$
 							</div>
 						</div>
+						<div class="rule-container rule-root">
+							<div class="rule-top">
+								<div class="rule-text-left rule-text">
+									{$D \in \mathcal{P}$}
+								</div>
+								<div class="rule-top-center">
+									<div class="premise-container">
+						  				<div class="premise">
+											$\Sigma ; \mathcal{P} \overset{D}{\longrightarrow} A$
+										</div>
+						  			</div>
+									<div class="divider">
+									</div>
+								</div>
+								<div class="rule-text-right rule-text">
+									decide
+								</div>
+							</div>
+							<div class="rule-bottom">
+								$\Sigma ; \mathcal{P} \longrightarrow A$
+							</div>
+						</div>
 
 					</div>
 
@@ -1695,77 +1725,54 @@
 						Left rules:
 					</div>
 					<div class="rules left-rules">
-
-					<div class="rule-container rule-root">
-						<div class="rule-top">
-							<div class="rule-text-left rule-text">
-								{$D \in \mathcal{P}$}
-							</div>
-							<div class="rule-top-center">
-								<div class="premise-container">
-					  				<div class="premise">
-										$\Sigma ; \mathcal{P} \overset{D}{\longrightarrow} A$
+							
+						<div class="rule-container rule-root">
+							<div class="rule-top">
+								<div class="rule-text-left rule-text">
+									
+								</div>
+								<div class="rule-top-center">
+									<div class="premise-container">
+						  				
+						  			</div>
+									<div class="divider">
 									</div>
-					  			</div>
-								<div class="divider">
+								</div>
+								<div class="rule-text-right rule-text">
+									initial
 								</div>
 							</div>
-							<div class="rule-text-right rule-text">
-								decide
+							<div class="rule-bottom">
+								$\Sigma ; \mathcal{P} \overset{A}{\longrightarrow} A$
 							</div>
 						</div>
-						<div class="rule-bottom">
-							$\Sigma ; \mathcal{P} \longrightarrow A$
-						</div>
-					</div>
-						
-					<div class="rule-container rule-root">
-						<div class="rule-top">
-							<div class="rule-text-left rule-text">
-								
-							</div>
-							<div class="rule-top-center">
-								<div class="premise-container">
-					  				
-					  			</div>
-								<div class="divider">
-								</div>
-							</div>
-							<div class="rule-text-right rule-text">
-								initial
-							</div>
-						</div>
-						<div class="rule-bottom">
-							$\Sigma ; \mathcal{P} \overset{A}{\longrightarrow} A$
-						</div>
-					</div>
 
-					<div class="rule-container rule-root">
-						<div class="rule-top">
-							<div class="rule-text-left rule-text">
-								
-							</div>
-							<div class="rule-top-center">
-								<div class="premise-container">
-					  				<div class="premise">
-										$\Sigma ; \mathcal{P} \longrightarrow A_1$
-									</div><div class="premise">
-										$\dots$
-									</div><div class="premise">
-										$\Sigma ; \mathcal{P} \longrightarrow A_n$
+						<div class="rule-container rule-root">
+							<div class="rule-top">
+								<div class="rule-text-left rule-text">
+									
+								</div>
+								<div class="rule-top-center">
+									<div class="premise-container">
+						  				<div class="premise">
+											$\Sigma ; \mathcal{P} \longrightarrow A_1$
+										</div><div class="premise">
+											$\dots$
+										</div><div class="premise">
+											$\Sigma ; \mathcal{P} \longrightarrow A_n$
+										</div>
+						  			</div>
+									<div class="divider">
 									</div>
-					  			</div>
-								<div class="divider">
+								</div>
+								<div class="rule-text-right rule-text">
+									backchain
 								</div>
 							</div>
-							<div class="rule-text-right rule-text">
-								backchain
+							<div class="rule-bottom">
+								$\Sigma ; \mathcal{P} \overset{\forall_{\tau_1} x_1 ... \forall_{\tau_m} x_m (A_1 \wedge \dots \wedge A_n \supset A_0)}{\longrightarrow} A$
 							</div>
 						</div>
-						<div class="rule-bottom">
-							$\Sigma ; \mathcal{P} \overset{\forall_{\tau_1} x_1 ... \forall_{\tau_m} x_m (A_1 \wedge \dots \wedge A_n \supset A_0)}{\longrightarrow} A$
-						</div>
-					</div>
 
 					</div>
 				</div>
