@@ -27,6 +27,10 @@ font-family: 'Slabo 27px', serif;
 font-family: 'Lobster Two', cursive;
 *********************/
 
+@font-face {
+font-family: "Computer Modern";
+src: url('../fonts/cmuntb-webfont.woff');
+}
 
 /*********************
 * Dev styles
@@ -319,7 +323,8 @@ div.rules
 
 .code
 {
-	font-family: "Courier New";
+	font-family: "Computer Modern";
+	font-size: 30px;
 }
 
 .space-row
