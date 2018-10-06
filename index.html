@@ -972,56 +972,71 @@
 					</ol>
 				</div>
 
-				<div class="todo-urgent">Add proof tree</div>
-
-				<div class="note">Proof of <span class="code">sigma M \ length (cons 1 (cons 2 (cons 3 nil))) M</span>:</div>
-
 				<div class="example">
 					<div class="note">
-						Let the context $\Sigma$ be augmented with
-						<div class="code center-flex note">nil : list A</div>
-						<div class="center-flex">and</div>
-						<div class="code center-flex note">cons : A -> lis A -> list A</div>
-					</div>
-					<div class="note">
-						Let the program be
-						<div class="center-flex note">
-							$\mathcal{P} =$ { <span class="code">length nil 0, length (cons H T) (1 + N) :- length T N</span>},
+						<span class="subtitle subsub">Proof of</span> <span class="code">sigma M \ length (cons 1 (cons 2 (cons 3 nil))) M</span>:
+						<div class="note">
+							Let $P_1 =$ <span class="code">length nil 0</span>.
 						</div>
-						the set of predicates defining length of a list.
-					</div>
-					<div class="note goal-reduction">
-						Our initial goal is
-						<div class="center-flex note">
-							<span class="code">sigma M \ length (cons 1 (cons 2 (cons 3 nil))) M</span>. 
+						<div class="note">
+							Let $P_2 = \forall \, \mathtt{H} \; \forall \, \mathtt{T} \; \forall \, \mathtt{N} \; \backslash \, \mathtt{length \; (cons \; H \; T) \; (1 + N) :- length \; T \; N}$.
 						</div>
-						We are in a goal-reduction phase.
-					</div>
-					<div class="note goal-reduction">
-						First use $\exists_R$ to reduce the goal and get the new state
-						<div class="center-flex note">
-							$\Sigma ; \mathcal{P} \longrightarrow$ <span class="code">length (cons 1 (cons 2 (cons 3 nil))) t</span>
-						</div>
-						We have a side condition that <span class="code">M = t</span>. 
-					</div>
-					<div class="note backchain">
-						The new goal is atomic, so backchain choosing the second program clause,
-						<div class="center-flex note">
-							<span class="code">length (cons H T) (1 + N) :- length T N</span>,
-						</div>
-						which we will call $P_2$. The new state is
-						<div class="center-flex note node-row">
-							$\Sigma ; \mathcal{P} \overset{P_2}{\longrightarrow}$ <span class="code flex-end">length (cons 1 (cons 2 (cons 3 nil))) t</span>
+						<div class="note">
+							Let $\Sigma = \{ P_1 , P_2 \}$.
 						</div>
 					</div>
-					<div class="note goal reduction">
-						Keeping track of the side condition <span class="code">t = 1 + N</span>, use the <span class="rule-text">backchain</span> rule to get the new state
-						<div class="center-flex note">
-							$\Sigma ; \mathcal{P} \longrightarrow$ <span class="code">length (cons 2 (cons 3 nil)) N</span>
-						</div>
+
+					<div class="center-flex section">
+						<img src="img/logicprogramming_example.png" alt="Proof tree for example"/>
 					</div>
-					<div class="note">
-						Backchain two more times to get the substitution <span class="code">M = 3</span> as the solution to the query, once the system of equations of side conditions is solved.
+
+					<div class="outline">
+						<div class="note">
+							Let the context $\Sigma$ be augmented with
+							<div class="code center-flex note">nil : list A</div>
+							<div class="center-flex">and</div>
+							<div class="code center-flex note">cons : A -> lis A -> list A</div>
+						</div>
+						<div class="note">
+							Let the program be
+							<div class="center-flex note">
+								$\mathcal{P} =$ { <span class="code">length nil 0, length (cons H T) (1 + N) :- length T N</span>},
+							</div>
+							the set of predicates defining length of a list.
+						</div>
+						<div class="note goal-reduction">
+							Our initial goal is
+							<div class="center-flex note">
+								<span class="code">sigma M \ length (cons 1 (cons 2 (cons 3 nil))) M</span>. 
+							</div>
+							We are in a goal-reduction phase.
+						</div>
+						<div class="note goal-reduction">
+							First use $\exists_R$ to reduce the goal and get the new state
+							<div class="center-flex note">
+								$\Sigma ; \mathcal{P} \longrightarrow$ <span class="code">length (cons 1 (cons 2 (cons 3 nil))) t</span>
+							</div>
+							We have a side condition that <span class="code">M = t</span>. 
+						</div>
+						<div class="note backchain">
+							The new goal is atomic, so backchain choosing the second program clause,
+							<div class="center-flex note">
+								<span class="code">length (cons H T) (1 + N) :- length T N</span>,
+							</div>
+							which we will call $P_2$. The new state is
+							<div class="center-flex note node-row">
+								$\Sigma ; \mathcal{P} \overset{P_2}{\longrightarrow}$ <span class="code flex-end">length (cons 1 (cons 2 (cons 3 nil))) t</span>
+							</div>
+						</div>
+						<div class="note goal reduction">
+							Keeping track of the side condition <span class="code">t = 1 + N</span>, use the <span class="rule-text">backchain</span> rule to get the new state
+							<div class="center-flex note">
+								$\Sigma ; \mathcal{P} \longrightarrow$ <span class="code">length (cons 2 (cons 3 nil)) N</span>
+							</div>
+						</div>
+						<div class="note">
+							Backchain two more times to get the substitution <span class="code">M = 3</span> as the solution to the query, once the system of equations of side conditions is solved.
+						</div>
 					</div>
 				</div>
 
