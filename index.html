@@ -6,7 +6,7 @@
 		<title>Learn Lambda Prolog!</title>
 		<link href="styles/style.css" rel="stylesheet" type="text/css">
 
-		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="scripts/jquery.js"></script>
 
 		<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
@@ -25,13 +25,18 @@
 
 		<script type="text/x-mathjax-config">
 			MathJax.Hub.Config({
+		    extensions: ["tex2jax.js"],
+		    jax: ["input/TeX","output/HTML-CSS"],
 				tex2jax: { inlineMath : [['$','$'], ['\\(','\\)']] },
 				"HTML-CSS" : { preferredFont : "STIX" }
 			});
 		</script>
 
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+		<!-- Remote MathJax -->
+		<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script> -->
 
+		<!-- Local MathJax -->
+		<script type="text/javascript" src='scripts/MathJax/MathJax.js' async></script>		
 
 		<script type="text/javascript">
 			function getUpdateElements()
@@ -979,7 +984,7 @@
 							Let $P_1 =$ <span class="code">length nil 0</span>.
 						</div>
 						<div class="note">
-							Let $P_2 = \forall \, \mathtt{H} \; \forall \, \mathtt{T} \; \forall \, \mathtt{N} \; \backslash \, \mathtt{length \; (cons \; H \; T) \; (1 + N) :- length \; T \; N}$.
+							Let $P_2 = \forall \, \mathtt{H} \; \forall \, \mathtt{T} \; \forall \, \mathtt{N}$ <span class="code">\ length (cons H T) (1 + N) :- length T N}</span>.
 						</div>
 						<div class="note">
 							Let $\mathcal{P} = \{ P_1 , P_2 \}$.
