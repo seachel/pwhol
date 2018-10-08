@@ -982,7 +982,7 @@
 							Let $P_2 = \forall \, \mathtt{H} \; \forall \, \mathtt{T} \; \forall \, \mathtt{N} \; \backslash \, \mathtt{length \; (cons \; H \; T) \; (1 + N) :- length \; T \; N}$.
 						</div>
 						<div class="note">
-							Let $\Sigma = \{ P_1 , P_2 \}$.
+							Let $\mathcal{P} = \{ P_1 , P_2 \}$.
 						</div>
 					</div>
 
@@ -1527,7 +1527,7 @@
 							<tr class="space-row"></tr>
 							<tr>
 								<td>type</td>
-								<td>tp_pred</td>
+								<td>istp</td>
 								<td>expr -> tp -> o.</td>
 							</tr>
 							<tr class="space-row"></tr>
@@ -1538,23 +1538,42 @@
 							</tr>
 							<tr>
 								<td colspan="3">
-									tp_pred (app E1 E2) T1 :- tp_pred E1 (arr T2 T1) & tp_pred E2 T2.
+									istp (app E1 E2) T1 :- istp E1 (arr T2 T1) & istp E2 T2.
 								</td>
 							</tr>
 							<tr>
 								<td colspan="3">
-									tp_pred (fun (x \ E x)) (arr T1 T2) :- pi x \ (tp_pred x T1 => tp_pred (E x) T2).
+									istp (fun (x \ E x)) (arr T1 T2) :- pi x \ (istp x T1 => istp (E x) T2).
 								</td>
 							</tr>
 						</table>
 					</div>
 					<div class="note">
-						Example goal: <span class="code">sigma T \ tp_pred (fun (f \ (fun (x \ (app f x))))) T</span>
+						Example goal: <span class="code">sigma T \ istp (fun (f \ (fun (x \ (app f x))))) T</span>
 					</div>
 					<div class="note">
 						Answer set substitution: <span class="code">T = arr (arr T1 T2) (arr T1 T2)</span>
 					</div>
 					<div class="note">We find that the Church numeral for 1, $\lambda f \lambda x (f \; x)$, has type $(T_1 \rightarrow T_2) \rightarrow T_1 \rightarrow T_2$</div>
+
+					<div class="example">
+						Proof of <span class="code">sigma T \ istp (fun (f \ (fun (x \ (app f x))))) T</span>:
+						<div class="note">
+							Let $P_1 =$ <span class="code">istp (app E1 E2) T1 :- istp E1 (arr T2 T1) & istp E2 T2</span>.
+						</div>
+						<div class="note">
+							Let $P_2 =$ <span class="code">istp (fun (x \ E x)) (arr T1 T2) :- pi x \ (istp x T1 => istp (E x) T2)</span>.
+						</div>
+						<div class="note">
+							Let $P_3 =$ <span class="code">istp f (arr t_1 t_2)</span>
+						</div>
+						<div class="note">
+							Let $\mathcal{P} = \{ P_1 , P_2 , P_3\}$
+						</div>
+						<div class="center-flex section">
+							<img src="img/hohh_example.png" alt="Proof tree for hohh example"/>
+						</div>
+					</div>
 				</div>
 			</div>
 
