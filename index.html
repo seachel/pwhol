@@ -1047,6 +1047,25 @@
 				</div>
 				<div class="todo-urgent">Add to backchaining discussion and explain how the rule is used</div>
 
+				<div class="note">
+					All program clauses can be written in the form $\forall_{\tau_1} x_1 \dots \forall_{\tau_m} x_m ((A_1 \wedge \dots A_n) \supset A_0)$
+				</div>
+				<div class="note">
+					When our current goal is an atom that with substitutions for variables matches the consequent of a program clause,
+				</div>
+				<div class="example">
+					e.g. $\mathit{length} \; (\mathit{cons} \; 1 \; \mathit{nil}) \; 1$ is a goal that matches the consequent of clause $\forall \, \mathit{H} \; \forall \, \mathit{T} \; \forall \, \mathit{N} \; (\mathit{length} \; (\mathit{cons} \; H \; T) \; (1 + N) :- \; \mathit{length} \; T \; N)$ when $H = 1$, $T = \mathit{nil}$, and $N = 0$
+				</div>
+				<div class="note">
+					use the rule <span class="rule-name-inline">backchain</span> to change the proof state to a sequence of new states, each representing a premise of the previously focused formula
+				</div>
+				<div class="example">
+					From above, the new goal is $\mathit{length} \; nil \; 0$
+				</div>
+				<div>
+					
+				</div>
+
 				<div class="example">
 					<div class="note">
 						Proof of $\exists M \; \mathit{length} \; (\mathit{cons} \; 1 \; (\mathit{cons} \; 2 \; (\mathit{cons} \; 3 \; \mathit{nil}))) \; M$:
@@ -1791,7 +1810,7 @@
 						<div class="rule-container rule-root">
 							<div class="rule-top">
 								<div class="rule-text-left rule-text">
-									{$c$ fresh}
+									$c$ fresh
 								</div>
 								<div class="rule-top-center">
 									<div class="premise-container">
@@ -1838,7 +1857,7 @@
 						<div class="rule-container rule-root">
 							<div class="rule-top">
 								<div class="rule-text-left rule-text">
-									{$D \in \mathcal{P}$}
+									$D \in \mathcal{P}$
 								</div>
 								<div class="rule-top-center">
 									<div class="premise-container">
@@ -1889,16 +1908,16 @@
 						<div class="rule-container rule-root">
 							<div class="rule-top">
 								<div class="rule-text-left rule-text">
-									
+									$\theta$ substitution
 								</div>
 								<div class="rule-top-center">
 									<div class="premise-container">
 						  				<div class="premise">
-											$\Sigma ; \mathcal{P} \longrightarrow A_1$
+											$\Sigma ; \mathcal{P} \longrightarrow A_1 \, \theta$
 										</div><div class="premise">
 											$\dots$
 										</div><div class="premise">
-											$\Sigma ; \mathcal{P} \longrightarrow A_n$
+											$\Sigma ; \mathcal{P} \longrightarrow A_n \, \theta$
 										</div>
 						  			</div>
 									<div class="divider">
@@ -1909,7 +1928,7 @@
 								</div>
 							</div>
 							<div class="rule-bottom">
-								$\Sigma ; \mathcal{P} \overset{\forall_{\tau_1} x_1 ... \forall_{\tau_m} x_m (A_1 \wedge \dots \wedge A_n \supset A_0)}{\longrightarrow} A$
+								$\Sigma ; \mathcal{P} \overset{\forall_{\tau_1} x_1 ... \forall_{\tau_m} x_m (A_1 \wedge \dots \wedge A_n \supset A_0)}{\longrightarrow} A_0 \, \theta$
 							</div>
 						</div>
 
