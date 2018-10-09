@@ -1,0 +1,14 @@
+diff a/index.html b/index.html	(rejected hunks)
+@@ -836,6 +836,12 @@
+ 						<li>
+ 							Alternation between goals and program clauses using $\supset$
+ 						</li>
++						<li>
++							No implication in horn clause goals means the program is static (see $\supset_R$ rule)
++						</li>
++						<li>
++							No univeral quantification in hereditary Harrop goals means the context is static (see $\forall_R$ rule)
++						</li>
+ 					</ul>
+ 				</div>
+ 				<div class="section">
