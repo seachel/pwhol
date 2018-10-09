@@ -74,6 +74,11 @@ src: url('../fonts/cmuntb-webfont.woff');
 	justify-content: space-around;
 }
 
+.indent
+{
+	padding-left: 50px;
+}
+
 /******************************
 *  TOP-LEVEL STRUCTURE
 ******************************/

@@ -481,22 +481,34 @@
 							A <em>term</em> is typable according to the typing rules of the logic; it is either:
 							<ol>
 								<li>
-									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier (see rules $\forall_R$ and $\exists_R$)
+									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier
+									<div class="indent">
+										(see rules $\forall_R$ and $\exists_R$)
+									</div>
 								</li>
 								<li>
-									a constant from the signature with any type variables instantiated (e.g. <span class="code">nil</span> of type <span class="code">list int</span>)
+									a constant from the signature with any type variables instantiated
+									<div class="indent">
+										(e.g. <span class="code">nil</span> of type <span class="code">list int</span>)
+									</div>
 								</li>
 								<li>
-									an application of a fully-applied term symbol (e.g. <span class="code">cons 1 nil</span>)
+									an application of a fully-applied term symbol
+									<div class="indent">
+										(e.g. <span class="code">cons 1 nil</span>)
+									</div>
 								</li>
 								<li>
-									a lambda-abstraction of a term variable of appropriate type over a term (e.g. <span class="code">(x : list int) \ reverse (cons 1 (cons 2 nil)) x</span>)
+									a lambda-abstraction of a term variable of appropriate type over a term
+									<div class="indent">
+										(e.g. <span class="code">(x : list int) \ reverse (cons 1 (cons 2 nil)) x</span>)
+									</div>
 								</li>
 							</ul>
 						</div>
 
 						<div class="note">
-							The type $o$ is reserved for predicates and formulas and its use is restricted for different logics (see the description of Context in Setting and Logic Comparison) <span class="todo-urgent">Add links here?</span>
+							The type $o$ is reserved for predicates and formulas and its use is restricted for different logics (see the description of Context in Setting and Logic Comparison)
 						</div>
 						<div class="example">
 							Declare the predicate reverse as
@@ -817,6 +829,14 @@
 							$$
 						</div>
 					</div>
+					<ul class="note">
+						<li>
+							Hereditary Harrop goals include $D \supset G$ and $\forall_\tau x \, G$	
+						</li>
+						<li>
+							Alternation between goals and program clauses using $\supset$
+						</li>
+					</ul>
 				</div>
 				<div class="section">
 					<div class="subtitle">Modular programming and hypothetical reasoning:</div>
@@ -880,7 +900,7 @@
 				<div class="section">
 					<div class="subtitle">Type Expression Order</div>
 					<div class="note">
-						Type expressions constructed from the following grammar (restricted in first-order):
+						Recall: Type expressions constructed from the following grammar (restricted in first-order):
 						$$
 						\begin{align*}
 						\langle \textit{type expression} \rangle ::=& \; \langle \textit{type var} \rangle \\
@@ -906,20 +926,36 @@
 				<div class="section">
 					<div class="note">
 						<div class="subtitle">First-Order Restrictions:</div>
-						<div class="note"><span class="em em-warning"></span>Type expression order $\leq$ 1</div>
-						<div class="note-visual">
-							So no functional arguments
-							<div class="todo note">
-								e.g. 
+						<div class="note">
+							<span class="em em-warning"></span>Type expressions representing type of a term variable must have order $0$ and not be $o$
+						</div>
+						<div class="note">
+							<span class="em em-warning"></span>Type expression order $\leq$ 1
+							<div class="indent">
+								<div class="indent">
+									So no functional arguments
+									<div class="todo note">
+										e.g. 
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="presentation-note">No functional arguments</div>
-						<div class="note"><span class="em em-warning"></span>Type variable substitutions are expressions of order $0$ and not $o$</div>
-						<div class="presentation-note">Order of type expressions can be increased and?</div>
-						<div class="todo">explain what problem $o$ will cause, increasing order of type expressions?</div>
-						<div class="note"><span class="em em-warning"></span>Sort $o$ not used in type expressions except as target type (called a predicate symbol)</div>
-						<div class="todo">explain what problem this will cause</div>
-						<div class="note"><span class="em em-warning"></span>Type expressions representing type of a term variable must have order $0$ and not be $o$</div>
+						<div class="note">
+							<span class="em em-warning"></span>Sort $o$ not used in type expressions except as target type (called a predicate symbol)
+						</div>
+						<div class="note">
+							<span class="em em-warning"></span>Type variable substitutions are expressions of order $0$ and not $o$
+						</div>
+						<div class="presentation-note">
+							Order of type expressions can be increased and?
+						</div>
+						<div class="todo">
+							explain what problem $o$ will cause, increasing order of type expressions?
+						</div>
+						<div class="todo">
+							explain what problem this will cause
+						</div>
 					</div>
 				</div>
 			</div>
@@ -1004,17 +1040,17 @@
 						</li>
 					</ol>
 				</div>
+				<div class="todo-urgent">Add to backchaining discussion and explain how the rule is used</div>
 
 				<div class="example">
 					<div class="note">
-						<span class="subtitle subsub">Proof of</span> <span class="code">sigma M \ length (cons 1 (cons 2 (cons 3 nil))) M</span>:
+						Proof of $\exists M \; \mathit{length} \; (\mathit{cons} \; 1 \; (\mathit{cons} \; 2 \; (\mathit{cons} \; 3 \; \mathit{nil}))) \; M$:
 						<div class="note">
-							Let $P_1 =$ <span class="code">length nil 0</span>.
+							Let $P_1 = \mathit{length \; nil} \; 0$</span>.
 						</div>
 						<div class="note">
-							Let $P_2 = \forall \, \mathtt{H} \; \forall \, \mathtt{T} \; \forall \, \mathtt{N}$ <span class="code">\ length (cons H T) (1 + N) :- length T N}</span>.
+							Let $P_2 = \forall \, \mathit{H} \; \forall \, \mathit{T} \; \forall \, \mathit{N} \; (\mathit{length} \; (\mathit{cons} \; H \; T) \; (1 + N) :- \; \mathit{length} \; T \; N)$</span>.
 						</div>
-						<div class="todo">Change font above?</div>
 						<div class="note">
 							Let $\mathcal{P} = \{ P_1 , P_2 \}$.
 						</div>
