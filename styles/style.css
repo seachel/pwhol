@@ -74,9 +74,9 @@ src: url('../fonts/cmuntb-webfont.woff');
 	justify-content: space-around;
 }
 
-.indent
+.indent-note
 {
-	padding-left: 50px;
+	padding: 5px 0 5px 50px;
 }
 
 /******************************

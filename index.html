@@ -482,25 +482,25 @@
 							<ol>
 								<li>
 									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier
-									<div class="indent">
+									<div class="indent-note">
 										(see rules $\forall_R$ and $\exists_R$)
 									</div>
 								</li>
 								<li>
 									a constant from the signature with any type variables instantiated
-									<div class="indent">
+									<div class="indent-note">
 										(e.g. <span class="code">nil</span> of type <span class="code">list int</span>)
 									</div>
 								</li>
 								<li>
 									an application of a fully-applied term symbol
-									<div class="indent">
+									<div class="indent-note">
 										(e.g. <span class="code">cons 1 nil</span>)
 									</div>
 								</li>
 								<li>
 									a lambda-abstraction of a term variable of appropriate type over a term
-									<div class="indent">
+									<div class="indent-note">
 										(e.g. <span class="code">(x : list int) \ reverse (cons 1 (cons 2 nil)) x</span>)
 									</div>
 								</li>
@@ -928,33 +928,38 @@
 						<div class="subtitle">First-Order Restrictions:</div>
 						<div class="note">
 							<span class="em em-warning"></span>Type expressions representing type of a term variable must have order $0$ and not be $o$
+							<div class="indent-note">
+								<div class="indent-note">
+									No functions or formulas substituted for term variables in first-order
+								</div>
+							</div>
 						</div>
 						<div class="note">
 							<span class="em em-warning"></span>Type expression order $\leq$ 1
-							<div class="indent">
-								<div class="indent">
-									So no functional arguments
+							<div class="indent-note">
+								<div class="indent-note">
+									No functional arguments to value constructors and no function abstractions
 									<div class="todo note">
 										e.g. 
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="presentation-note">No functional arguments</div>
 						<div class="note">
 							<span class="em em-warning"></span>Sort $o$ not used in type expressions except as target type (called a predicate symbol)
+							<div class="indent-note">
+								<div class="indent-note">
+									Arguments to value constructors cannot be formulas
+								</div>
+							</div>
 						</div>
 						<div class="note">
 							<span class="em em-warning"></span>Type variable substitutions are expressions of order $0$ and not $o$
-						</div>
-						<div class="presentation-note">
-							Order of type expressions can be increased and?
-						</div>
-						<div class="todo">
-							explain what problem $o$ will cause, increasing order of type expressions?
-						</div>
-						<div class="todo">
-							explain what problem this will cause
+							<div class="indent-note">
+								<div class="indent-note">
+									Otherwise terms can have order $> 1$ or represent higher-order predicates
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
