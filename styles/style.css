@@ -316,6 +316,11 @@ div.rules
 	min-width: 0;
 }
 
+.rule-name-inline
+{
+	font-style: oblique;
+}
+
 
 
 

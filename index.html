@@ -803,8 +803,19 @@
 					<div class="subtitle">
 						Recall the sequent: $\Sigma ; \mathcal{P} \longrightarrow G$
 					</div>
-				</div>
-				<div class="section hc">
+					<div class="note">
+						<div class="indent-note">
+							Let $G$ be a syntactic variable representing goals
+						</div>
+						<div class="indent-note">
+							Let $D$ be a syntactic variable representing program clauses
+						</div>
+						<div class="indent-note">
+							Let $A$ be a syntactic variable representing atomic formulas (previously referred to as formulas)
+						</div>
+					</div>
+					<div class="todo">expand atom discussion? fully-applied constants declared in type declarations?</div>
+				
 					<div class="subtitle">Horn clause grammar:</div>
 					<div class="hc-grammar note">
 						<div>
@@ -816,8 +827,7 @@
 							$$
 						</div>
 					</div>
-				</div>
-				<div class="section hh">
+
 					<div class="subtitle">Hereditary Harrop grammar:</div>
 					<div class="hh-grammar note">
 						<div class="grammar">
@@ -837,8 +847,7 @@
 							Alternation between goals and program clauses using $\supset$
 						</li>
 					</ul>
-				</div>
-				<div class="section">
+
 					<div class="subtitle">Modular programming and hypothetical reasoning:</div>
 					<div class="note">
 						<ul class="note-list">
@@ -930,7 +939,7 @@
 							<span class="em em-warning"></span>Type expressions representing type of a term variable must have order $0$ and not be $o$
 							<div class="indent-note">
 								<div class="indent-note">
-									No functions or formulas substituted for term variables in first-order
+									No quantification over functions or formulas in first-order
 								</div>
 							</div>
 						</div>
@@ -946,7 +955,7 @@
 							</div>
 						</div>
 						<div class="note">
-							<span class="em em-warning"></span>Sort $o$ not used in type expressions except as target type (called a predicate symbol)
+							<span class="em em-warning"></span>Sort $o$ not used in type expressions except as target type
 							<div class="indent-note">
 								<div class="indent-note">
 									Arguments to value constructors cannot be formulas
@@ -1045,9 +1054,9 @@
 						</li>
 					</ol>
 				</div>
-				
+
 				<div class="note">
-					All program clauses can be written in the form $\forall_{\tau_1} x_1 \dots \forall_{\tau_m} x_m ((A_1 \wedge \dots A_n) \supset A_0)$
+					All program clauses can be written in the form $\forall_{\tau_1} x_1 \dots \forall_{\tau_m} x_m ((A_1 \wedge \dots \wedge A_n) \supset A_0)$
 				</div>
 				<div class="note">
 					When our current goal is an atom that with substitutions for variables matches the consequent of a program clause,
