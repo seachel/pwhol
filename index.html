@@ -198,24 +198,16 @@
 					</ul>
 				</div>
 				<div class="todo">MAIN TODO LIST:</div>
-				<div class="todo">More focus on substitutions as solutions to problems</div>
-				<div class="todo">Put title on its own "home" link?</div>
-				<div class="todo">Math font vs teletype in examples</div>
 				<div class="todo">Visual indication of which menu link is currently selected</div>
 				<div class="todo">Add discussion on typing rules? Unification?</div>
-				<div class="todo">choose consistent notation... code vs math</div>
-				<div class="todo">Add rule side-conditions (in notes, or in rules if time)</div>
 				<div class="todo">Area for conventions?</div>
 				<div class="todo">Future: unification</div>
 				<div class="todo">Future: module system?</div>
 				<div class="todo">Arrow through notes?</div>
 				<div class="todo">Wikipedia links?</div>
-				<div class="todo">Download MathJax</div>
 				<div class="todo">Talk about minimal vs intuitionistic logic?</div>
 				<div class="todo">Button to toggle visibility of presentation notes?</div>
-				<div class="todo">Deal with focused link class names (??)</div>
 				<div class="todo">Page of definitions and links throughout page</div>
-				<div class="todo">Separate rules into "Goal Reduction" and "Backchaining"</div>
 				<div class="todo">Page with instructions on using lambda-prolog, linux, etc</div>
 			</div>
 
@@ -361,7 +353,6 @@
 
 			<div class="language frame hidden">
 				<div class="title">The Type System</div>
-				<div class="todo">Better name?</div>
 
 				<div class="section">
 					<div class="subtitle">Kinds and Types</div>
@@ -369,7 +360,6 @@
 						<div class="note">
 							Think of a kind as the type of a type
 						</div>
-						<div class="todo">visual?</div>
 
 						<div class="note">
 							Kind expressions are built from the following grammar:
@@ -411,7 +401,7 @@
 							</tr>
 						</table>
 						<div class="note">
-							We say "<span class="code">list</span> has kind <span class="code">type -> type</span>"
+							We say "<span class="code">list</span> has kind <span class="code">type</span> arrow <span class="code">type</span>"
 						</div>
 						<div class="presentation-note">The example above creates a new type constructor "list" related to the kind "type -> type"</div>
 						
@@ -491,8 +481,7 @@
 							A <em>term</em> is typable according to the typing rules of the logic; it is either:
 							<ol>
 								<li>
-									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier
-									<div class="presentation-note">(show roles with quantifiers)</div>
+									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier (see rules $\forall_R$ and $\exists_R$)
 								</li>
 								<li>
 									a constant from the signature with any type variables instantiated (e.g. <span class="code">nil</span> of type <span class="code">list int</span>)
@@ -507,7 +496,7 @@
 						</div>
 
 						<div class="note">
-							The type $o$ is reserved for predicates and formulas and its use is restricted for different logics (see the description of Context in Setting and Logic Comparison) <span class="todo-urgent">Add links here</span>
+							The type $o$ is reserved for predicates and formulas and its use is restricted for different logics (see the description of Context in Setting and Logic Comparison) <span class="todo-urgent">Add links here?</span>
 						</div>
 						<div class="example">
 							Declare the predicate reverse as
@@ -798,6 +787,11 @@
 
 			<div class="logic-comparison frame hidden">
 				<div class="title">Horn Clauses vs Hereditary Harrop Formulas</div>
+				<div class="section">
+					<div class="subtitle">
+						Recall the sequent: $\Sigma ; \mathcal{P} \longrightarrow G$
+					</div>
+				</div>
 				<div class="section hc">
 					<div class="subtitle">Horn clause grammar:</div>
 					<div class="hc-grammar note">
@@ -831,12 +825,42 @@
 							<li>Implication in goals allows program modification during proof search via $\supset_R$ rule</li>
 						</ul>
 						<div class="example">
-							<span class="subtitle subsub">Modular programming example:</span> Restricted scope for auxillary predicates
+							<span class="subtitle subsub">Modular programming example:</span> Restricted scope for auxillary predicates (see p. 125-126 of PwHOL).
 							<div class="note">
-								<span class="todo-urgent">Add example using auxillary rev predicate, or use some other recursive function?</span>
+								<table class="code">
+									<tr>
+										<td>
+											type
+										</td>
+										<td>
+											reverse
+										</td>
+										<td>
+											list A -> list A -> o.
+										</td>
+									</tr>
+									<tr class="space-row"></tr>
+									<tr>
+										<td colspan="3">
+											reverse L K :- pi rv \
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td colspan="2">
+											(rv nil K &
+										</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td colspan="2">
+											(pi X \ pi N \ pi M \ rv (X :: N)) M :- rv N (X :: M))
+										</td>
+									</tr>
+								</table>
 							</div>
 						</div>
-						<div class="node">
+						<div class="note">
 							See FOHH in "Examples" for an example using hypothetical reasoning
 						</div>
 					</div>
@@ -845,7 +869,7 @@
 						<ul class="note-list">
 							<li>Universal quantification in goals allows context modification during proof search via $\forall_R$ rule</li>
 						</ul>
-						<div class="node">See HOHH in "Examples" for an example using generic reasoning</div>
+						<div class="note">See HOHH in "Examples" for an example using generic reasoning</div>
 					</div>
 					<div class="presentation-note">Show appropriate rule when discussed</div>
 				</div>
@@ -883,6 +907,12 @@
 					<div class="note">
 						<div class="subtitle">First-Order Restrictions:</div>
 						<div class="note"><span class="em em-warning"></span>Type expression order $\leq$ 1</div>
+						<div class="note-visual">
+							So no functional arguments
+							<div class="todo note">
+								e.g. 
+							</div>
+						</div>
 						<div class="presentation-note">No functional arguments</div>
 						<div class="note"><span class="em em-warning"></span>Type variable substitutions are expressions of order $0$ and not $o$</div>
 						<div class="presentation-note">Order of type expressions can be increased and?</div>
@@ -890,8 +920,6 @@
 						<div class="note"><span class="em em-warning"></span>Sort $o$ not used in type expressions except as target type (called a predicate symbol)</div>
 						<div class="todo">explain what problem this will cause</div>
 						<div class="note"><span class="em em-warning"></span>Type expressions representing type of a term variable must have order $0$ and not be $o$</div>
-
-						<div class="todo">Distinction between formulas and terms somewhere</div>
 					</div>
 				</div>
 			</div>
@@ -986,16 +1014,20 @@
 						<div class="note">
 							Let $P_2 = \forall \, \mathtt{H} \; \forall \, \mathtt{T} \; \forall \, \mathtt{N}$ <span class="code">\ length (cons H T) (1 + N) :- length T N}</span>.
 						</div>
+						<div class="todo">Change font above?</div>
 						<div class="note">
 							Let $\mathcal{P} = \{ P_1 , P_2 \}$.
 						</div>
 					</div>
 
-					<div class="center-flex section">
-						<img src="img/logicprogramming_example.png" alt="Proof tree for example"/>
+					<div class="center-flex">
+						<img src="img/logicprogramming_example-1.png" alt="Proof tree for example"/>
 					</div>
 
 					<div class="outline">
+						<div class="note">
+							Partial walkthrough of proof:
+						</div>
 						<div class="note">
 							Let the context $\Sigma$ be augmented with
 							<div class="code center-flex note">nil : list A</div>
@@ -1184,7 +1216,7 @@
 					</div>
 					<div class="center-flex">
 
-						<img src="img/fohh_example.png" alt="Proof of r => s"/>
+						<img src="img/fohh_example-1.png" alt="Proof of r => s"/>
 						<div class="rule-container proof-tree-mod hidden">
 							<div class="rule-top">
 								<div class="rule-text-left rule-text">
@@ -1370,6 +1402,7 @@
 					</div>
 				</div>
 				<div class="todo">some proof explanation</div>
+				<div class="todo">Update proof above; need $r \in \mathcal{P}, r$</div>
 			</div>
 
 			<div class="hohc examples frame hidden">
@@ -1576,7 +1609,7 @@
 							Let $\mathcal{P} = \{ P_1 , P_2 , P_3\}$
 						</div>
 						<div class="center-flex section">
-							<img src="img/hohh_example.png" alt="Proof tree for hohh example"/>
+							<img src="img/hohh_example-1.png" alt="Proof tree for hohh example"/>
 						</div>
 					</div>
 				</div>
