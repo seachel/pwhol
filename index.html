@@ -191,7 +191,7 @@
 				<div class="note">
 					<span class="subtitle">Presentation Goals:</span>
 					<ul>
-						<li>Introduce logic as programming via proof search and *substitution* for existentially quantified variables</li>
+						<li>Introduce logic as programming <span class="presentation-note">via proof search and *substitution* for existentially quantified variables</span></li>
 						<li>Basic idea of differences between different logic programming languages</li>
 						<li>Examples of problems that can be solved with logic programming</li>
 						<li>Website as artifact for future reference, possibly extended with more explanation for learning the languages</li>
@@ -271,9 +271,6 @@
 						</li>
 						<li>
 							how order of a logic impacts computational possibilities
-						</li>
-						<li>
-							what are the structures we reason about and the rules for doing so
 						</li>
 						<li>
 							what does computation look like
@@ -413,7 +410,6 @@
 					<div class="subtitle">Types and Terms</div>					
 					<div class="section outline">
 						<div class="note">Type expressions are built from the following grammar:
-							<div class="note">
 								$$
 								\begin{align*}
 								\langle \textit{type expression} \rangle ::=& \; \langle \textit{type variable} \rangle \\
@@ -421,10 +417,10 @@
 								|& \; \langle \textit{type constructor} \rangle \: \langle \textit{type expression} \rangle \: \ldots \: \langle \textit{type expression} \rangle
 								\end{align*}
 								$$
-							</div>
 						</div>
-
-						<div class="note">Each term or predicate symbol is related to a <em>type expression</em>, declared in a <em>type</em> declaration:</div>
+						<div class="note">
+							Each term or predicate symbol is related to a <em>type expression</em>, declared in a <em>type</em> declaration:
+						</div>
 						<table class="note-visual code code-table">
 							<tr>
 								<td>
@@ -487,7 +483,7 @@
 									</div>
 								</li>
 								<li>
-									a constant from the signature with any type variables instantiated
+									a previously declared constant with all type variables in its type instantiated
 									<div class="indent-note">
 										(e.g. <span class="code">nil</span> of type <span class="code">list int</span>)
 									</div>
