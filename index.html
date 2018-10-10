@@ -165,6 +165,11 @@
 				$(".closed").toggleClass(hiddenClassName);
 				$(".top-container").toggleClass("pad-bottom")
 			}
+
+			function focus_rules_click()
+			{
+				document.getElementById('scroll-rules').scrollIntoView();
+			}
 		</script>
 
 	</head>
@@ -194,7 +199,7 @@
 						<li>Introduce logic as programming <span class="presentation-note">via proof search and *substitution* for existentially quantified variables</span></li>
 						<li>Basic idea of differences between different logic programming languages</li>
 						<li>Examples of problems that can be solved with logic programming</li>
-						<li>Website as artifact for future reference, possibly extended with more explanation for learning the languages</li>
+						<li>Website as artifact for future reference, possibly extended with more explanation for learning and using the languages <span class="todo">(<a href="chelsea.lol/pwhol">chelsea.lol/pwhol</a>)</li></span>
 					</ul>
 				</div>
 				<div class="todo">MAIN TODO LIST:</div>
@@ -209,6 +214,8 @@
 				<div class="todo">Button to toggle visibility of presentation notes?</div>
 				<div class="todo">Page of definitions and links throughout page</div>
 				<div class="todo">Page with instructions on using lambda-prolog, linux, etc</div>
+				<div class="todo">Typo in walkthrough ("lis")</div>
+
 			</div>
 
 
@@ -235,7 +242,7 @@
 								Encode terms of type <span class="code">list</span> and predicates to define reversal	
 							</li>
 							<li>
-								<span class="code">reverse L1 L2</span> is true or false and can mean <span class="code">L2</span> is the reverse of <span class="code">L1</span>
+								$\mathtt{reverse \; L_1 \; L_2}$ is true or false and can mean $\mathtt{L_2}$ is the reverse of $\mathtt{L_1}$
 							</li>
 						</ul>
 						<table class="code hidden">
@@ -263,7 +270,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="section concerns-section">
+				<div class="section concerns-section hidden">
 					<div class="subtitle">Concerns:</div>
 					<ul>
 						<li>
@@ -336,7 +343,7 @@
 									Computation in functional languages as reductions to a normal form
 								</li>
 								<li>
-									Computation in imperative languages as updates to models of data
+									Computation in imperative languages as updates to state
 								</li>
 							</ul>
 						</div>
@@ -419,7 +426,7 @@
 								$$
 						</div>
 						<div class="note">
-							Each term or predicate symbol is related to a <em>type expression</em>, declared in a <em>type</em> declaration:
+							Each term or predicate symbol we want to declare is related to a <em>type expression</em>, declared in a <em>type</em> declaration:
 						</div>
 						<table class="note-visual code code-table">
 							<tr>
@@ -445,23 +452,23 @@
 								</td>
 							</tr>
 						</table>
-						<div class="presentation-note">The example above creates a new term constructor "cons" of type "A -> list A -> list A"</div>
+						<div class="note">
+							We say "<span class="code">cons</span> has type <span class="code">A -> list A -> list A</span>"
+						</div>
 						
 						<div class="note">Type expressions using type variables allow polymorphism</div>
 						<div class="example"><span class="code">cons</span> is related to the polymorphic type expression <span class="code">A -> list A -> list A</span></div>
+
 						<div class="presentation-note">The constant cons is a polymorphic data constructor to be applied to an element of type A and a list with elements of type A to give a new list of elements of type A</div>
 
 						<div class="note">Type expressions using "$\rightarrow$" allow value constructors for building structured data</div>
 						<div class="example"><span class="code">cons</span> can be used to build lists, given an element and a list of appropriate type</div>						
-						<div class="note">
-							We say "<span class="code">cons</span> has type <span class="code">A -> list A -> list A</span>"
-						</div>
 
 						<div class="note">Type espressions using type constructors must be fully applied, so well-formed type expressions are related to the kind <span class="code">type</span></div>
 						<div class="example">
 							<ul>
 								<li>
-									<span class="code">list</span>, related to the kind <span class="code">type -> type</span> is not a valid type expression
+									<span class="code">list</span>, related to the kind <span class="code">type -> type</span>, is not a valid type expression
 								</li>
 								<li>
 									<span class="code">list int</span>, related to the kind <span class="code">type</span>, is a type expression
@@ -477,25 +484,25 @@
 							A <em>term</em> is typable according to the typing rules of the logic; it is either:
 							<ol>
 								<li>
-									a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier
+									Variable: a fresh variable of appropriate type, either implicitly or explicitly bound by a quantifier
 									<div class="indent-note">
 										(see rules $\forall_R$ and $\exists_R$)
 									</div>
 								</li>
 								<li>
-									a previously declared constant with all type variables in its type instantiated
+									Constant: a previously declared constant with all type variables in its type instantiated
 									<div class="indent-note">
 										(e.g. <span class="code">nil</span> of type <span class="code">list int</span>)
 									</div>
 								</li>
 								<li>
-									an application of a fully-applied term symbol
+									Application: an application of a fully-applied term symbol
 									<div class="indent-note">
 										(e.g. <span class="code">cons 1 nil</span>)
 									</div>
 								</li>
 								<li>
-									a lambda-abstraction of a term variable of appropriate type over a term
+									Function: a lambda-abstraction of a term variable of appropriate type over a term
 									<div class="indent-note">
 										(e.g. <span class="code">(x : list int) \ reverse (cons 1 (cons 2 nil)) x</span>)
 									</div>
@@ -628,7 +635,7 @@
 								</tr>
 								<tr>
 									<td>
-										$\leftarrow$
+										$\Leftarrow$
 									</td>
 									<td class="code">
 										:-
@@ -660,11 +667,11 @@
 									</td>
 								</tr>
 							</table>
-							<div class="note">
+						</div>
+
+						<div class="note">
 								<span class="subtitle subsub">Note:</span> <span class="code">-></span> is used in place of $\rightarrow$ as the function arrow in code
 							</div>
-							
-						</div>
 						<div class="note">
 								The symbol <span class="code">\</span> is used as a binding operator
 							</div>
@@ -680,11 +687,11 @@
 							<div class="note">
 								$\forall (x : T) \, F$ is shorthand for $\forall ((x : T) \, \backslash \, F)$ and $\exists (x : T) \, F$ is shorthand for $\exists ((x : T) \, \backslash \, F)$
 							</div>
-							<div class="note">
+							<div class="note hidden">
 								A variable bound using the binding operator is a <em>term variable</em>
 							</div>
 						<div class="note">
-							Extend the signature using kind and type declarations, as above.
+							Extend the signature using kind and type declarations to declare types, data constructors, and predicates of an application area
 						</div>
 						
 						<div class="example">
@@ -755,7 +762,7 @@
 								</tr>
 								<tr>
 									<td>
-										length (cons H T) (1 + N) :- length T N.
+										pi H \ pi T \ pi N \ length (cons H T) (1 + N) :- length T N.
 									</td>
 								</tr>
 							</table>
@@ -768,6 +775,9 @@
 						Goal, <span class="feature">$G$</span>
 					</div>
 					<div class="section outline">
+						<div class="note">
+							A goal is sometimes called a query
+						</div>
 						<div class="note">
 							A formula we would like to prove, assuming the formulas in $\mathcal{P}$ and using the constants declared in $\Sigma$
 						</div>
@@ -801,13 +811,13 @@
 					</div>
 					<div class="note">
 						<div class="indent-note">
-							Let $G$ be a syntactic variable representing goals
+							Let $G$ be a syntactic category representing goals
 						</div>
 						<div class="indent-note">
-							Let $D$ be a syntactic variable representing program clauses
+							Let $D$ be a syntactic category representing program clauses
 						</div>
 						<div class="indent-note">
-							Let $A$ be a syntactic variable representing atomic formulas (previously referred to as formulas)
+							Let $A$ be a syntactic category representing atomic formulas (formulas with no top-level logical symbol)
 						</div>
 					</div>
 					<div class="todo">expand atom discussion? fully-applied constants declared in type declarations?</div>
@@ -850,7 +860,7 @@
 							<li>Implication in goals allows program modification during proof search via $\supset_R$ rule</li>
 						</ul>
 						<div class="example">
-							<span class="subtitle subsub">Modular programming example:</span> Restricted scope for auxillary predicates (see p. 125-126 of PwHOL).
+							<span class="subtitle subsub">Modular programming example:</span> Restricted scope for auxiliary predicates (see p. 125-126 of PwHOL).
 							<div class="note">
 								<table class="code">
 									<tr>
@@ -927,6 +937,31 @@
 						$$
 					</div>
 					<div class="note">Informally, order is the maximum number of nested arrows</div>
+					<table class="example">
+						<tr>
+							<td>
+								If $\mathit{ord}(T_1) = \mathit{ord}(T_2) = 0$, then
+							</td>
+						</tr>
+						<tr class="space-row"></tr>
+						<tr>
+							<td>
+								$\mathit{ord}(T_1 \rightarrow T_2) = 1$
+							</td>
+						</tr>
+						<tr class="space-row"></tr>
+						<tr>
+							<td>
+								$\mathit{ord}((T_1 \rightarrow T_2) \rightarrow T_3) = 2$		
+							</td>
+						</tr>
+						<tr class="space-row"></tr>
+						<tr>
+							<td>
+								$\mathit{ord}(((T_1 \rightarrow T_2) \rightarrow T_3) \rightarrow T_4) = 3$
+							</td>
+						</tr>
+					</table>
 				</div>
 				<div class="section">
 					<div class="note">
@@ -1046,7 +1081,7 @@
 							use the <em>decide</em> rule to select a program clause
 						</li>
 						<li>
-							use the <em>backchaining</em> rule on the chosen clause
+							use either the <em>initial</em> rule or the <em>backchaining</em> rule on the chosen clause
 						</li>
 					</ol>
 				</div>
@@ -1061,7 +1096,7 @@
 					e.g. $\mathit{length} \; (\mathit{cons} \; 1 \; \mathit{nil}) \; 1$ is a goal that matches the consequent of clause $\forall \, \mathit{H} \; \forall \, \mathit{T} \; \forall \, \mathit{N} \; (\mathit{length} \; (\mathit{cons} \; H \; T) \; (1 + N) :- \; \mathit{length} \; T \; N)$ when $H = 1$, $T = \mathit{nil}$, and $N = 0$
 				</div>
 				<div class="note">
-					use the rule <span class="rule-name-inline">backchain</span> to change the proof state to a sequence of new states, each representing a premise of the previously focused formula
+					use the rule <span class="rule-name-inline">backchain</span> to change the proof state to a sequence of new states, each representing an antecedent of the previously focused formula
 				</div>
 				<div class="example">
 					From above, the new goal is $\mathit{length} \; nil \; 0$
@@ -1084,11 +1119,13 @@
 						</div>
 					</div>
 
-					<div class="center-flex">
-						<img src="img/logicprogramming_example.png" alt="Proof tree for example"/>
+					<div class="section">
+						<div class="center-flex">
+							<img src="img/logicprogramming_example.png" alt="Proof tree for example"/>
+						</div>
 					</div>
 
-					<div class="outline">
+					<div class="section outline">
 						<div class="note">
 							Partial walkthrough of proof:
 						</div>
@@ -1096,7 +1133,7 @@
 							Let the context $\Sigma$ be augmented with
 							<div class="code center-flex note">nil : list A</div>
 							<div class="center-flex">and</div>
-							<div class="code center-flex note">cons : A -> lis A -> list A</div>
+							<div class="code center-flex note">cons : A -> list A -> list A</div>
 						</div>
 						<div class="note">
 							Let the program be
@@ -1550,7 +1587,10 @@
 						</table>
 					</div>
 					<div class="note">
-						Example goal: <span class="code">sigma L \ sublist flagged (cons v (cons w (cons x (cons y (cons z nil))))) L</span>
+						Example goal:
+						<div class="note code">
+							sigma L \ sublist flagged (cons v (cons w (cons x (cons y (cons z nil))))) L
+						</div>
 					</div>
 					<div class="note">
 						Answer set substitution: <span class="code">L = cons x (cons y (cons z nil))</span>
@@ -1690,7 +1730,7 @@
 					<span class="subtitle">Inference Rules</span>
 					<span class="em em-hammer_and_wrench"></span>
 				</button>
-				<div class="scroll hidden">
+				<div id="scroll-rules" class="scroll hidden" onclick="focus_rules_click()">
 					<div class="note subtitle subsub">
 						Right rules:
 					</div>
