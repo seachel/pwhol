@@ -1,0 +1,49 @@
+/*
+Emoji Styles
+*/
+
+.em,.em-svg
+{
+	height: 1.5em;
+	width: 1.5em;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: inline-block;
+	vertical-align: middle
+}
+
+.em-card_file_box
+{
+	background-image: url("../img/card_file_box.png");
+}
+
+.em-clap
+{
+	background-image: url("../img/clap.png");
+}
+
+.em-question
+{
+	background-image: url("../img/question.png");
+}
+
+.em-warning
+{
+	background-image: url("../img/warning.png");
+}
+
+.em-arrow_forward
+{
+	background-image: url("../img/arrow_forward.png");
+}
+
+.em-arrow_down_small
+{
+	background-image: url("../img/arrow_down_small.png");
+}
+
+.em-hammer_and_wrench
+{
+	background-image: url("../img/hammer_and_wrench.png");
+}
