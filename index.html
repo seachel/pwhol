@@ -201,7 +201,7 @@
 						<li>Introduce logic as programming <span class="presentation-note">via proof search and *substitution* for existentially quantified variables</span></li>
 						<li>Basic idea of differences between different logic programming languages</li>
 						<li>Examples of problems that can be solved with logic programming</li>
-						<li>Website as artifact for future reference, possibly extended with more explanation for learning and using the languages (<a href="chelsea.lol/pwhol">chelsea.lol/pwhol</a>)</li>
+						<li>Website as artifact for future reference, possibly extended with more explanation for learning and using the languages (<a href="http://chelsea.lol/pwhol">chelsea.lol/pwhol</a>)</li>
 					</ul>
 				</div>
 				<div class="todo">MAIN TODO LIST:</div>
@@ -1699,15 +1699,15 @@
 					<div class="note">We find that the Church numeral for 1, $\lambda f \lambda x (f \; x)$, has type $(T_1 \rightarrow T_2) \rightarrow T_1 \rightarrow T_2$</div>
 
 					<div class="example">
-						Proof of <span class="code">sigma T \ istp (fun (f \ (fun (x \ (app f x))))) T</span>:
+						Proof of $\exists T \; \mathit{istp} \; (\mathit{fun} \; (x \; \backslash \; (\mathit{app} \; f \; x))) \; T$:
 						<div class="note">
-							Let $P_1 =$ <span class="code">istp (app E1 E2) T1 :- istp E1 (arr T2 T1) & istp E2 T2</span>.
+							Let $P_1 = \mathit{istp} \; (\mathit{app} \; E_1 \; E_2) \; T_1$ <span class="code">:-</span> $\mathit{istp} \; E_1 \; (\mathit{arr} \; T_2 \; T_1) \wedge \mathit{istp} \; E_2 \; T_2$.
 						</div>
 						<div class="note">
-							Let $P_2 =$ <span class="code">istp (fun (x \ E x)) (arr T1 T2) :- pi x \ (istp x T1 => istp (E x) T2)</span>.
+							Let $P_2 = \mathit{istp} \; (fun \; (x \; \backslash \; E \; x)) (\mathit{arr} \; T_1 \; T_2)$ <span class="code">:-</span> $\forall x \; (\mathit{istp} \; x \; T_1 \supset \mathit{istp} \; (E \; x) \; T_2)$.
 						</div>
 						<div class="note">
-							Let $P_3 =$ <span class="code">istp f (arr t_1 t_2)</span>
+							Let $P_3 = \mathit{istp} \; f \; (\mathit{arr} \; t_1 \; t_2)$
 						</div>
 						<div class="note">
 							Let $\mathcal{P} = \{ P_1 , P_2 , P_3\}$
